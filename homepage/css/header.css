@@ -1,0 +1,82 @@
+		<style type="text/css">
+			*{
+				margin: 0;
+				border: 0;
+			}
+			a{
+				text-decoration:none;
+			}
+			.header{
+				width: 100%;
+				/* width: 1349px; */
+				height: 80px;
+				background-color: #00BFFF;
+				position: relative;
+				/* float: left; */
+			}
+			.footer{
+				width: 100%;
+				/* width: 1349px; */
+				height: 100px;
+				background-color: #00BFFF;
+				margin-top: 760px;
+				position: relative;
+				/* float: left; */
+			}
+			.content{
+				width: 100%;
+				/* width: 1349px; */
+				height: 760px;
+				background-color: #AF6868;
+				margin: 0 auto;
+				position: absolute;
+				/* float: left; */
+			}
+			.body{
+				background-color: #87CEEB;
+				display: flex;
+				justify-content: center;
+				position: relative;
+				float: left;
+				width: 100%;
+				height: 900px;
+			}
+			.index_box{
+				width: 100%;
+				height: 760px;
+				background-color: skyblue;
+				opacity: 0.5;
+				position: absolute;
+				/* float: left; */
+			}
+			.index_font{
+				width: 600px;
+				height: 250px;
+				margin: 50px auto 0 auto;
+				text-align: center;
+				background: url(../img/snow-bg.png) 0 0;
+				animation: snow 10s linear infinite;
+			}
+			.index_font h1{
+				font-size: 108px;
+			}
+			.index_font h2{
+				font-size: 72px;
+			}
+			@keyframes snow{
+				0%{background-position: 0 0}
+				100%{background-position: 0 800px}
+			}
+			.index_href{
+				width: 600px;
+				height: 50px;
+				margin: 0 auto;
+				text-align: center;
+				font-size: 30px;				
+			}
+			.index_href:hover p{
+				transform: scale(1.5) ;
+				transition: 0.5s;
+			}
+
+		</style>

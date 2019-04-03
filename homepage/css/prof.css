@@ -1,0 +1,211 @@
+	<style type="text/css">
+	
+		*{
+			margin: 0;
+		}
+		a{
+			text-decoration:none;
+		}
+		h1{
+			text-align: center;
+			font-family: "times new roman";color: #bbb5b2;
+			font-size: 50px;
+		}
+		.prof_right_box_list h1{
+			text-align: center;
+			font-family: "times new roman";color: #000000;
+			font-size: 50px;
+		}
+		.prof_box{
+			width: 100%-100px;
+			height: 1200px;
+			margin: 30px 50px 0 50px;
+			position: absolute;
+			float: none;
+			/* background-color: #000000; */
+		}
+		.prof_right_box i{
+			font-size: 50px;
+		}
+		.prof_right_box h2{
+			font-size: 50px;
+			text-align: center;
+		}
+		.prof_right_box h3{
+			font-size: 40px;
+			text-align: center;
+		}
+		.prof_right_box h4{
+			font-size: 40px;
+			text-align: left;
+		}
+		.obj_box,.proj_box,.skill_box{
+			position: absolute;
+			width: 90%;
+			height: 900px;
+			margin: 200px 200px 200px 50px;
+			display: none;
+			background-color: white;
+			border-radius: 10px;
+			font-family: "times new roman";
+			font-size: 30px;
+		}
+		.proj_box p{
+			font-size: 25px;
+		}
+		.obj_box img{
+			align-items: center;
+		}
+		.prof_left_box{
+			width: 35%;
+			height: 100%;
+			/* opacity: 0.5; */
+			float: left;
+			background-color: #292f2f;	
+			border-radius: 30px;
+		}
+		.prof_left_box_up{
+			width: 100%;
+			height: 28%;
+			float: left;
+		}
+		.prof_left_box_up img{
+			width: 50%;
+			margin: 20px 0 0 100px;
+		}
+		.prof_left_box_down{
+			width: 100%;
+			height: 72%;
+			float: left;
+			margin: 20px auto;
+			/* background-color: darkslategray; */
+		}
+		.prof_left_box_down_skill{
+			width: 100%;
+			height: 14%;
+			float: left;
+			background: url(http://sylucky.club/tab2.png) center;
+			background-size:100% 100%;
+			margin: 9px auto;
+		}
+/* 		.prof_left_box_down_skill img:hover{
+			transform: translateX(100px);
+			transition: 0.7s;
+		} */
+		.prof_right_box{
+			width: 65%;
+			height: 100%;
+			opacity: 0.5;
+			float: left;
+			/* background: #87CEEB; */
+			position: relative;
+		}
+		.prof_right_box_line1{
+			width: 100%;
+			height: 5px;
+			background-color: #292F2F;
+			margin: 20px auto;
+		}
+		.prof_right_box_line2{
+			width: 100%;
+			height: 2px;
+			background-color: #292F2F;
+			margin: 5px auto;
+		}
+		.prof_right_box_list{
+			width: 100%-70px;
+			height: 100%;
+			overflow: hidden;
+			margin: 50px 0 0 70px;
+			float: left;
+			position: absolute;
+			display: none;
+		}
+		.prof_right_box_list:nth-child(1){
+			display: block;
+		}
+		.prof_right_box_list h1{
+			font-family: "times new roman";
+			font-size: 100px;
+			text-align: center;
+		}
+		.prof_right_box_list p{
+			font-family: "times new roman";
+			font-size: 30px;
+		}
+		
+		.skill_tab{
+			width: 100%;
+			position: relative;
+		}
+		
+		.skill_pngandtext{
+			width: 100%; 
+			height: 90px;
+			float: none;
+			font-size: 40px;
+		}
+		.skill_png, .skill_png_excellent, .skill_png_good, .skill_png_canuse, .skill_png_learn{
+			width: 50px; 
+			height: 50px;
+			border-radius: 50px; 
+			border: 10px solid #b90387de;
+			background-color: #c7c7c7e0;
+			float: left;
+		}
+		
+		.skill_png_excellent{
+			border: 10px solid #b90387de;
+		}
+		.skill_png_good{
+			border: 10px solid blue;
+		}
+		.skill_png_canuse{
+			border: 10px solid yellow;
+		}
+		.skill_png_learn{
+			border: 10px solid lawngreen;
+		}
+		
+		.skill_text{
+			width: 80%; 
+			height: 50px;
+			float: left;
+			margin-left: 20px;
+		}
+		
+		.skill_text p{
+			font-size: 30px;
+		}
+/* 		.skill_tab img{
+			width: 100%;
+			position: relative;
+		} */
+
+		.skill_tab:before{ 
+			content: ""; 
+			position: absolute;
+			width:200px; 
+			height: 100px; 
+			/* top: 374px; */
+			top: 0;
+			left: -150px; 
+			overflow: hidden;
+			background: -moz-linear-gradient(left, rgba(255,255,255,0)0, rgba(255,255,255,.2)50%, rgba(255,255,255,0)100%);
+			background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(50%, rgba(255,255,255,.2)), color-stop(100%, rgba(255,255,255,0)));
+			background: -webkit-linear-gradient(left, rgba(255,255,255,0)0, rgba(255,255,255,.2)50%, rgba(255,255,255,0)100%);
+			background: -o-linear-gradient(left, rgba(255,255,255,0)0, rgba(255,255,255,.2)50%, rgba(255,255,255,0)100%);
+			-webkit-transform: skewX(-25deg);
+			-moz-transform: skewX(-25deg)
+		}
+		
+		.skill_tab:hover:before {
+			left: 800px; 
+			transition: left 1.5s ease 0s; 				
+		}
+		
+		.skill_tab h1{
+			margin: 20px auto;
+			
+		}
+	</style>

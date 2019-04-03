@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>雪花飘飘</title>
+	<style type="text/css">
+		header{
+			width: 1333px;
+			height: 315px;
+			background: url(img/header-bg.png);
+		}
+
+		section{
+			width: 1066px;
+			height: 315px;
+			background: url(img/wrapper-bg.png) no-repeat 0 204px,url(img/snow-bg.png) 0 0;
+			margin: 0 auto;
+			animation: snow 10s linear infinite;
+		}
+
+		@keyframes snow{
+			0%{background-position: 0 204px,0 0}
+			100%{background-position: 0 204px,0 800px}
+		}
+
+		@keyframes snowman_drop{
+			0%{background-position: 0 0px}
+			100%{background-position: 0 160px}
+		}
+
+		@keyframes animate-drop {
+		   
+			0% {opacity:0;transform: translate(0, -315px);}
+			100% {opacity:1;transform: translate(0, 0);}
+		} 
+
+		.snow_man{
+			width: 100px;
+			height: 315px;
+			top: 160px;
+			left: 600px;
+			position: absolute;
+			background: url(img/snowman.png) no-repeat;
+			animation: animate-drop .6s linear;
+		}
+		.tree0{
+			width: 100px;
+			height: 120px;
+			top: 120px;
+			left: 200px;
+			position: absolute;
+			background: url(img/christmas-tree.png) ;
+			animation: animate-drop .6s linear;
+		}
+
+		.tree1{
+			width: 100px;
+			height: 120px;
+			top: 160px;
+			left: 350px;
+			position: absolute;
+			background: url(img/christmas-tree.png) ;
+			animation: animate-drop .6s linear;
+		}
+
+		.tree2{
+			width: 100px;
+			height: 120px;
+			top: 140px;
+			left: 500px;
+			position: absolute;
+			background: url(img/christmas-tree.png) ;
+			animation: animate-drop .6s linear;
+		}
+
+		.tree3{
+			width: 100px;
+			height: 120px;
+			top: 140px;
+			left: 700px;
+			position: absolute;
+			background: url(img/christmas-tree.png) ;
+			animation: animate-drop .6s linear;
+		}
+
+		.tree4{
+			width: 100px;
+			height: 120px;
+			top: 160px;
+			left: 850px;
+			position: absolute;
+			background: url(img/christmas-tree.png) ;
+			animation: animate-drop .6s linear;
+		}
+
+		.tree5{
+			width: 100px;
+			height: 120px;
+			top: 120px;
+			left: 1000px;
+			position: absolute;
+			background: url(img/christmas-tree.png) ;
+			animation: animate-drop .6s linear;
+		}
+
+
+	</style>
+</head>
+<body>
+	<header>
+		<section>
+			<div class="snow_man">	
+			</div>
+			<div class="tree0">	
+			</div>
+			<div class="tree1">	
+			</div>
+			<div class="tree2">	
+			</div>
+			<div class="tree3">	
+			</div>
+			<div class="tree4">	
+			</div>
+			<div class="tree5">	
+			</div>
+		</section>
+	</header>
+</body>
+</html>

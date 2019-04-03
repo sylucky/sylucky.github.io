@@ -1,0 +1,271 @@
+	<style type="text/css">
+		/*body样式*/
+		body{
+			display: flex;
+			justify-content: center;
+			position: relative;
+			width: 100%;
+			/* width: 1333px; */
+			height: 900px;
+			position: relative;
+		}
+		/*页脚样式*/
+		footer{
+			position: absolute;
+			width: 100%;
+			height: 100px;
+			/*bottom: 10px;*/
+			/*transform: translateY(-600px);*/
+		}
+		.footer_nav{
+			display: flex;
+			justify-content: center;
+			width: 50%;
+			height: 50%;
+			margin: 15px auto ;
+/*			background-color: rgba(255,255,255,0.5);*/
+		}
+		.footer_nav a{
+			width: 8%;
+			height: 100%;
+			float: left;
+		}
+		.footer_nav a:hover{
+			transform: scale(1.5) rotate(30deg);
+			margin-left: 10px;
+			margin-right: 10px;
+			transition: 0.5s;
+			cursor: pointer;
+		}
+		img{
+			width: 100%;
+		}
+		a{
+			text-decoration:none;
+		}
+		.sec_content{
+			width: 1000px;
+			height: 400px;
+			background-color: yellow;
+			margin: -600px auto;
+			display: flex;/*弹性容器*/
+			justify-content: center;
+			/*display: none;*/
+		}
+		
+/*		.nav img{
+			width: 8%;
+			height: 100%;
+			float: left;
+		}
+		.nav img:hover{
+			transform: scale(2) rotate(90deg);
+			margin-left: 10px;
+			margin-right: 10px;
+			transition: 0.5s;
+			cursor: pointer;
+		}*/
+		.headnav{
+			width: 100%;
+			height: 40px;
+			background-color: #55366d;
+			/*transform: translateY(-600px);*/
+			border:1px solid #af6868;
+			position: relative;
+			/*opacity: 0.5;*/
+		}
+		/*左上角所有链接选择框样式*/
+		.headnav_all{
+			width: 40px;
+			height: 100%;
+			float: left;
+			/* border-right: 1px solid #0d87e8; */
+		}
+		/*左边框样式*/
+		/*左上角所有链接选择框下拉列表*/
+		.lists,.lists_web{
+			width: 800px;
+			height: 500px;
+			float: left;
+			background-color: white;
+			display: none;
+			transform: translateY(-5px);
+			/*opacity: 0.5;*/
+			/*display: block;*/
+		}
+		/*左边框内块样式*/
+		.head_list{
+			width: 100%;
+			height: 16%;
+			/*background-color: yellow;*/
+			overflow: hidden;
+			border-bottom: 1px solid #af6868;
+			float: left;
+		}
+		/*左边框内块样式左边文字区域样式*/
+		.head_list_text{
+			width: 30%;
+			height: 100%;
+			float: left;
+			font-size:200%;
+			font-weight: bold;
+			text-align: center;
+			margin-top: 20px;
+		}
+		.head_list_text a{
+			font-family: "宋体","SimSun";color: black;
+		}
+		.head_list_text:hover a{
+			font-family: "宋体","SimSun";color: deepskyblue;
+		}
+		.head_list_img{
+			width: 70%;
+			height: 100%;
+			float: left;
+		}
+		/*左边框内块样式右边链接样式*/
+		.img_content{
+			width: 50px;
+			height: 50px;
+			float: left;
+/*			display: flex;
+			justify-content: center;*/
+			margin-right: 15px;
+			margin-top: 10px;
+		}
+		.img_content img:hover{
+			transform: scale(1.5);
+			margin-left: 10px;
+			margin-right: 10px;
+			transition: 0.5s;
+			cursor: pointer;
+		}
+		.img_content_text{
+			width: 100%;
+			height: 20%;
+			/*float: none;*/
+			transform: translateY(-8px);
+			text-align: center;
+		}
+		/*左边框显示样式*/
+/* 		.headnav_all:hover .lists{
+			display: block;
+		} */
+		/*页面链接样式*/
+		.head_href,.head_profile{
+			width: 66px;
+			height:40px;
+			float: left;
+		}
+		.head_lele{
+			margin-right: 10px;
+		}
+		/*页面文字样式*/
+		.head_text,.head_profile{
+			width: 80px;
+			height: 40px;
+			float: left;
+			background-color: #615a5a;
+		}
+		.head_text p,.head_profile p{
+			font-family: "宋体","SimSun";color: white;
+			font-size:100%;
+			font-weight: bold;
+			text-align: center;
+			transform: translateY(8px);
+		}
+		.head_text:hover p{
+			font-family: "宋体","SimSun";color: deepskyblue;
+		}
+		/*搜索框样式*/
+		.head_search{
+			width: 200px;
+			height: 40px;
+			float: right;
+		}
+		.head_search_input{
+			height: 20px;
+			width: 100px;
+			transform: translateY(6px);
+			border-radius:5px;
+		}
+		.head_search_btn{
+			height: 20px;
+			width: 60px;
+			transform: translateY(6px);
+			border-radius:5px;
+		}
+		/*主页轮播图片样式*/
+		.container{
+			/*样式名称(宽度):样式值*/
+			width:1000px ;
+			height: 360px;
+			margin: 100px auto;
+			background-color: fuchsia;
+/*			transform: translateY(-600px);
+			position: relative;
+			overflow: hidden;*/
+		}
+		/*轮播图片框样式*/
+		.list{
+			float: left;
+			width: 20%;
+			height: 40px;
+			background-color: #e3e2e2;
+			line-height:40px ;/*行高：高度:垂直居中*/
+			text-align: center;/*文本对齐方式:居中*/
+			font-size: 14px;/*字体大小*/
+		}
+		.picture{
+			float: left;
+			width: 100%;
+			height: 320px;
+			background-color: skyblue;
+			background: url(../img/WEB前端.jpg) no-repeat;
+			transition: 1s;/*过度时间*/
+		}
+		/*当鼠标滑到list上面时，执行括号当中的代码*/
+		.list:hover{
+			background-color: azure;
+			color:fuchsia ;/*文字颜色*/
+		}
+		/*当鼠标滑到list上面时，改变picture*/
+		.list:nth-child(2):hover ~ .picture{
+			background: url(../img/C++.png) no-repeat;
+		}
+		.list:nth-child(3):hover ~ .picture{
+			background: url(../img/JAVA.jpg) no-repeat;
+		}
+		.list:nth-child(4):hover ~ .picture{
+			background: url(../img/PYTHON.png) no-repeat;
+		}
+		.list:nth-child(5):hover ~ .picture{
+			background: url(../img/docker.png) no-repeat;
+		}
+		/*简历主页链接*/
+		.head_profile{
+			float: right;
+		}
+		.head_profile:hover p{
+			font-family: "宋体","SimSun";color: deepskyblue;
+		}
+		.copyright{
+			font-family: "宋体","SimSun";color: black;
+			transform: translateY(70px);
+		}
+		.copyright a{
+			font-family: "宋体","SimSun";color: black;
+		}
+		.lists_web{
+			transform: translateY(21px);
+			/*display: block;*/
+		}
+
+/*		.head_text_web:hover .lists_web{
+			display: block;
+		}*/
+		/* .head_text:hover .lists_web{
+			display: block;
+		} */
+
+	</style>

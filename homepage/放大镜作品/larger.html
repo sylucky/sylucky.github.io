@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>放大镜</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+		}
+		.wrap{
+			width: 400px;
+			height: 600px;
+			margin-top: 100px;
+			margin-left: 100px;
+			position: relative;
+		}
+		.main,.box{
+			width: 100%;
+			height: 100%;
+		}
+		.main img{
+			width: 100%;
+			height: 100%;
+		}
+		.hover{
+			display: none;
+			position: absolute;/* 父元素相对定位 */
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 50%;
+			background-color: skyblue;
+			opacity: 0.5;/* 0-1 透明度 */
+		}
+		.box{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 100%;
+			margin-left: 10px;
+			overflow: hidden;/* 溢出隐藏 */
+		}
+		.big_box{
+			position: absolute;
+			width: 200%;
+			height: 200%;
+		}
+		.big_box img{
+			width: 100%;
+			height: 100%;
+		}
+		.main:hover .hover{/* 子元素 */
+			display: block;
+		}
+		.main:hover + .box{/* 兄弟元素 */
+			display: block;
+		}
+	</style>
+
+</head>
+<body>
+	<div class='wrap'>
+		<div class="main">
+			<img src="img/m2.jpg">
+			<div class="hover"></div><!-- 放大镜 -->
+		</div>
+		<div class="box">
+			<div class="big_box">
+				<img src="img/m2.jpg">
+			</div>
+		</div>
+	</div>
+	<!-- 
+		原图		放大镜	大图片
+		宽高
+		绑定执行事件
+		图片的坐标
+	 -->
+	 <script type="text/javascript">
+	 	//获取html元素
+	 	var wrap = document.querySelector(".wrap");
+	 	var hover = document.querySelector(".hover");
+	 	var Dbox = document.querySelector(".big_box");
+	 	//console.log(wrap);
+	 	//获取html元素宽高变量
+	 	var wrapWidth, wrapHeight, hoverWidth, hoverHeight, DboxWidth, DboxHeight;
+	 	//绑定事件
+	 	//console.log("小仙女");
+	 	wrap.onmousemove = function(e){
+	 		//console.log("小可爱");
+	 		//存在取前面，不存在取后面
+	 		//计算容易高宽
+	 		hoverWidth || (hoverWidth = hover.offsetWidth);
+	 		hoverHeight || (hoverHeight = hover.offsetHeight);
+	 		wrapWidth || (wrapWidth = wrap.offsetWidth);
+	 		wrapHeight || (wrapHeight = wrap.offsetHeight);
+	 		DboxWidth || (DboxWidth = Dbox.offsetWidth);
+	 		DboxHeight || (DboxHeight = Dbox.offsetHeight);
+
+	 		//计算图片在js的位置，this为绑定事件wrap
+	 		var offset = this.getBoundingClientRect();
+	 		//console.log(offset);
+	 		//获取鼠标坐标
+	 		var x = e.pageX - offset.left ;
+	 		var y = e.pageY - offset.top ;
+	 		//鼠标在放大镜中的位置
+	 		var left = x - parseInt(hoverWidth/2, 10) ;
+	 		var top = y - parseInt(hoverHeight/2, 10) ;
+
+	 		if(left<0){
+	 			left=0;
+	 		}
+	 		if (top<0) {
+	 			top=0;
+	 		}
+	 		if(left+hoverWidth > wrapWidth)
+	 		{
+	 			left = wrapWidth-hoverWidth;
+	 		}
+	 		if(top + hoverHeight > wrapHeight){
+	 			top = wrapHeight-hoverHeight;
+	 		}
+
+	 		//移动放大镜
+	 		hover.style.left = left+"px";
+	 		hover.style.top = top+"px";
+
+	 		//计算大图
+	 		var bigX = (left / (wrapWidth-hoverWidth))*(DboxWidth-wrapWidth) ;
+	 		var bigY = (top / (wrapHeight-hoverHeight))*(DboxHeight-wrapHeight) ;
+	 		Dbox.style.left=(bigX * -1)+"px";
+	 		Dbox.style.top=(bigY * -1)+"px";
+	 	}
+	 </script>
+</body>
+</html>
