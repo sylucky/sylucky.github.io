@@ -1,0 +1,1098 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <meta name="google-site-verification" content="xxx">
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人">
+
+
+
+  <meta name="keywords" content="docker,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1">
+
+
+<meta name="description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker实验室（四）--Docker安装与配置hadoop--centOS镜像">
+<meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（四）--Docker安装与配置hadoop--centOS镜像/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-03T14:53:47.218Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker实验室（四）--Docker安装与配置hadoop--centOS镜像">
+<meta name="twitter:description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> docker实验室（四）--Docker安装与配置hadoop--centOS镜像 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              docker实验室（四）--Docker安装与配置hadoop--centOS镜像
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2019-04-02T08:02:12+08:00" content="2019-04-02">
+            2019-04-02
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="docker实验室（四）–Docker安装与配置hadoop–centOS镜像"><a href="#docker实验室（四）–Docker安装与配置hadoop–centOS镜像" class="headerlink" title="docker实验室（四）–Docker安装与配置hadoop–centOS镜像"></a>docker实验室（四）–Docker安装与配置hadoop–centOS镜像</h1><h2 id="首先下载一个centos镜像"><a href="#首先下载一个centos镜像" class="headerlink" title="首先下载一个centos镜像"></a>首先下载一个centos镜像</h2><p>可以直接运行centos，会自行下载一个centos镜像</p>
+<pre><code>docker run --privileged -d -ti --name myhadoop -e     &quot;container=docker&quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init
+</code></pre><h2 id="centos容器内安装必要软件"><a href="#centos容器内安装必要软件" class="headerlink" title="centos容器内安装必要软件"></a>centos容器内安装必要软件</h2><p>进入容器</p>
+<pre><code>docker exec -it myhadoop /bin/bash
+</code></pre><p>但是用privileged参数运行hadoop程序会造成宿主机器CPU被占用100%</p>
+<p>所以在运行容器时，可以不用–privileged参数的尽量不用，用–cap-add参数替代。如果必须使用–privileged=true参数的，可以通过在宿主机和容器中执行以下命令将agetty关闭</p>
+<pre><code>systemctl stop getty@tty1.service
+systemctl mask getty@tty1.service
+</code></pre><p>更换启动参数</p>
+<pre><code>docker run -tid --name myhadoop11 --cap-add NET_ADMIN centos /usr/sbin/init
+</code></pre><p>更新yum，安装必要的软件</p>
+<pre><code>yum update
+yum install net-tools
+yum install openssh-server.x86_64
+yum install openssh-clients.x86_64
+yum install which
+</code></pre><h2 id="设置sshd服务"><a href="#设置sshd服务" class="headerlink" title="设置sshd服务"></a>设置sshd服务</h2><p>passwd设置密码</p>
+<pre><code>[root@526634ec2393 ~]# passwd
+Changing password for user root.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@526634ec2393 ~]# 
+</code></pre><p>启动sshd服务</p>
+<pre><code>[root@526634ec2393 ~]# systemctl start sshd
+[root@526634ec2393 ~]# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 15:06 ?        00:00:02 /usr/lib/systemd/systemd     --system --deserialize 18
+root        22     1  0 15:06 ?        00:00:00 /usr/lib/systemd/    systemd-journald
+dbus        46     1  0 15:06 ?        00:00:00 /usr/bin/dbus-daemon --system     --address=systemd: --nofork --nopidfile --s
+root        55     1  0 15:06 ?        00:00:00 /usr/lib/systemd/systemd-logind
+root        58     1  0 15:06 console  00:00:00 /sbin/agetty --noclear     --keep-baud console 115200 38400 9600 vt220
+root       181     0  0 15:13 pts/1    00:00:00 /bin/bash
+root       267     1  0 15:18 ?        00:00:00 /usr/lib/systemd/systemd-udevd
+root       342     0  0 15:26 pts/2    00:00:00 /bin/bash
+root       469     1  0 15:37 ?        00:00:00 /usr/sbin/sshd -D
+root       470   181  0 15:37 pts/1    00:00:00 ps -ef
+[root@526634ec2393 ~]# 
+</code></pre><p>ssh登录试试</p>
+<pre><code>[root@526634ec2393 ~]# ssh root@localhost
+The authenticity of host &apos;localhost (127.0.0.1)&apos; can&apos;t be established.
+ECDSA key fingerprint is SHA256:z7EXnUBWlbEWKcgdUULdlXtq0WJDEuqDIRYg8rKnBGI.
+ECDSA key fingerprint is MD5:a2:fa:0b:0d:03:e8:b0:dc:23:a6:db:45:5a:72:7a:c8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &apos;localhost&apos; (ECDSA) to the list of known hosts.
+root@localhost&apos;s password: 
+[root@526634ec2393 ~]#
+</code></pre><p>另外，如果没用privileged参数，systemctl是不能使用的，还需要重新生成ssh主机密钥，然后用/usr/sbin/sshd启动sshd服务</p>
+<pre><code>ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key 
+ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key
+</code></pre><p>启动sshd服务</p>
+<pre><code>/usr/sbin/sshd
+</code></pre><p>试试登录效果</p>
+<pre><code>[root@75e5348189a2 ~]# ssh root@localhost
+The authenticity of host &apos;localhost (127.0.0.1)&apos; can&apos;t be established.
+ECDSA key fingerprint is SHA256:zMRc1D1B9VLpC5BbXwHZ6lXoJ2gHsQoEHr/NPegu1ok.
+ECDSA key fingerprint is MD5:56:0f:34:eb:56:09:a0:a8:f3:aa:7f:f4:72:b9:fa:df.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &apos;localhost&apos; (ECDSA) to the list of known hosts.
+root@localhost&apos;s password: 
+[root@75e5348189a2 ~]#
+</code></pre><p>sshd启动后，设置免密码登录，还是需要先生成主机密钥</p>
+<pre><code>ssh-keygen -t rsa
+</code></pre><p>一路回车下去，然后拷贝公钥，需要输入一次密码</p>
+<pre><code>[root@526634ec2393 ~]# ssh-copy-id -i .ssh/id_rsa.pub root@localhost
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;.ssh/id_rsa.pub&quot;
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to     filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are     prompted now it is to install the new keys
+root@localhost&apos;s password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   &quot;ssh &apos;root@localhost&apos;&quot;
+and check to make sure that only the key(s) you wanted were added.
+
+[root@526634ec2393 ~]# 
+</code></pre><p>试试免密码登录效果</p>
+<pre><code>[root@526634ec2393 ~]# ssh root@localhost
+Last login: Sat Dec 15 15:45:17 2018 from localhost
+[root@526634ec2393 ~]# 
+</code></pre><h2 id="配置hadoop环境与jdk环境"><a href="#配置hadoop环境与jdk环境" class="headerlink" title="配置hadoop环境与jdk环境"></a>配置hadoop环境与jdk环境</h2><p>安装软件hadoop与jdk，退出容器回到docker宿主机</p>
+<pre><code>docker cp hadoop.tar.gz myhadoop:/root/
+</code></pre><p>进入容器</p>
+<pre><code>docker exec -it myhadoop /bin/bash
+</code></pre><p>进入/root主目录，新建安装目录，解压软件包到目录，hadoop.tar.gz包含了hadoop程序和jdk</p>
+<blockquote>
+<p>hadoop-2.7.3.tar</p>
+<p>jdk-8u144-linux-x64.tar.gz </p>
+</blockquote>
+<pre><code>cd ~
+mkdir training
+tar xvzf hadoop.tar.gz
+tar xvf hadoop-2.7.3.tar -C training/
+tar zxvf jdk-8u144-linux-x64.tar.gz -C training/
+</code></pre><p>安装完后删除软件包，一会儿要制作镜像，删掉多余的东西</p>
+<pre><code>rm *.tar *.tar.gz
+</code></pre><p>修改环境变量</p>
+<pre><code>vi .bash_profile
+</code></pre><p>增加以下内容</p>
+<pre><code>JAVA_HOME=/root/training/jdk1.8.0_144
+HADOOP_HOME=/root/training/hadoop-2.7.3
+export JAVA_HOME HADOOP_HOME
+
+PATH=$PATH.:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+export PATH
+</code></pre><p>使环境变量生效</p>
+<pre><code>source .bash_profile
+</code></pre><h2 id="测试hadoop"><a href="#测试hadoop" class="headerlink" title="测试hadoop"></a>测试hadoop</h2><pre><code>cd ~
+mkdir -p temp/input
+mkdir -p temp/output
+</code></pre><p>temp/input下打开一个data.txt，输入一段文字</p>
+<pre><code>vi temp/input/data.txt
+</code></pre><p>可以直接输入以下内容</p>
+<pre><code>I love Beijing
+I love China
+I am Chinese
+</code></pre><h2 id="单机模式启动hadoop"><a href="#单机模式启动hadoop" class="headerlink" title="单机模式启动hadoop"></a>单机模式启动hadoop</h2><p>进入hadoop目录，运行一个example的wordcount试试</p>
+<pre><code>cd training/hadoop-2.7.3/share/hadoop/mapreduce/
+hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/input/data.txt ~/temp/output/wc/
+</code></pre><p>查看结果</p>
+<pre><code>[root@bigdata112 mapreduce]# cat ~/temp/output/wc/part-r-00000 
+Beijing 1
+China   1
+Chinese 1
+I   3
+am  1
+love    2
+</code></pre><p>单机模式运行hadoop完成</p>
+<h2 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h2><pre><code>docker stop myhadoop
+docker commit -a &quot;剑神一笑&quot; -m &quot;单机模式hadoop&quot; myhadoop sylucky2004/myhadoop:v1.2
+
+[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID                CREATED             SIZE
+sylucky2004/myhadoop          v1.2                bef9c9dbac5f        9     seconds ago       1.12GB
+</code></pre><p>然后登录docker hub，上传到我的镜像库，下回就可以直接用了</p>
+<pre><code>[docker@jus-zhan ~]$ docker login
+Authenticating with existing credentials...
+WARNING! Your password will be stored unencrypted in /home/docker/.docker/    config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[docker@jus-zhan ~]$ docker push sylucky2004/myhadoop:v1.2
+The push refers to repository [docker.io/sylucky2004/myhadoop]
+031a95d18e6c: Pushing [=====&gt;                                             ]      104.5MB/923.8MB
+f972d139738d: Layer already exists
+</code></pre></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/02/docker实验室（六）--Docker安装与配置hadoop全分布环境/" rel="prev">docker实验室（六）--Docker安装与配置hadoop全分布环境</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/docker实验室（一）--MySql8.0安装与配置centOS环境/" rel="next">docker实验室（一）--MySql8.0安装与配置centOS环境</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        打赏
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0" style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image">
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（四）–Docker安装与配置hadoop–centOS镜像"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（四）–Docker安装与配置hadoop–centOS镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先下载一个centos镜像"><span class="nav-number">1.1.</span> <span class="nav-text">首先下载一个centos镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos容器内安装必要软件"><span class="nav-number">1.2.</span> <span class="nav-text">centos容器内安装必要软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置sshd服务"><span class="nav-number">1.3.</span> <span class="nav-text">设置sshd服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置hadoop环境与jdk环境"><span class="nav-number">1.4.</span> <span class="nav-text">配置hadoop环境与jdk环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试hadoop"><span class="nav-number">1.5.</span> <span class="nav-text">测试hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单机模式启动hadoop"><span class="nav-number">1.6.</span> <span class="nav-text">单机模式启动hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作镜像"><span class="nav-number">1.7.</span> <span class="nav-text">制作镜像</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </div></main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

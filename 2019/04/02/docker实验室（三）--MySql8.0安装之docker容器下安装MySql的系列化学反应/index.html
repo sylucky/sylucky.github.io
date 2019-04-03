@@ -1,0 +1,1311 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <meta name="google-site-verification" content="xxx">
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人">
+
+
+
+  <meta name="keywords" content="docker,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1">
+
+
+<meta name="description" content="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） 首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应">
+<meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） 首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-03T14:53:11.557Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应">
+<meta name="twitter:description" content="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） 首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2019-04-02T08:02:12+08:00" content="2019-04-02">
+            2019-04-02
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="docker实验室（三）–MySql8-0安装之docker容器下安装MySql的系列化学反应"><a href="#docker实验室（三）–MySql8-0安装之docker容器下安装MySql的系列化学反应" class="headerlink" title="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应"></a>docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应</h1><p>不知道docker为何物或者不清楚docker安装使用的先去专栏了解<br><a href="https://zhuanlan.zhihu.com/p/51889991" target="_blank" rel="noopener">Docker安装与配置–centOS环境（二）</a></p>
+<p>首先，还是利用docker最常用的容器ubuntu</p>
+<pre><code>docker run -i -t ubuntu /bin/bash
+</code></pre><p>进入docker的ubuntu容器后，更新apt-get，安装必要的安装包vim，wget，net-tools。</p>
+<pre><code>apt-get update
+apt-get install vim
+apt-get install wget
+apt-get install net-tools //使用 netstat命令需要添加
+</code></pre><p>新增用户使用adduser，注意ubuntu下使用useradd是没有新增用户目录的</p>
+<pre><code>adduser mysql
+</code></pre><p>ubuntu不支持rpm安装，我们使用alien安装</p>
+<pre><code>apt-get install alien
+</code></pre><p>mysql安装与启动</p>
+<pre><code>alien -i package.rpm
+apt-get install mysql-server
+service mysql start
+</code></pre><p>然后就可以正常登录了</p>
+<pre><code>mysql
+use mysql;
+show tables;
+</code></pre><p>修改root密码</p>
+<pre><code>mysqladmin password
+</code></pre><p>键入你需要修改的密码</p>
+<p>然后用root就可以登录了</p>
+<pre><code>mysql -u root -p
+</code></pre><p>登录mysql后，还可以新增mysql用户登录，这里我们新增一个用户test，密码test，并给予权限，具体操作如下</p>
+<pre><code>use mysql
+insert into mysql.user(Host,User,Password) values(&quot;localhost&quot;,&quot;test&quot;,password(&quot;test&quot;));
+create database testDB;
+CREATE USER &apos;test&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;test&apos;;
+flush privileges;
+grant all privileges on testDB.* to test@localhost identified by &apos;test&apos;;
+exit
+</code></pre><p>使用新建的test用户登录试试，新建库，表等操作</p>
+<pre><code>mysql -u test -p
+use testDB
+create table tt ( a int, b char(8));
+insert into tt values (1, &quot;hello&quot;);
+insert into tt values (2, &quot;mysql&quot;);
+mysql&gt; select * from tt;
++------+-------+
+| a    | b     |
++------+-------+
+|    1 | hello |
+|    2 | mysql |
++------+-------+
+2 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>顺便尝试输入中文，发现中文根本输入不进去。查下系统编码</p>
+<pre><code>show variables like &apos;%character%&apos;;
+
+mysql&gt; show variables like &apos;%character%&apos;;
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | latin1                     |
+| character_set_connection | latin1                     |
+| character_set_database   | latin1                     |
+| character_set_filesystem | binary                     |
+| character_set_results    | latin1                     |
+| character_set_server     | latin1                     |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+8 rows in set (0.00 sec)
+</code></pre><p>全部改为utf8，注意filesystem不能动，不要问为什么</p>
+<pre><code>set character_set_client=utf8;
+set character_set_connection=utf8;
+set character_set_database=utf8;
+set character_set_results=utf8;
+set character_set_server=utf8;
+</code></pre><p>再次查下系统编码</p>
+<pre><code>mysql&gt; show variables like &apos;%character%&apos;;;
++--------------------------+----------------------------+
+| Variable_name            | Value                      |
++--------------------------+----------------------------+
+| character_set_client     | utf8                       |
+| character_set_connection | utf8                       |
+| character_set_database   | utf8                       |
+| character_set_filesystem | binary                     |
+| character_set_results    | utf8                       |
+| character_set_server     | utf8                       |
+| character_set_system     | utf8                       |
+| character_sets_dir       | /usr/share/mysql/charsets/ |
++--------------------------+----------------------------+
+8 rows in set (0.00 sec)
+</code></pre><p>发现还是不行，我们尝试修改数据库编码</p>
+<pre><code>mysql&gt; ALTER DATABASE test CHARACTER SET utf8;
+ERROR 1044 (42000): Access denied for user &apos;test&apos;@&apos;localhost&apos; to database &apos;test&apos;
+mysql&gt; exit
+</code></pre><p>不让修改，用root用户试试</p>
+<pre><code>mysql -u root -p
+mysql&gt; ALTER DATABASE test CHARACTER SET utf8;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>查看表tt的编码</p>
+<pre><code>mysql&gt; show create table tt;
++-------+-------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                      |
++-------+-------------------------------------------------------------------------------------------------------------------+
+| tt    | CREATE TABLE `tt` (
+  `a` int(11) DEFAULT NULL,
+  `b` char(8) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 |
++-------+-------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+mysql&gt; 
+</code></pre><p>有点小小的崩溃，使出失传已久的删库大法吧</p>
+<pre><code>mysql&gt; drop database testDB;
+Query OK, 1 row affected (0.08 sec)
+
+mysql&gt; create database testDB DEFAULT CHARACTER SET utf8;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; 
+mysql&gt; show create database testDB;
++----------+-----------------------------------------------------------------+
+| Database | Create Database                                                 |
++----------+-----------------------------------------------------------------+
+| testDB   | CREATE DATABASE `testDB` /*!40100 DEFAULT CHARACTER SET utf8 */ |
++----------+-----------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>库的编码终于对了，重新建表</p>
+<pre><code>mysql&gt; create table tt ( a int, b varchar(30));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql&gt; 
+
+mysql&gt; show create table tt;
++-------+---------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                        |
++-------+---------------------------------------------------------------------------------------------------------------------+
+| tt    | CREATE TABLE `tt` (
+  `a` int(11) DEFAULT NULL,
+  `b` varchar(30) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 |
++-------+---------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>最后查明，运行容器的时候要带上env编码参数，只能删掉容器</p>
+<pre><code>docker rm mysql_test
+</code></pre><p>以上步骤重新来一遍，运行的时候小心翼翼的带上参数</p>
+<pre><code>docker run -i -t mysql_test env LANG=C.UTF-8 /bin/bash
+</code></pre><p>或者硬核技术控，直接去改文件吧。<br>切换root用户。</p>
+<pre><code>cd /var/lib/docker/containers
+</code></pre><p>我们发现docker并不支持我们修改文件，很不友好，但是没关系，还记得上张截图的容器ID吗，拷贝出来备用，*号之前的部分替换成自己的容器ID</p>
+<pre><code>ls ebc3d6ca6bd7*
+cd ebc3d6ca6bd7*
+vi config.v2.json
+</code></pre><p>如图所示，两个地方加上env参数</p>
+<pre><code>&quot;Path&quot;:&quot;env&quot;,&quot;Args&quot;:[&quot;LANG=C.UTF-8&quot;,&quot;/bin/bash&quot;],
+&quot;Cmd&quot;:[&quot;env&quot;,&quot;LANG=C.UTF-8&quot;,&quot;/bin/bash&quot;],
+</code></pre><p>然后重启容器</p>
+<pre><code>[root@jus-zhan ~]# docker restart mysql_test
+mysql_test
+[root@jus-zhan ~]# 
+[root@jus-zhan ~]# docker attach mysql_test
+</code></pre><p>进入容器，启动mysql</p>
+<pre><code>root@ebc3d6ca6bd7:/# service mysql start
+ * Starting MySQL database server mysqld                                                                              [ OK ] 
+root@ebc3d6ca6bd7:/# 
+</code></pre><p>顺便设置mysql在docker容器开机启动</p>
+<pre><code>update-rc.d mysql defaults
+</code></pre><p>再次测试中文效果</p>
+<pre><code>root@ebc3d6ca6bd7:~# mysql -u test -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.24-0ubuntu0.18.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; use testDB
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql&gt; insert into tt values ( 1, &quot;小明&quot;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; 
+
+mysql&gt; select * from tt;
++------+--------+
+| a    | b      |
++------+--------+
+|    1 | 小明   |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>中文问题至此已经搞定，但是很有研究精神的我们发现切换用户到mysql不能输入中文</p>
+<pre><code>su - mysql
+</code></pre><p>研究良久发现，应该是docker传给root的环境变量，在其他用户下是不起作用的，即使export LANG=C.UTF-8也不行，尝试用带root环境变量的su mysql解决</p>
+<pre><code>su mysql
+mysql -u test -p
+mysql&gt; insert into tt values (2, &apos;小胖&apos;);
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; select * from tt;
++------+--------+
+| a    | b      |
++------+--------+
+|    1 | 小明   |
+|    2 | 小胖   |
++------+--------+
+2 rows in set (0.00 sec)
+</code></pre><p>猜想和实际验证结合，得出结论，只有root的环境变量支持输入中文，也算发现docker的一个不大不小的bug，相信永不了多久就可以修复的了。</p>
+<p>最后，运行下面命令有惊喜</p>
+<pre><code>docker run -it --name=mysql01 -e MYSQL_ROOT_PASSWORD=&quot;1234&quot; -d mysql:8.0
+</code></pre><p>实际运行情况</p>
+<pre><code>[docker@jus-zhan ~]$ docker run -it --name=mysql01 -e MYSQL_ROOT_PASSWORD=&quot;1234&quot; -d mysql:8.0
+Unable to find image &apos;mysql:8.0&apos; locally
+8.0: Pulling from library/mysql
+f17d81b4b692: Already exists 
+c691115e6ae9: Already exists 
+41544cb19235: Already exists 
+254d04f5f66d: Already exists 
+4fe240edfdc9: Already exists 
+0cd4fcc94b67: Already exists 
+8df36ec4b34a: Already exists 
+720bf9851f6a: Already exists 
+e933e0a4fddf: Already exists 
+9ffdbf5f677f: Already exists 
+a403e1df0389: Already exists 
+4669c5f285a6: Already exists 
+Digest: sha256:811483efcd38de17d93193b4b4bc4ba290a931215c4c8512cbff624e5967a7dd
+Status: Downloaded newer image for mysql:8.0
+89c5d854305bb21c07f7ca8ecbc753e0c8e8967fb8a7e89e8d05f2b577630b9e
+[docker@jus-zhan ~]$ 
+</code></pre><p>docker库里的是有mysql容器的，而且有最新的mysql8.0版本，可以直接运行，当docker在本地找不到的时候会去docker库里下载。<br>但是这个容器，系统自带mysql用户，但是没有目录，所以需要增加mysql目录</p>
+<pre><code>mkdir /home/mysql
+</code></pre><p>使用docker exec运行mysql服务器，并试试好不好用</p>
+<pre><code>[docker@jus-zhan ~]$ docker exec -it mysql01 env LANG=C.UTF-8 /bin/bash
+root@89c5d854305b:/# mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.13 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; create database testDB;
+Query OK, 1 row affected (0.10 sec)
+
+mysql&gt; use testDB
+Database changed
+mysql&gt; create table test( a int , b char(20));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql&gt; insert into test values(1,&apos;小明&apos;);
+Query OK, 1 row affected (0.06 sec)
+
+mysql&gt; select * from test;
++------+--------+
+| a    | b      |
++------+--------+
+|    1 | 小明   |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql&gt; exit
+Bye
+root@89c5d854305b:/# 
+</code></pre><p>和我们自己装的mysql一样的好用。</p>
+<p>下面用映射端口的办法，实现本地连接docker容器内数据库</p>
+<pre><code>docker run -it --name=mysql02 -p=3306 -e MYSQL_ROOT_PASSWORD=&quot;1234&quot; -v /storage/mysql02/datadir:/var/lib/mysql -d mysql:8.0
+docker exec -it mysql02 env LANG=C.UTF-8 /bin/bash
+</code></pre><p>实际操作</p>
+<pre><code>[docker@jus-zhan ~]$ docker run -it --name=mysql02 -p=3306 -e MYSQL_ROOT_PASSWORD=&quot;1234&quot; -v /storage/mysql02/datadir:/var/lib/mysql -d mysql:8.0
+3d86c335b4f2638d9c5ff7c28513e3658be73f82f5242e7ebecfdad6dffd56a6
+[docker@jus-zhan ~]$ 
+[docker@jus-zhan ~]$ docker exec  -it mysql02 env LANG=C.UTF-8 /bin/bash
+root@3d86c335b4f2:/# mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.13 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; exit
+Bye
+root@3d86c335b4f2:/# read escape sequence
+[docker@jus-zhan ~]$ docker port mysql02
+3306/tcp -&gt; 0.0.0.0:32772
+[docker@jus-zhan ~]$
+[docker@jus-zhan ~]$ mysql -u root -p -h 127.0.0.1 -P 32772
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.13 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; use testDB
+ERROR 1049 (42000): Unknown database &apos;testDB&apos;
+mysql&gt; 
+mysql&gt; create database testDB
+    -&gt; ;
+Query OK, 1 row affected (0.12 sec)
+
+mysql&gt; create table test(a int, b char(20));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql&gt; insert into test values(1,&apos;小明&apos;);
+Query OK, 1 row affected (0.12 sec)
+
+mysql&gt; select * from test;
++------+--------+
+| a    | b      |
++------+--------+
+|    1 | 小明   |
++------+--------+
+1 row in set (0.00 sec)
+
+mysql&gt; exit;
+
+[docker@jus-zhan ~]$ 
+</code></pre><p>更新一下用户的密码，刷新权限</p>
+<pre><code>ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;root&apos;;
+FLUSH PRIVILEGES;
+
+mysql&gt; ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED WITH mysql_native_password BY &apos;root&apos;;
+Query OK, 0 rows affected (0.10 sec)
+
+mysql&gt; FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql&gt; 
+</code></pre><p>修改加密规则，更新一下用户的密码，刷新权限</p>
+<p>从windows用workbench远程登录也是可以的了。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/02/docker实验室（一）--MySql8.0安装与配置centOS环境/" rel="prev">docker实验室（一）--MySql8.0安装与配置centOS环境</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/02/docker实验室（七）--Docker安装与配置mysql主从复制环境/" rel="next">docker实验室（七）--Docker安装与配置mysql主从复制环境</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        打赏
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0" style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image">
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（三）–MySql8-0安装之docker容器下安装MySql的系列化学反应"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </div></main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
