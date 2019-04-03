@@ -1,0 +1,450 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="docker">
+
+
+    <meta name="description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像
+docker run --pr...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>docker实验室（四）--Docker安装与配置hadoop--centOS镜像 | Hexo</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Doe">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="docker实验室（四）--Docker安装与配置hadoop--centOS镜像">
+            
+	            docker实验室（四）--Docker安装与配置hadoop--centOS镜像
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/docker/">docker</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/02</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="docker实验室（四）–Docker安装与配置hadoop–centOS镜像"><a href="#docker实验室（四）–Docker安装与配置hadoop–centOS镜像" class="headerlink" title="docker实验室（四）–Docker安装与配置hadoop–centOS镜像"></a>docker实验室（四）–Docker安装与配置hadoop–centOS镜像</h1><h2 id="首先下载一个centos镜像"><a href="#首先下载一个centos镜像" class="headerlink" title="首先下载一个centos镜像"></a>首先下载一个centos镜像</h2><p>可以直接运行centos，会自行下载一个centos镜像</p>
+<pre><code>docker run --privileged -d -ti --name myhadoop -e     &quot;container=docker&quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init
+</code></pre><h2 id="centos容器内安装必要软件"><a href="#centos容器内安装必要软件" class="headerlink" title="centos容器内安装必要软件"></a>centos容器内安装必要软件</h2><p>进入容器</p>
+<pre><code>docker exec -it myhadoop /bin/bash
+</code></pre><p>但是用privileged参数运行hadoop程序会造成宿主机器CPU被占用100%</p>
+<p>所以在运行容器时，可以不用–privileged参数的尽量不用，用–cap-add参数替代。如果必须使用–privileged=true参数的，可以通过在宿主机和容器中执行以下命令将agetty关闭</p>
+<pre><code>systemctl stop getty@tty1.service
+systemctl mask getty@tty1.service
+</code></pre><p>更换启动参数</p>
+<pre><code>docker run -tid --name myhadoop11 --cap-add NET_ADMIN centos /usr/sbin/init
+</code></pre><p>更新yum，安装必要的软件</p>
+<pre><code>yum update
+yum install net-tools
+yum install openssh-server.x86_64
+yum install openssh-clients.x86_64
+yum install which
+</code></pre><h2 id="设置sshd服务"><a href="#设置sshd服务" class="headerlink" title="设置sshd服务"></a>设置sshd服务</h2><p>passwd设置密码</p>
+<pre><code>[root@526634ec2393 ~]# passwd
+Changing password for user root.
+New password: 
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[root@526634ec2393 ~]# 
+</code></pre><p>启动sshd服务</p>
+<pre><code>[root@526634ec2393 ~]# systemctl start sshd
+[root@526634ec2393 ~]# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 15:06 ?        00:00:02 /usr/lib/systemd/systemd     --system --deserialize 18
+root        22     1  0 15:06 ?        00:00:00 /usr/lib/systemd/    systemd-journald
+dbus        46     1  0 15:06 ?        00:00:00 /usr/bin/dbus-daemon --system     --address=systemd: --nofork --nopidfile --s
+root        55     1  0 15:06 ?        00:00:00 /usr/lib/systemd/systemd-logind
+root        58     1  0 15:06 console  00:00:00 /sbin/agetty --noclear     --keep-baud console 115200 38400 9600 vt220
+root       181     0  0 15:13 pts/1    00:00:00 /bin/bash
+root       267     1  0 15:18 ?        00:00:00 /usr/lib/systemd/systemd-udevd
+root       342     0  0 15:26 pts/2    00:00:00 /bin/bash
+root       469     1  0 15:37 ?        00:00:00 /usr/sbin/sshd -D
+root       470   181  0 15:37 pts/1    00:00:00 ps -ef
+[root@526634ec2393 ~]# 
+</code></pre><p>ssh登录试试</p>
+<pre><code>[root@526634ec2393 ~]# ssh root@localhost
+The authenticity of host &apos;localhost (127.0.0.1)&apos; can&apos;t be established.
+ECDSA key fingerprint is SHA256:z7EXnUBWlbEWKcgdUULdlXtq0WJDEuqDIRYg8rKnBGI.
+ECDSA key fingerprint is MD5:a2:fa:0b:0d:03:e8:b0:dc:23:a6:db:45:5a:72:7a:c8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &apos;localhost&apos; (ECDSA) to the list of known hosts.
+root@localhost&apos;s password: 
+[root@526634ec2393 ~]#
+</code></pre><p>另外，如果没用privileged参数，systemctl是不能使用的，还需要重新生成ssh主机密钥，然后用/usr/sbin/sshd启动sshd服务</p>
+<pre><code>ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key
+ssh-keygen -t dsa -f /etc/ssh/ssh_host_dsa_key
+ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key 
+ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key
+</code></pre><p>启动sshd服务</p>
+<pre><code>/usr/sbin/sshd
+</code></pre><p>试试登录效果</p>
+<pre><code>[root@75e5348189a2 ~]# ssh root@localhost
+The authenticity of host &apos;localhost (127.0.0.1)&apos; can&apos;t be established.
+ECDSA key fingerprint is SHA256:zMRc1D1B9VLpC5BbXwHZ6lXoJ2gHsQoEHr/NPegu1ok.
+ECDSA key fingerprint is MD5:56:0f:34:eb:56:09:a0:a8:f3:aa:7f:f4:72:b9:fa:df.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added &apos;localhost&apos; (ECDSA) to the list of known hosts.
+root@localhost&apos;s password: 
+[root@75e5348189a2 ~]#
+</code></pre><p>sshd启动后，设置免密码登录，还是需要先生成主机密钥</p>
+<pre><code>ssh-keygen -t rsa
+</code></pre><p>一路回车下去，然后拷贝公钥，需要输入一次密码</p>
+<pre><code>[root@526634ec2393 ~]# ssh-copy-id -i .ssh/id_rsa.pub root@localhost
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: &quot;.ssh/id_rsa.pub&quot;
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to     filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are     prompted now it is to install the new keys
+root@localhost&apos;s password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   &quot;ssh &apos;root@localhost&apos;&quot;
+and check to make sure that only the key(s) you wanted were added.
+
+[root@526634ec2393 ~]# 
+</code></pre><p>试试免密码登录效果</p>
+<pre><code>[root@526634ec2393 ~]# ssh root@localhost
+Last login: Sat Dec 15 15:45:17 2018 from localhost
+[root@526634ec2393 ~]# 
+</code></pre><h2 id="配置hadoop环境与jdk环境"><a href="#配置hadoop环境与jdk环境" class="headerlink" title="配置hadoop环境与jdk环境"></a>配置hadoop环境与jdk环境</h2><p>安装软件hadoop与jdk，退出容器回到docker宿主机</p>
+<pre><code>docker cp hadoop.tar.gz myhadoop:/root/
+</code></pre><p>进入容器</p>
+<pre><code>docker exec -it myhadoop /bin/bash
+</code></pre><p>进入/root主目录，新建安装目录，解压软件包到目录，hadoop.tar.gz包含了hadoop程序和jdk</p>
+<blockquote>
+<p>hadoop-2.7.3.tar</p>
+<p>jdk-8u144-linux-x64.tar.gz </p>
+</blockquote>
+<pre><code>cd ~
+mkdir training
+tar xvzf hadoop.tar.gz
+tar xvf hadoop-2.7.3.tar -C training/
+tar zxvf jdk-8u144-linux-x64.tar.gz -C training/
+</code></pre><p>安装完后删除软件包，一会儿要制作镜像，删掉多余的东西</p>
+<pre><code>rm *.tar *.tar.gz
+</code></pre><p>修改环境变量</p>
+<pre><code>vi .bash_profile
+</code></pre><p>增加以下内容</p>
+<pre><code>JAVA_HOME=/root/training/jdk1.8.0_144
+HADOOP_HOME=/root/training/hadoop-2.7.3
+export JAVA_HOME HADOOP_HOME
+
+PATH=$PATH.:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+export PATH
+</code></pre><p>使环境变量生效</p>
+<pre><code>source .bash_profile
+</code></pre><h2 id="测试hadoop"><a href="#测试hadoop" class="headerlink" title="测试hadoop"></a>测试hadoop</h2><pre><code>cd ~
+mkdir -p temp/input
+mkdir -p temp/output
+</code></pre><p>temp/input下打开一个data.txt，输入一段文字</p>
+<pre><code>vi temp/input/data.txt
+</code></pre><p>可以直接输入以下内容</p>
+<pre><code>I love Beijing
+I love China
+I am Chinese
+</code></pre><h2 id="单机模式启动hadoop"><a href="#单机模式启动hadoop" class="headerlink" title="单机模式启动hadoop"></a>单机模式启动hadoop</h2><p>进入hadoop目录，运行一个example的wordcount试试</p>
+<pre><code>cd training/hadoop-2.7.3/share/hadoop/mapreduce/
+hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/input/data.txt ~/temp/output/wc/
+</code></pre><p>查看结果</p>
+<pre><code>[root@bigdata112 mapreduce]# cat ~/temp/output/wc/part-r-00000 
+Beijing 1
+China   1
+Chinese 1
+I   3
+am  1
+love    2
+</code></pre><p>单机模式运行hadoop完成</p>
+<h2 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h2><pre><code>docker stop myhadoop
+docker commit -a &quot;剑神一笑&quot; -m &quot;单机模式hadoop&quot; myhadoop sylucky2004/myhadoop:v1.2
+
+[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID                CREATED             SIZE
+sylucky2004/myhadoop          v1.2                bef9c9dbac5f        9     seconds ago       1.12GB
+</code></pre><p>然后登录docker hub，上传到我的镜像库，下回就可以直接用了</p>
+<pre><code>[docker@jus-zhan ~]$ docker login
+Authenticating with existing credentials...
+WARNING! Your password will be stored unencrypted in /home/docker/.docker/    config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+[docker@jus-zhan ~]$ docker push sylucky2004/myhadoop:v1.2
+The push refers to repository [docker.io/sylucky2004/myhadoop]
+031a95d18e6c: Pushing [=====&gt;                                             ]      104.5MB/923.8MB
+f972d139738d: Layer already exists
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/04/02/docker实验室（八）--Docker使用flume+kafka_zookeeper框架实现日志采集/" class="pre-post btn btn-default" title="docker实验室（八）--Docker使用flume+kafka_zookeeper框架实现日志采集">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">docker实验室（八）--Docker使用flume+kafka_zookeeper框架实现日志采集</span>
+        </a>
+    
+    
+        <a href="/2019/04/02/docker实验室（一）--MySql8.0安装与配置centOS环境/" class="next-post btn btn-default" title="docker实验室（一）--MySql8.0安装与配置centOS环境">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">docker实验室（一）--MySql8.0安装与配置centOS环境</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker实验室（四）–Docker安装与配置hadoop–centOS镜像"><span class="toc-text">docker实验室（四）–Docker安装与配置hadoop–centOS镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#首先下载一个centos镜像"><span class="toc-text">首先下载一个centos镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#centos容器内安装必要软件"><span class="toc-text">centos容器内安装必要软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置sshd服务"><span class="toc-text">设置sshd服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置hadoop环境与jdk环境"><span class="toc-text">配置hadoop环境与jdk环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试hadoop"><span class="toc-text">测试hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单机模式启动hadoop"><span class="toc-text">单机模式启动hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#制作镜像"><span class="toc-text">制作镜像</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

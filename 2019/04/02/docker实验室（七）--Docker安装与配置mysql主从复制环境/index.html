@@ -1,0 +1,561 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="docker">
+
+
+    <meta name="description" content="docker实验室（七）–Docker安装与配置mysql主从复制环境mysql集群，主从复制基于日志 binlog 的 主从配置
+MySQL 同步操作通过 3 个线程实现，其基本步骤如下：
+主...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>docker实验室（七）--Docker安装与配置mysql主从复制环境 | Hexo</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Doe">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="docker实验室（七）--Docker安装与配置mysql主从复制环境">
+            
+	            docker实验室（七）--Docker安装与配置mysql主从复制环境
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/docker/">docker</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/02</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="docker实验室（七）–Docker安装与配置mysql主从复制环境"><a href="#docker实验室（七）–Docker安装与配置mysql主从复制环境" class="headerlink" title="docker实验室（七）–Docker安装与配置mysql主从复制环境"></a>docker实验室（七）–Docker安装与配置mysql主从复制环境</h1><h1 id="mysql集群，主从复制"><a href="#mysql集群，主从复制" class="headerlink" title="mysql集群，主从复制"></a>mysql集群，主从复制</h1><p>基于日志 binlog 的 主从配置</p>
+<p>MySQL 同步操作通过 3 个线程实现，其基本步骤如下：</p>
+<p>主服务器 将数据的更新记录到 二进制日志（Binary log）中，用于记录二进制日志事件，这一步由 主库线程 完成；</p>
+<p>从库 将 主库 的 二进制日志 复制到本地的 中继日志（Relay log），这一步由 从库 I/O 线程 完成；</p>
+<p>从库 读取 中继日志 中的 事件，将其重放到数据中，这一步由 从库 SQL 线程 完成。</p>
+<p>docker 两种启动容器的方式。</p>
+<h2 id="Dockerfile配置"><a href="#Dockerfile配置" class="headerlink" title="Dockerfile配置"></a>Dockerfile配置</h2><p>从docker远程仓库直接获取mysql:8.0的镜像，也可以先pull下来。</p>
+<pre><code>docker pull mysql:8.0
+</code></pre><p>1.my.cnf,配置log-bin 与 server-id,<br>my.cnf配置:<strong>server-id需要保持不一致</strong></p>
+<pre><code>log-bin         = /var/run/mysqld/mysql-bin
+server-id       = 2
+</code></pre><p>2.DockerFile:</p>
+<pre><code>FROM mysql:8.0
+
+MAINTAINER syLucky &lt;sylucky2004@gmail.com&gt;
+
+WORKDIR /root
+
+COPY config/* /tmp/
+
+RUN mv /tmp/my.cnf /etc/mysql/my.cnf &amp;&amp; \
+    mv /tmp/my.cnf.master /etc/mysql/my.cnf.master &amp;&amp; \
+    mv /tmp/my.cnf.slave1 /etc/mysql/my.cnf.slave1 &amp;&amp; \
+    mv /tmp/my.cnf.slave2 /etc/mysql/my.cnf.slave2 
+
+RUN chmod +x ~/start-mysql.sh &amp;&amp; \
+    chmod +x ~/stop-mysql.sh
+
+CMD [ &quot;sh&quot;, &quot;-c&quot;, &quot;service ssh start; bash&quot;]
+</code></pre><p>3.启动mysql主库容器：</p>
+<pre><code>docker run -itd \
+-v &quot;/home/docker/data/dbdata-master&quot;:/var/lib/mysql \
+-v &quot;/home/docker/data&quot;:/usr/local/data \
+--net=bridge \
+-p 3306:3306 \
+--name mysql-master \
+--hostname mysql-master \
+-e MYSQL_ROOT_PASSWORD=Difficult_password1234 \
+-d mysql:8.0 \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci \
+--restart always
+</code></pre><p>4.从库容器：<br><strong>注意改从库的映射端口</strong></p>
+<pre><code>docker run -itd \
+-v &quot;/home/docker/data/dbdata-slave1&quot;:/var/lib/mysql \
+-v &quot;/home/docker/data&quot;:/usr/local/data \
+--net=bridge \
+-p 3307:3306 \
+--name mysql-slave1 \
+--hostname mysql-slave1 \
+-e MYSQL_ROOT_PASSWORD=Difficult_password1234 \
+-d mysql:8.0 \
+--character-set-server=utf8mb4 \
+--collation-server=utf8mb4_unicode_ci \
+--restart always
+</code></pre><p>5.改了my.cnf需要重启容器</p>
+<pre><code>docker stop mysql-master
+docker stop mysql-slave1
+docker stop mysql-slave2
+
+docker start mysql-master
+docker start mysql-slave1
+docker start mysql-slave2
+</code></pre><p>6.主库建立复制用户，分配slave权限</p>
+<pre><code>CREATE USER &apos;repl&apos;@&apos;%&apos; IDENTIFIED BY &apos;Difficult_password1234&apos;;
+GRANT REPLICATION SLAVE ON *.* TO &apos;repl&apos;@&apos;%&apos;;
+</code></pre><p>7.锁定主库，取得log-bin与快照</p>
+<pre><code>FLUSH TABLES WITH READ LOCK;
+SHOW MASTER STATUS;
+
+# 两种方法选一种，一种是覆盖数据文件data，一种是导入模式
+# 选择导入模式，主库备份数据
+docker exec mysql-master mysqldump -u root &apos;-pDifficult_password1234&apos;     --all-databases --master-data &gt; /home/docker/data/dbdump.db
+</code></pre><p>8.从库导入数据</p>
+<pre><code># 从库导入数据
+docker exec mysql-slave1 sh -c &quot;mysql -u root &apos;-pDifficult_password1234&apos; &lt; /usr    /local/data/dbdump.db&quot;
+docker exec mysql-slave2 sh -c &quot;mysql -u root &apos;-pDifficult_password1234&apos; &lt; /usr    /local/data/dbdump.db&quot;
+</code></pre><p>9.检查从库用repl用户登录主库</p>
+<pre><code>mysql -h mysql-master -urepl &apos;-pDifficult_password1234&apos;
+
+root@mysql-slave1:/# mysql -hmysql-master -uroot &apos;-pDifficult_password1234&apos;
+mysql: [Warning] Using a password on the command line interface can be     insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 63
+Server version: 8.0.15 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; 
+</code></pre><p>10.从库change master配置</p>
+<pre><code>CHANGE MASTER TO
+MASTER_HOST=&apos;mysql-master&apos;,
+MASTER_USER=&apos;repl&apos;,
+MASTER_PASSWORD=&apos;Difficult_password1234&apos;,
+MASTER_LOG_FILE=&apos;mysql-bin.000003&apos;,
+MASTER_LOG_POS=1169;
+</code></pre><p>MASTER_LOG_FILE填写图中File的值<br>MASTER_LOG_POS填写图中Position的值</p>
+<p>11.从库start slave<br><strong>需要等待从库成功连接主库</strong></p>
+<pre><code>START SLAVE;
+SHOW SLAVE STATUS\G
+
+mysql&gt; show slave status\G
+*************************** 1. row ***************************
+               Slave_IO_State: Waiting for master to send event
+                  Master_Host: mysql-master
+                  Master_User: repl
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000003
+          Read_Master_Log_Pos: 1169
+               Relay_Log_File: mysql-slave1-relay-bin.000002
+                Relay_Log_Pos: 322
+        Relay_Master_Log_File: mysql-bin.000003
+             Slave_IO_Running: Yes
+            Slave_SQL_Running: Yes
+              Replicate_Do_DB: 
+          Replicate_Ignore_DB: 
+           Replicate_Do_Table: 
+       Replicate_Ignore_Table: 
+      Replicate_Wild_Do_Table: 
+  Replicate_Wild_Ignore_Table: 
+                   Last_Errno: 0
+                   Last_Error: 
+                 Skip_Counter: 0
+          Exec_Master_Log_Pos: 1169
+              Relay_Log_Space: 537
+              Until_Condition: None
+               Until_Log_File: 
+                Until_Log_Pos: 0
+           Master_SSL_Allowed: No
+           Master_SSL_CA_File: 
+           Master_SSL_CA_Path: 
+              Master_SSL_Cert: 
+            Master_SSL_Cipher: 
+               Master_SSL_Key: 
+        Seconds_Behind_Master: 0
+Master_SSL_Verify_Server_Cert: No
+                Last_IO_Errno: 0
+                Last_IO_Error: 
+               Last_SQL_Errno: 0
+               Last_SQL_Error: 
+  Replicate_Ignore_Server_Ids: 
+             Master_Server_Id: 1
+                  Master_UUID: c7402f5d-3d08-11e9-9a24-0242ac130002
+             Master_Info_File: mysql.slave_master_info
+                    SQL_Delay: 0
+          SQL_Remaining_Delay: NULL
+      Slave_SQL_Running_State: Slave has read all relay log; waiting for more     updates
+           Master_Retry_Count: 86400
+                  Master_Bind: 
+      Last_IO_Error_Timestamp: 
+     Last_SQL_Error_Timestamp: 
+               Master_SSL_Crl: 
+           Master_SSL_Crlpath: 
+           Retrieved_Gtid_Set: 
+            Executed_Gtid_Set: 
+                Auto_Position: 0
+         Replicate_Rewrite_DB: 
+                 Channel_Name: 
+           Master_TLS_Version: 
+       Master_public_key_path: 
+        Get_master_public_key: 0
+1 row in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>12.主库写，观察从库是否同步，需检查从库状况为 Waiting for master to send event。<br><strong>不要忘记关闭主库锁</strong></p>
+<p>主库写：</p>
+<pre><code>UNLOCK TABLES;
+mysql&gt; create database testdb111;
+Query OK, 1 row affected (0.03 sec)
+
+mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| replicas_db        |
+| sys                |
+| testdb             |
+| testdb111          |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><p>从库读：</p>
+<pre><code>mysql&gt; show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| replicas_db        |
+| sys                |
+| testdb             |
+| testdb111          |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre><h2 id="docker-compose-yml配置"><a href="#docker-compose-yml配置" class="headerlink" title="docker-compose.yml配置"></a>docker-compose.yml配置</h2><p>mysql主服务器：</p>
+<pre><code>version: &apos;2.3&apos;
+services:
+  mysql-master:
+    image: mysql:8.0
+  container_name: mysql-master
+  environment:
+    - &quot;MYSQL_ROOT_PASSWORD=Difficult_password1234&quot;
+    - &quot;MYSQL_DATABASE=replicas_db&quot;
+  links:
+    - mysql-slave1
+    - mysql-slave2
+  ports:
+    - &quot;3306:3306&quot;
+  restart: always
+  hostname: mysql-master
+  volumes:
+    - /home/docker/data/dbdata-master:/var/lib/mysql
+    - /home/docker/data:/usr/local/data  
+</code></pre><p>mysql从服务器:</p>
+<pre><code>mysql-slave1:
+  image: mysql:8.0
+  container_name: mysql-slave1
+  environment:
+    - &quot;MYSQL_ROOT_PASSWORD=Difficult_password1234&quot;
+    - &quot;MYSQL_DATABASE=replicas_db&quot;
+  ports:
+    - &quot;3307:3306&quot;
+  restart: always
+  hostname: mysql-slave1
+  volumes:
+    - /home/docker/data/dbdata-slave1:/var/lib/mysql
+    - /home/docker/data:/usr/local/data
+
+
+mysql-slave2:
+  image: mysql:8.0
+  container_name: mysql-slave2
+  environment:
+    - &quot;MYSQL_ROOT_PASSWORD=Difficult_password1234&quot;
+    - &quot;MYSQL_DATABASE=replicas_db&quot;
+  ports:
+    - &quot;3308:3306&quot;
+  restart: always
+  hostname: mysql-slave2
+  volumes:
+    - /home/docker/data/dbdata-slave1:/var/lib/mysql
+    - /home/docker/data:/usr/local/data  
+</code></pre><p>修改my.cnf和主从复制，同上，接着第5步继续往下做即可。</p>
+<p>另外附上docker-compose的官方文档<br><a href="https://docs.docker.com/compose/compose-file/compose-file-v2/" target="_blank" rel="noopener">https://docs.docker.com/compose/compose-file/compose-file-v2/</a></p>
+<p>简书上有篇中文的写的不错<br><a href="https://www.jianshu.com/p/2217cfed29d7" target="_blank" rel="noopener">https://www.jianshu.com/p/2217cfed29d7</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/04/02/docker实验室（一）--MySql8.0安装与配置centOS环境/" class="pre-post btn btn-default" title="docker实验室（一）--MySql8.0安装与配置centOS环境">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">docker实验室（一）--MySql8.0安装与配置centOS环境</span>
+        </a>
+    
+    
+        <a href="/2019/04/02/docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应/" class="next-post btn btn-default" title="docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应">
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker实验室（七）–Docker安装与配置mysql主从复制环境"><span class="toc-text">docker实验室（七）–Docker安装与配置mysql主从复制环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mysql集群，主从复制"><span class="toc-text">mysql集群，主从复制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile配置"><span class="toc-text">Dockerfile配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-compose-yml配置"><span class="toc-text">docker-compose.yml配置</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>

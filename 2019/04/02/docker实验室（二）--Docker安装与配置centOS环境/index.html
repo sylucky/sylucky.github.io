@@ -1,0 +1,539 @@
+<!DOCTYPE HTML>
+<html lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+    <meta name="keywords" content="docker">
+
+
+    <meta name="description" content="docker实验室（二）–Docker安装与配置centOS环境1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/...">
+
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+
+    <!--Title-->
+
+
+<title>docker实验室（二）--Docker安装与配置centOS环境 | Hexo</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+
+</head>
+
+</html>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header" style="background-image:url(http://snippet.shenliyang.com/img/banner.jpg)">
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title="John Doe">
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">Hexo</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/archives/"><i class="fa "></i>时间轴</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="docker实验室（二）--Docker安装与配置centOS环境">
+            
+	            docker实验室（二）--Docker安装与配置centOS环境
+            
+        </h1>
+        <div class="post-meta">
+    
+        <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+            
+        </span>
+    
+
+    
+        <span class="fa-wrap">
+            <i class="fa fa-tags"></i>
+            <span class="tags-meta">
+                
+                    <a class="tag-link" href="/tags/docker/">docker</a>
+                
+            </span>
+        </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2019/04/02</span>
+        </span>
+        
+    
+</div>
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="docker实验室（二）–Docker安装与配置centOS环境"><a href="#docker实验室（二）–Docker安装与配置centOS环境" class="headerlink" title="docker实验室（二）–Docker安装与配置centOS环境"></a>docker实验室（二）–Docker安装与配置centOS环境</h1><h2 id="1-Docker介绍"><a href="#1-Docker介绍" class="headerlink" title="1.Docker介绍"></a>1.Docker介绍</h2><p>阅读本文之前，你需要了解Docker能干什么。<br>菜鸟上有教程可以阅读<br><a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/docker/docker-tutorial.html</a></p>
+<p>I. 简介</p>
+<p>Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Docker类比于Python虚拟环境，可以有效的配置各个版本的开发环境，比如深度学习与Java环境。</p>
+<p>II. 基本概念</p>
+<p>镜像(Image)</p>
+<p>镜像，从认识上简单的来说，就是面向对象中的类，相当于一个模板。从本质上来说，镜像相当于一个文件系统。Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
+<p>容器(Container)</p>
+<p>容器，从认识上来说，就是类创建的实例，就是依据镜像这个模板创建出来的实体。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的命名空间。因此容器可以拥有自己的root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
+<p>仓库(Repository)</p>
+<p>仓库，从认识上来说，就好像软件包上传下载站，有各种软件的不同版本被上传供用户下载。镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务。</p>
+<h2 id="2-Docker安装"><a href="#2-Docker安装" class="headerlink" title="2.Docker安装"></a>2.Docker安装</h2><h3 id="Win10"><a href="#Win10" class="headerlink" title="Win10"></a>Win10</h3><p>win10安装与使用docker过程中会遇到许多问题，比如环境变量问题，比如映射端口问题，比如Docker Quickstart Terminal启动不了等问题，虽然都有解决方案，但是不推荐。<br>下载：<a href="https://docs.docker.com/docker-for-windows/install/" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/install/</a></p>
+<p>Docker支持64 位版本的Windows 10 Pro，且必须开启Hyper-V。开启方式为：打开“控制面板”-&gt;“程序”-&gt; “启动或关闭Windows功能”，找到Hyper-V并勾选，确定重启电脑。</p>
+<p>安装下载好的Docker for Windows Installer.exe，安装即可。</p>
+<h3 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a>CentOS安装</h3><p>我使用的是阿里云的ECS，就图方便，不用本地开虚拟机损耗我本已不多的内存。当然你至少需要支付午饭的一顿鸡腿钱。</p>
+<pre><code>[root@jus-zhan html]# cat /etc/redhat-release 
+CentOS Linux release 7.6.1810 (Core) 
+[root@jus-zhan html]# 
+</code></pre><p>在CentOS系统中安装较为简单，官方提供了脚本供我们进行安装。</p>
+<pre><code>sudo apt install curl
+curl -fsSL get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+</code></pre><p>执行这个命令后，Docker就开始安装了。</p>
+<p>启动Docker</p>
+<pre><code>sudo systemctl enable docker
+sudo systemctl start docker
+</code></pre><p>建立docker 用户组</p>
+<pre><code>sudo groupadd docker
+sudo usermod -aG docker $USER
+</code></pre><p>注销当前用户，重新登录Ubuntu，输入docker info，此时可以直接出现信息。</p>
+<pre><code>docker info
+</code></pre><p>重新启动服务</p>
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl restart docker
+</code></pre><h2 id="3-Docker使用"><a href="#3-Docker使用" class="headerlink" title="3.Docker使用"></a>3.Docker使用</h2><p>启动一次操作容器：docker run IMAGE_NAME [COMMAND] [ARG…]</p>
+<p>国际惯例，还是先来一个“hello world”案例，启动一个容器输出hello world。</p>
+<pre><code>docker run ubuntu echo &apos;hello world&apos;
+</code></pre><p>由于刚装上Docker，没有任何镜像，所以你的docker会自己下载一个最新的ubuntu的docker镜像。一次操作容器在处理完操作后会立即关闭容器。</p>
+<p>查看镜像</p>
+<pre><code>docker images
+</code></pre><p>查看容器</p>
+<pre><code>docker ps -a
+</code></pre><p>细心的同学会发现，此时的docker是处于Exited，已退出状态。因为我们运行容器没有启动交互式方式。下面启动一次操作容器。</p>
+<p>启动交互式容器：docker run -t -i IMAGE_NAME /bin/bash</p>
+<p>启动交互式的容器，并进入容器内：</p>
+<pre><code>docker run -i -t ubuntu /bin/bash
+</code></pre><p>容器内可以进行一系列操作，退出容器可以用exit。</p>
+<p>重新启动停止的容器：docker start 容器名</p>
+<p>我们先查看一下容器</p>
+<pre><code>docker ps -a
+</code></pre><p>发现，系统给我们刚建的容器随机起了个名字，这名字太难记了，一般情况需要重命名：docker rename 原容器名 新容器名</p>
+<pre><code>docker rename festive_joliot myubuntu
+</code></pre><p>原容器名依据各自系统情况，通过查看容器得到。启动容器：docker start 容器名</p>
+<pre><code>docker start myubuntu
+</code></pre><p>有启动就有停止，相信大家已经猜到命令了。停止容器：docker stop 容器名，强制停止容器：docker kill 容器名</p>
+<pre><code>docker stop myubuntu
+docker kill myubuntu
+</code></pre><p>启动后并没有进入到容器中。想要再次进入，需要使用attach命令：docker attach name | id</p>
+<pre><code>docker attach myubuntu
+</code></pre><p>删除停止的容器：docker rm name | id</p>
+<pre><code>docker rm myubuntu
+</code></pre><p>很多时候，我们需要容器长期稳定运行，所以我们需要守护式容器，当我们执行完需要的操作退出容器时，不要使用exit退出，可以利用Ctrl+P Ctrl+Q代替，以守护式形式退出容器。</p>
+<p>查看容器日志，当守护式容器在后台运行时，我们可以利用docker的日志命令查看其输出：docker logs 容器名</p>
+<pre><code>docker logs myubuntu
+</code></pre><p>查看容器内进程，对运行的容器查看其进程：docker top IMAGE_NAME</p>
+<pre><code>docker top myubuntu
+</code></pre><h2 id="4-docker实际运用"><a href="#4-docker实际运用" class="headerlink" title="4.docker实际运用"></a>4.docker实际运用</h2><p>案例：在容器中部署静态网站，容器中部署Nginx服务</p>
+<p>创建映射80端口的交互式容器，并进入容器内部</p>
+<pre><code>docker run -p 80 --name myweb -i -t ubuntu /bin/bash
+</code></pre><p>更新源，更新到当前最新版本</p>
+<pre><code>apt-get update
+</code></pre><p>安装Nginx服务</p>
+<pre><code>apt-get install -y nginx
+</code></pre><p>安装Vim（什么鬼，vim都没有）<br>多啰嗦一句，由于docker容易崇尚轻量级，所以会把系统不是必要的全部去掉。我们实际使用中需要使用的，需要自行安装。</p>
+<pre><code>apt-get install -y vim
+</code></pre><p>创建静态页面（当然，不做这一步也可以，nginx会自带默认页面）</p>
+<pre><code>mkdir -p /var/www/html
+cd /var/www/html
+vim index.html
+</code></pre><p>index.html代码，可以用自己的网站html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;RWD&lt;/title&gt;
+    &lt;style&gt;
+        .city{
+            float: left;
+            width: 300px;
+            height: 300px;
+            margin: 5px;
+            border: 1px solid black;
+            padding: 5px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1&gt;W3School Demo&lt;/h1&gt;
+&lt;h2&gt;Resize this responsive page!&lt;/h2&gt;
+&lt;br&gt;
+&lt;iframe src=&quot;https://www.baidu.com&quot;&gt;&lt;/iframe&gt;
+&lt;div class=&quot;city&quot;&gt;
+&lt;h2&gt;London&lt;/h2&gt;
+&lt;p&gt;London is the capital city of England.&lt;/p&gt;
+&lt;p&gt;It is the most populous city in the United Kingdom,
+with a metropolitan area of over 13 million inhabitants.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;city&quot;&gt;
+&lt;h2&gt;Paris&lt;/h2&gt;
+&lt;p&gt;Paris is the capital and most populous city of France.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;city&quot;&gt;
+&lt;h2&gt;Tokyo&lt;/h2&gt;
+&lt;p&gt;Tokyo is the capital of Japan, the center of the Greater Tokyo Area,
+and the most populous metropolitan area in the world.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>修改Nginx配置文件:<br>查看Nginx安装位置</p>
+<pre><code>whereis nginx
+</code></pre><h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><pre><code>vim /etc/nginx/sites-enabled/default
+</code></pre><p>容器内启动nginx</p>
+<pre><code>nginx
+</code></pre><p>容器内查看进程确认nignx启动</p>
+<pre><code>ps -ef
+</code></pre><p>退出容器Ctrl+P Ctrl+Q，不要用exit退出，稍后还指望容器提供服务呢。<br>centOS查看容器进程</p>
+<pre><code>docker top myweb
+</code></pre><p>centOS查看容器端口映射情况</p>
+<pre><code>docker port myweb
+[docker@jus-zhan ~]$ docker port myweb
+80/tcp -&gt; 0.0.0.0:32769
+</code></pre><p>系统映射端口80到32769<br>8.访问网站<br>直接在centOS下测试</p>
+<pre><code>curl &quot;http://127.0.0.1:32769/index.html&quot;
+</code></pre><p>用浏览器试试<br><a href="http://47.93.243.71:32769/index.html" target="_blank" rel="noopener">http://47.93.243.71:32769/index.html</a><br>47.93.243.71是我云服务器地址，大家可以用自己的，或者本地测试都可以。</p>
+<p>其实，是可以直接下载nginx镜像使用的，使用docker run命令可以自动下载。<br>docker会本地查找nignx:latest，查找不到会去网上找镜像资源。</p>
+<pre><code>docker run nginx
+</code></pre><p>等待2分钟，就下载好了。</p>
+<pre><code>[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+sylucky2004/myweb01           latest              6c63ddc9a1c1        4 hours ago         197MB
+sylucky2004/myweb01           v1.0                6c63ddc9a1c1        4 hours ago         197MB
+[docker@jus-zhan ~]$ docker run nginx
+Unable to find image &apos;nginx:latest&apos; locally
+latest: Pulling from library/nginx
+f17d81b4b692: Already exists 
+82dca86e04c3: Pull complete 
+046ccb106982: Pull complete 
+Digest: sha256:d59a1aa7866258751a261bae525a1842c7ff0662d4f34a355d5f36826abc0341
+Status: Downloaded newer image for nginx:latest
+[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+sylucky2004/myweb01           latest              6c63ddc9a1c1        4 hours ago         197MB
+sylucky2004/myweb01           v1.0                6c63ddc9a1c1        4 hours ago         197MB
+nginx                         latest              62f816a209e6        4 weeks ago         109MB
+[docker@jus-zhan ~]$ 
+</code></pre><h2 id="5-docker镜像"><a href="#5-docker镜像" class="headerlink" title="5.docker镜像"></a>5.docker镜像</h2><p>镜像基本操作</p>
+<p>列出镜像：docker images [OPTIONS] [REPOSITORY]</p>
+<p>删除镜像：docker rmi [OPTIONS] IMAGE [IMAGE]</p>
+<p>查找镜像：docker search [OPTIONS] TEAM</p>
+<p>拉取镜像：docker pull [OPTIONS] NAME [:TAG]</p>
+<p>推送镜像：docker push NAME [:TAG]</p>
+<p>Docker允许上传我们自己构建的镜像，需要注册DockerHub的账户。也可以上传到阿里云，地址：<a href="https://cr.console.aliyun.com/#/namespace/index" target="_blank" rel="noopener">https://cr.console.aliyun.com/#/namespace/index</a></p>
+<p>构建镜像</p>
+<p>构建Docker镜像，可以保存对容器的修改，并且再次使用。构建镜像提供了自定义镜像的能力，以软件的形式打包并分发服务及其运行环境。Docker中提供了两种方式来构建镜像：</p>
+<p>通过容器构建：docker commit</p>
+<p>使用commit命令构建镜像</p>
+<p>命令：docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</p>
+<p>参数：-a，–author=“”，指定镜像的作者信息</p>
+<p>​ -m，–message=“”，提交信息</p>
+<p>​ -p，–pause=true，commit时是否暂停容器</p>
+<p>commit命令构建镜像</p>
+<pre><code>docker commit -a &quot;作者：剑神一笑&quot; -m &quot;myweb test commit an image&quot; myweb sylucky2004/myweb:v1.0
+</code></pre><p>docker images查看刚刚新建的镜像</p>
+<pre><code>[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+sylucky2004/myweb             v1.0                4cb34f352ace        59 seconds ago      224MB
+</code></pre><p>通过Dockerfile：docker build<br>使用Dockerfile文件构建镜像</p>
+<p>Docker允许我们利用一个类似配置文件的形式来进行构建自定义镜像，在文件中可以指定原始的镜像，自定义镜像的维护人信息，对原始镜像采取的操作以及暴露的端口等信息。比如：</p>
+<pre><code>vi Dockerfile
+# Sample Dockerfile
+FROM ubuntu:16.04
+MAINTAINER wgp &quot;https://www.zhihu.com/people/sylucky.zhihu.io/posts&quot;
+RUN apt-get update
+RUN apt-get install -y nginx
+EXPOSE 80
+</code></pre><p>命令：docker build [OPTIONS] DockerFile_PATH | URL | -</p>
+<pre><code>docker build -t=&quot;sylucky2004/myweb01&quot; .
+</code></pre><h2 id="6-镜像迁移"><a href="#6-镜像迁移" class="headerlink" title="6.镜像迁移"></a>6.镜像迁移</h2><p>我们制作好的镜像，一般是作为自己其他项目或者环境使用或分享给其他需要的人，所以提供了几种将我们的镜像迁移、分享给其他人的方式。推荐镜像迁移应该直接使用Docker Registry，无论是直接使用Docker Hub还是使用内网私有Registry都可以。使用镜像频率不高，镜像数量不多的情况下，我们可以选择以下两种方式。</p>
+<p>上传Docker Hub</p>
+<p>首先，需要在<a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a>上申请注册一个帐号。然后我们需要创建仓库，指定仓库名称。</p>
+<p>在终端中登录你的Docker Hub账户，输入docker login，输入用户名密码即可登录成功。</p>
+<pre><code>docker login
+</code></pre><p>查看需要上传的镜像，并将选择的镜像打上标签，标签名需和Docker Hub上新建的仓库名称一致，否则上传失败。给镜像打标签的命令：docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]</tag></repo-name></hub-user></existing-image></p>
+<pre><code>docker tag sylucky2004/myweb01 sylucky2004/myweb01:v1.0
+</code></pre><p>其中existing-image代表本地待上传的镜像名加tag，后面<hub-user>/<repo-name>[:<tag>]则是为上传更改的标签名，tag不指定则为latest。</tag></repo-name></hub-user></p>
+<p>可以看到，我们重新为ubuntu:16.04的镜像打上标签，接下来，我们利用push命令直接上传镜像：docker push <hub-user>/<repo-name>:<tag></tag></repo-name></hub-user></p>
+<pre><code>docker push sylucky2004/sylucky2004/myweb01:v1.0
+</code></pre><p>下面是实际操作</p>
+<pre><code>[docker@jus-zhan ~]$ docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don&apos;t have a Docker ID, head over to https://hub.docker.com to create one.
+Username: sylucky2004
+Password: 
+WARNING! Your password will be stored unencrypted in /home/docker/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+Login Succeeded
+[docker@jus-zhan ~]$ docker tag sylucky2004/myweb01 sylucky2004/myweb01:v1.0
+[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+sylucky2004/myweb01           latest              6c63ddc9a1c1        3 hours ago         197MB
+sylucky2004/myweb01           v1.0                6c63ddc9a1c1        3 hours ago         197MB
+The push refers to repository [docker.io/sylucky2004/sylucky2004/myweb01]
+An image does not exist locally with the tag: sylucky2004/sylucky2004/myweb01
+[docker@jus-zhan ~]$ docker push sylucky2004/myweb01:v1.0
+The push refers to repository [docker.io/sylucky2004/myweb01]
+d4f397b190f8: Pushed 
+b3a2120ac64b: Pushed 
+f1dfa8049aa6: Mounted from library/ubuntu 
+79109c0f8a0b: Mounted from library/ubuntu 
+33db8ccd260b: Mounted from library/ubuntu 
+b8c891f0ffec: Mounted from library/ubuntu 
+v1.0: digest: sha256:c1f9c965eec192aed9580d40376a97a89f800752910eea718a2977adcb165ec3 size: 1574 
+</code></pre><p>我们已经上传成功。</p>
+<h2 id="7-Docker镜像的导入导出"><a href="#7-Docker镜像的导入导出" class="headerlink" title="7.Docker镜像的导入导出"></a>7.Docker镜像的导入导出</h2><p>Docker 还提供了 docker load 和 docker save 命令，用以将镜像保存为一个tar文件。</p>
+<pre><code>docker save sylucky2004/myweb01:v1.0 | gzip &gt; myweb01.tar.gz
+ls
+docker load -i myweb01.tar.gz
+</code></pre><p>下面是实际操作，save一个镜像，删除原镜像，再load镜像。</p>
+<pre><code>[docker@jus-zhan ~]$ docker save sylucky2004/myweb01:v1.0 | gzip &gt; myweb01.tar.gz
+[docker@jus-zhan ~]$ ls -ltr myweb01.tar.gz
+-rw-rw-r-- 1 docker docker 84088604 12月  8 13:07 myweb01.tar.gz
+[docker@jus-zhan ~]$ docker rmi sylucky2004/myweb01:v1.0
+Untagged: sylucky2004/myweb01:v1.0
+[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+sylucky2004/myweb01           latest              6c63ddc9a1c1        3 hours ago         197MB
+[docker@jus-zhan ~]$ docker load -i myweb01.tar.gz 
+Loaded image: sylucky2004/myweb01:v1.0
+[docker@jus-zhan ~]$ docker images
+REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
+sylucky2004/myweb01           latest              6c63ddc9a1c1        3 hours ago         197MB
+sylucky2004/myweb01           v1.0                6c63ddc9a1c1        3 hours ago         197MB
+[docker@jus-zhan ~]$ 
+</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2019/04/02/docker实验室（五）--Docker问题汇总/" class="pre-post btn btn-default" title="docker实验室（五）--Docker问题汇总">
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">docker实验室（五）--Docker问题汇总</span>
+        </a>
+    
+    
+</div>
+
+
+    <div id="comments">
+        
+	
+    <div id="vcomments" class="valine"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+    <script>
+        new Valine({
+            av: AV,
+            el: '#vcomments',
+            appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+            appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+            placeholder: '说点什么吧',
+            notify: false,
+            verify: false,
+            avatar: 'mm',
+            meta: 'nick,mail'.split(','),
+            pageSize: '10',
+            path: window.location.pathname,
+            lang: ''.toLowerCase()
+        })
+    </script>
+
+
+    </div>
+
+
+
+
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">Table of Contents</h3>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker实验室（二）–Docker安装与配置centOS环境"><span class="toc-text">docker实验室（二）–Docker安装与配置centOS环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Docker介绍"><span class="toc-text">1.Docker介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Docker安装"><span class="toc-text">2.Docker安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Win10"><span class="toc-text">Win10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS安装"><span class="toc-text">CentOS安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Docker使用"><span class="toc-text">3.Docker使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-docker实际运用"><span class="toc-text">4.docker实际运用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改配置文件"><span class="toc-text">修改配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-docker镜像"><span class="toc-text">5.docker镜像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-镜像迁移"><span class="toc-text">6.镜像迁移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Docker镜像的导入导出"><span class="toc-text">7.Docker镜像的导入导出</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="icon-btn hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy; 2017
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+</body>
+</html>
