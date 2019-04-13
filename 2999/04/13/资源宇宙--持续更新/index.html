@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="docker,">
+  <meta name="keywords" content="资源,">
 
 
 
@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（九）–docker安装oracledocker实验室docker pull oraclelinux docker run -i -t –name guest oraclelinux /bin/bash docker run -d –name http_server httpd –link 划重点docker run –rm -t -i –name client1 –link h">
-<meta name="keywords" content="docker">
+<meta name="description" content="1.待续">
+<meta name="keywords" content="资源">
 <meta property="og:type" content="article">
-<meta property="og:title" content="docker实验室（九）--docker安装oracle">
-<meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（九）--docker安装oracle/index.html">
+<meta property="og:title" content="资源宇宙--持续更新">
+<meta property="og:url" content="http://sylucky.github.io/2999/04/13/资源宇宙--持续更新/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（九）–docker安装oracledocker实验室docker pull oraclelinux docker run -i -t –name guest oraclelinux /bin/bash docker run -d –name http_server httpd –link 划重点docker run –rm -t -i –name client1 –link h">
+<meta property="og:description" content="1.待续">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:25:53.280Z">
+<meta property="og:updated_time" content="2019-04-13T15:47:08.933Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="docker实验室（九）--docker安装oracle">
-<meta name="twitter:description" content="docker实验室（九）–docker安装oracledocker实验室docker pull oraclelinux docker run -i -t –name guest oraclelinux /bin/bash docker run -d –name http_server httpd –link 划重点docker run –rm -t -i –name client1 –link h">
+<meta name="twitter:title" content="资源宇宙--持续更新">
+<meta name="twitter:description" content="1.待续">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -63,7 +63,7 @@
   };
 </script>
 
-  <title> docker实验室（九）--docker安装oracle | 剑神一笑的博客 </title>
+  <title> 资源宇宙--持续更新 | 剑神一笑的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -353,7 +353,7 @@
           
           
             
-              docker实验室（九）--docker安装oracle
+              资源宇宙--持续更新
             
           
         </h1>
@@ -362,11 +362,26 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2019-04-02T09:02:12+08:00" content="2019-04-02">
-            2019-04-02
+          <time itemprop="dateCreated" datetime="2999-04-13T23:44:12+08:00" content="2999-04-13">
+            2999-04-13
           </time>
         </span>
 
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/资源/" itemprop="url" rel="index">
+                  <span itemprop="name">资源</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
         
 
         
@@ -381,43 +396,7 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（九）–docker安装oracle"><a href="#docker实验室（九）–docker安装oracle" class="headerlink" title="docker实验室（九）–docker安装oracle"></a>docker实验室（九）–docker安装oracle</h1><h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="实验室"><a href="#实验室" class="headerlink" title="实验室"></a>实验室</h3><p>docker pull oraclelinux</p>
-<p>docker run -i -t –name guest oraclelinux /bin/bash</p>
-<p>docker run -d –name http_server httpd</p>
-<h1 id="–link-划重点"><a href="#–link-划重点" class="headerlink" title="–link 划重点"></a>–link 划重点</h1><p>docker run –rm -t -i –name client1 –link http_server:server\<br>oraclelinux /bin/bash</p>
-<pre><code>root @ client1~]＃ env
-OSTNAME = 10815c22e5b4
-ERM = xterm的
-ERVER_PORT = TCP：//172.17.0.16：80
-ATH =在/ usr / local / sbin中：在/ usr / local / bin目录：/ usr / sbin目录：在/     sr / bin中：/ sbin目录：/ bin中
-WD = /
-ERVER_PORT_80_TCP_PORT = 80
-ERVER_PORT_80_TCP_ADDR = 172.17.0.16
-ERVER_PORT_80_TCP = TCP：//172.17.0.16：80
-ERVER_PORT_80_TCP_PROTO = TCP
-HLVL = 1
-ERVER_NAME = /客户端1 /服务器
-OME = /
- = / USR / bin中/ env的
-root @ client1~]＃ ping -c 1 server
-ING服务器（172.17.0.16）56（84）字节的数据。
-来自服务器的64字节（172.17.0.16）：icmp_seq = 1 ttl = 64时间= 0.105 ms
---服务器ping统计---
-个包发送，1个接收，0％丢包，时间0ms
-tt min / avg / max / mdev = 0.105 / 0.105 / 0.105 / 0.000 ms
-root @ client1~]＃ ping -c 1 172.17.0.16
-ING 172.17.0.16（172.17.0.16）56（84）字节的数据。
-来自172.17.0.16的64字节：icmp_seq = 1 ttl = 64时间= 0.171 ms
--- 172.17.0.16 ping统计---
-个包发送，1个接收，0％丢包，时间0ms
-tt min / avg / max / mdev = 0.171 / 0.171 / 0.171 / 0.000 ms
-root @ client1~]＃ curl http://server
-在guest上运行的HTTP服务器
-    root @ client1~]＃curl http://172.17.0.16
-在guest 虚拟机上运行的HTTP服务器
-</code></pre><h1 id="安装多线程下载工具"><a href="#安装多线程下载工具" class="headerlink" title="安装多线程下载工具"></a>安装多线程下载工具</h1><pre><code>yum install aria2
-aria2c https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqadv/mqadv_dev911_ubuntu_x86-64.tar.gz -s 10 --max-connection-per-server=16 --min-split-size=10M
-</code></pre></span>
+        <span itemprop="articleBody"><h1 id="1-待续"><a href="#1-待续" class="headerlink" title="1.待续"></a>1.待续</h1></span>
       
     </div>
 
@@ -425,7 +404,7 @@ aria2c https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/
       
         <div class="post-tags">
           
-            <a href="/tags/docker/" rel="tag">#docker</a>
+            <a href="/tags/资源/" rel="tag">#资源</a>
           
         </div>
       
@@ -438,7 +417,7 @@ aria2c https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/02/docker实验室（八）--Docker使用flume+kafka_zookeeper框架实现日志采集/" rel="next">docker实验室（八）--Docker使用flume+kafka_zookeeper框架实现日志采集</a>
+              <a href="/2019/04/13/linux核反应（一）--linux内核/" rel="next">linux核反应（一）--linux内核</a>
             
           </div>
         </div>
@@ -640,21 +619,21 @@ aria2c https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -720,7 +699,7 @@ aria2c https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（九）–docker安装oracle"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（九）–docker安装oracle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker"><span class="nav-number">1.1.</span> <span class="nav-text">docker</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#实验室"><span class="nav-number">1.1.1.</span> <span class="nav-text">实验室</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#–link-划重点"><span class="nav-number">2.</span> <span class="nav-text">–link 划重点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装多线程下载工具"><span class="nav-number">3.</span> <span class="nav-text">安装多线程下载工具</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-待续"><span class="nav-number">1.</span> <span class="nav-text">1.待续</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

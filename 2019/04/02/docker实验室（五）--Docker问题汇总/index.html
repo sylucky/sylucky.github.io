@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（五）–Docker问题汇总网卡不能启动问题–centos环境Error: Connection activation failed: No suitable device found for this connection. 需要查找的配置及日志  /etc/hosts/etc/hostname/etc/sysconfig/network-script/ifcfg-ens33i">
+<meta name="description" content="1.网卡不能启动问题–centos环境Error: Connection activation failed: No suitable device found for this connection. 需要查找的配置及日志  /etc/hosts/etc/hostname/etc/sysconfig/network-script/ifcfg-ens33ip aifconfig  [root@bi">
 <meta name="keywords" content="docker">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker实验室（五）--Docker问题汇总">
 <meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（五）--Docker问题汇总/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（五）–Docker问题汇总网卡不能启动问题–centos环境Error: Connection activation failed: No suitable device found for this connection. 需要查找的配置及日志  /etc/hosts/etc/hostname/etc/sysconfig/network-script/ifcfg-ens33i">
+<meta property="og:description" content="1.网卡不能启动问题–centos环境Error: Connection activation failed: No suitable device found for this connection. 需要查找的配置及日志  /etc/hosts/etc/hostname/etc/sysconfig/network-script/ifcfg-ens33ip aifconfig  [root@bi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:25:15.029Z">
+<meta property="og:updated_time" content="2019-04-13T15:27:11.247Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker实验室（五）--Docker问题汇总">
-<meta name="twitter:description" content="docker实验室（五）–Docker问题汇总网卡不能启动问题–centos环境Error: Connection activation failed: No suitable device found for this connection. 需要查找的配置及日志  /etc/hosts/etc/hostname/etc/sysconfig/network-script/ifcfg-ens33i">
+<meta name="twitter:description" content="1.网卡不能启动问题–centos环境Error: Connection activation failed: No suitable device found for this connection. 需要查找的配置及日志  /etc/hosts/etc/hostname/etc/sysconfig/network-script/ifcfg-ens33ip aifconfig  [root@bi">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -368,6 +368,21 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/问题/" itemprop="url" rel="index">
+                  <span itemprop="name">问题</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -381,7 +396,7 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（五）–Docker问题汇总"><a href="#docker实验室（五）–Docker问题汇总" class="headerlink" title="docker实验室（五）–Docker问题汇总"></a>docker实验室（五）–Docker问题汇总</h1><h1 id="网卡不能启动问题–centos环境"><a href="#网卡不能启动问题–centos环境" class="headerlink" title="网卡不能启动问题–centos环境"></a>网卡不能启动问题–centos环境</h1><p>Error: Connection activation failed: No suitable device found for this connection.</p>
+        <span itemprop="articleBody"><h1 id="1-网卡不能启动问题–centos环境"><a href="#1-网卡不能启动问题–centos环境" class="headerlink" title="1.网卡不能启动问题–centos环境"></a>1.网卡不能启动问题–centos环境</h1><p>Error: Connection activation failed: No suitable device found for this connection.</p>
 <p>需要查找的配置及日志</p>
 <blockquote>
 <p>/etc/hosts<br>/etc/hostname<br>/etc/sysconfig/network-script/ifcfg-ens33<br>ip a<br>ifconfig</p>
@@ -446,7 +461,7 @@ virbr0: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500
     link/ether 52:54:00:ec:66:09 brd ff:ff:ff:ff:ff:ff
 </code></pre><p>在ifcfg-ens33中，HWADDR填写ip a命令得到的MAC地址，还找不到就把UUID换一个值（随便改一个数字即可），原因就是系统通过network-functions计算得出UUID的设备不存在</p>
 <p>然后ifup ens33启动网卡，不行就service network restart，再不行就reboot</p>
-<h1 id="启动-usr-sbin-sshd报错"><a href="#启动-usr-sbin-sshd报错" class="headerlink" title="启动/usr/sbin/sshd报错"></a>启动/usr/sbin/sshd报错</h1><pre><code>[root@75e5348189a2 ~]# /usr/sbin/sshd
+<h1 id="2-启动-usr-sbin-sshd报错"><a href="#2-启动-usr-sbin-sshd报错" class="headerlink" title="2.启动/usr/sbin/sshd报错"></a>2.启动/usr/sbin/sshd报错</h1><pre><code>[root@75e5348189a2 ~]# /usr/sbin/sshd
 Could not load host key: /etc/ssh/ssh_host_rsa_key
 Could not load host key: /etc/ssh/ssh_host_ecdsa_key
 Could not load host key: /etc/ssh/ssh_host_ed25519_key
@@ -458,7 +473,7 @@ ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key
 ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key
 </code></pre><p>启动sshd服务</p>
 <pre><code>/usr/sbin/sshd
-</code></pre><h1 id="docker-attach进入容器异常"><a href="#docker-attach进入容器异常" class="headerlink" title="docker attach进入容器异常"></a>docker attach进入容器异常</h1><p>可以尝试用 docker exec 进入容器</p>
+</code></pre><h1 id="3-docker-attach进入容器异常"><a href="#3-docker-attach进入容器异常" class="headerlink" title="3.docker attach进入容器异常"></a>3.docker attach进入容器异常</h1><p>改用 docker exec 进入容器</p>
 <p>顺便加一点docker run运行参数</p>
 <p>命令格式：docker run [OPTIONS] IMAGE [COMMAND] [ARG…]</p>
 <p>Usage: Run a command in a new container</p>
@@ -531,7 +546,7 @@ ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key
 <li>容器暴露80端口，并指定宿主机80端口与其通信(: 之前是宿主机端口，之后是容器需暴露的端口)，docker run -d –name=ubuntu_server -p 80:80 ubuntu:latest</li>
 <li>指定容器内目录与宿主机目录共享(: 之前是宿主机文件夹，之后是容器需共享的文件夹)，docker run -d –name=ubuntu_server -v /etc/www:/var/www ubuntu:latest</li>
 </ul>
-<h1 id="虚拟机RTNETLINK-answers-File-exists错误解决方法"><a href="#虚拟机RTNETLINK-answers-File-exists错误解决方法" class="headerlink" title="虚拟机RTNETLINK answers: File exists错误解决方法"></a>虚拟机RTNETLINK answers: File exists错误解决方法</h1><p>在centos下出现该故障的原因是启动网络的两个服务有冲突：/etc/init.d/network 和 /etc/init.d/NetworkManager这两个服务有冲突吧。</p>
+<h1 id="4-虚拟机RTNETLINK-answers-File-exists错误解决方法"><a href="#4-虚拟机RTNETLINK-answers-File-exists错误解决方法" class="headerlink" title="4.虚拟机RTNETLINK answers: File exists错误解决方法"></a>4.虚拟机RTNETLINK answers: File exists错误解决方法</h1><p>在centos下出现该故障的原因是启动网络的两个服务有冲突：/etc/init.d/network 和 /etc/init.d/NetworkManager这两个服务有冲突吧。</p>
 <p>从根本上说是NetworkMaganager（NM）的带来的冲突，停用NetworkManager即可解决。重启即可。</p>
 <p>chkconfig –level 35 network on<br>chkconfig –level 0123456 NetworkManager off</p>
 <p>service NetworkManager stop<br>service network stop</p>
@@ -761,21 +776,21 @@ ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -841,7 +856,7 @@ ssh-keygen -t dsa -f /etc/ssh/ssh_host_ed25519_key
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（五）–Docker问题汇总"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（五）–Docker问题汇总</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网卡不能启动问题–centos环境"><span class="nav-number">2.</span> <span class="nav-text">网卡不能启动问题–centos环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-usr-sbin-sshd报错"><span class="nav-number">3.</span> <span class="nav-text">启动/usr/sbin/sshd报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker-attach进入容器异常"><span class="nav-number">4.</span> <span class="nav-text">docker attach进入容器异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">4.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚拟机RTNETLINK-answers-File-exists错误解决方法"><span class="nav-number">5.</span> <span class="nav-text">虚拟机RTNETLINK answers: File exists错误解决方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-网卡不能启动问题–centos环境"><span class="nav-number">1.</span> <span class="nav-text">1.网卡不能启动问题–centos环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-启动-usr-sbin-sshd报错"><span class="nav-number">2.</span> <span class="nav-text">2.启动/usr/sbin/sshd报错</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-docker-attach进入容器异常"><span class="nav-number">3.</span> <span class="nav-text">3.docker attach进入容器异常</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">3.1.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-虚拟机RTNETLINK-answers-File-exists错误解决方法"><span class="nav-number">4.</span> <span class="nav-text">4.虚拟机RTNETLINK answers: File exists错误解决方法</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

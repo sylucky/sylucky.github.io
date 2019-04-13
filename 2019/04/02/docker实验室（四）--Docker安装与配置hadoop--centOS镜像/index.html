@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="docker,">
+  <meta name="keywords" content="docker,hadoop,">
 
 
 
@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup">
-<meta name="keywords" content="docker">
+<meta name="description" content="1.下载centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init 2.centos容器内安装必要软件进">
+<meta name="keywords" content="docker,hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker实验室（四）--Docker安装与配置hadoop--centOS镜像">
 <meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（四）--Docker安装与配置hadoop--centOS镜像/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup">
+<meta property="og:description" content="1.下载centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init 2.centos容器内安装必要软件进">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:25:07.157Z">
+<meta property="og:updated_time" content="2019-04-13T15:19:21.546Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker实验室（四）--Docker安装与配置hadoop--centOS镜像">
-<meta name="twitter:description" content="docker实验室（四）–Docker安装与配置hadoop–centOS镜像首先下载一个centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup">
+<meta name="twitter:description" content="1.下载centos镜像可以直接运行centos，会自行下载一个centos镜像 docker run --privileged -d -ti --name myhadoop -e     &amp;quot;container=docker&amp;quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init 2.centos容器内安装必要软件进">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -368,6 +368,21 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -381,9 +396,9 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（四）–Docker安装与配置hadoop–centOS镜像"><a href="#docker实验室（四）–Docker安装与配置hadoop–centOS镜像" class="headerlink" title="docker实验室（四）–Docker安装与配置hadoop–centOS镜像"></a>docker实验室（四）–Docker安装与配置hadoop–centOS镜像</h1><h2 id="首先下载一个centos镜像"><a href="#首先下载一个centos镜像" class="headerlink" title="首先下载一个centos镜像"></a>首先下载一个centos镜像</h2><p>可以直接运行centos，会自行下载一个centos镜像</p>
+        <span itemprop="articleBody"><h1 id="1-下载centos镜像"><a href="#1-下载centos镜像" class="headerlink" title="1.下载centos镜像"></a>1.下载centos镜像</h1><p>可以直接运行centos，会自行下载一个centos镜像</p>
 <pre><code>docker run --privileged -d -ti --name myhadoop -e     &quot;container=docker&quot;  -v /sys/fs/cgroup:/sys/fs/cgroup  centos  /usr/sbin/init
-</code></pre><h2 id="centos容器内安装必要软件"><a href="#centos容器内安装必要软件" class="headerlink" title="centos容器内安装必要软件"></a>centos容器内安装必要软件</h2><p>进入容器</p>
+</code></pre><h1 id="2-centos容器内安装必要软件"><a href="#2-centos容器内安装必要软件" class="headerlink" title="2.centos容器内安装必要软件"></a>2.centos容器内安装必要软件</h1><p>进入容器</p>
 <pre><code>docker exec -it myhadoop /bin/bash
 </code></pre><p>但是用privileged参数运行hadoop程序会造成宿主机器CPU被占用100%</p>
 <p>所以在运行容器时，可以不用–privileged参数的尽量不用，用–cap-add参数替代。如果必须使用–privileged=true参数的，可以通过在宿主机和容器中执行以下命令将agetty关闭</p>
@@ -397,7 +412,7 @@ yum install net-tools
 yum install openssh-server.x86_64
 yum install openssh-clients.x86_64
 yum install which
-</code></pre><h2 id="设置sshd服务"><a href="#设置sshd服务" class="headerlink" title="设置sshd服务"></a>设置sshd服务</h2><p>passwd设置密码</p>
+</code></pre><h1 id="3-设置sshd服务"><a href="#3-设置sshd服务" class="headerlink" title="3.设置sshd服务"></a>3.设置sshd服务</h1><h2 id="配置与登录"><a href="#配置与登录" class="headerlink" title="配置与登录"></a>配置与登录</h2><p>passwd设置密码</p>
 <pre><code>[root@526634ec2393 ~]# passwd
 Changing password for user root.
 New password: 
@@ -445,7 +460,7 @@ Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added &apos;localhost&apos; (ECDSA) to the list of known hosts.
 root@localhost&apos;s password: 
 [root@75e5348189a2 ~]#
-</code></pre><p>sshd启动后，设置免密码登录，还是需要先生成主机密钥</p>
+</code></pre><h2 id="免密登录"><a href="#免密登录" class="headerlink" title="免密登录"></a>免密登录</h2><p>sshd启动后，设置免密码登录，还是需要先生成主机密钥</p>
 <pre><code>ssh-keygen -t rsa
 </code></pre><p>一路回车下去，然后拷贝公钥，需要输入一次密码</p>
 <pre><code>[root@526634ec2393 ~]# ssh-copy-id -i .ssh/id_rsa.pub root@localhost
@@ -464,7 +479,7 @@ and check to make sure that only the key(s) you wanted were added.
 <pre><code>[root@526634ec2393 ~]# ssh root@localhost
 Last login: Sat Dec 15 15:45:17 2018 from localhost
 [root@526634ec2393 ~]# 
-</code></pre><h2 id="配置hadoop环境与jdk环境"><a href="#配置hadoop环境与jdk环境" class="headerlink" title="配置hadoop环境与jdk环境"></a>配置hadoop环境与jdk环境</h2><p>安装软件hadoop与jdk，退出容器回到docker宿主机</p>
+</code></pre><h1 id="4-配置hadoop环境与jdk环境"><a href="#4-配置hadoop环境与jdk环境" class="headerlink" title="4.配置hadoop环境与jdk环境"></a>4.配置hadoop环境与jdk环境</h1><p>安装软件hadoop与jdk，退出容器回到docker宿主机</p>
 <pre><code>docker cp hadoop.tar.gz myhadoop:/root/
 </code></pre><p>进入容器</p>
 <pre><code>docker exec -it myhadoop /bin/bash
@@ -491,7 +506,7 @@ PATH=$PATH.:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 export PATH
 </code></pre><p>使环境变量生效</p>
 <pre><code>source .bash_profile
-</code></pre><h2 id="测试hadoop"><a href="#测试hadoop" class="headerlink" title="测试hadoop"></a>测试hadoop</h2><pre><code>cd ~
+</code></pre><h1 id="5-测试hadoop"><a href="#5-测试hadoop" class="headerlink" title="5.测试hadoop"></a>5.测试hadoop</h1><pre><code>cd ~
 mkdir -p temp/input
 mkdir -p temp/output
 </code></pre><p>temp/input下打开一个data.txt，输入一段文字</p>
@@ -500,7 +515,7 @@ mkdir -p temp/output
 <pre><code>I love Beijing
 I love China
 I am Chinese
-</code></pre><h2 id="单机模式启动hadoop"><a href="#单机模式启动hadoop" class="headerlink" title="单机模式启动hadoop"></a>单机模式启动hadoop</h2><p>进入hadoop目录，运行一个example的wordcount试试</p>
+</code></pre><h1 id="6-单机模式启动hadoop"><a href="#6-单机模式启动hadoop" class="headerlink" title="6.单机模式启动hadoop"></a>6.单机模式启动hadoop</h1><p>进入hadoop目录，运行一个example的wordcount试试</p>
 <pre><code>cd training/hadoop-2.7.3/share/hadoop/mapreduce/
 hadoop jar hadoop-mapreduce-examples-2.7.3.jar wordcount ~/temp/input/data.txt ~/temp/output/wc/
 </code></pre><p>查看结果</p>
@@ -512,7 +527,7 @@ I   3
 am  1
 love    2
 </code></pre><p>单机模式运行hadoop完成</p>
-<h2 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h2><pre><code>docker stop myhadoop
+<h1 id="7-制作镜像"><a href="#7-制作镜像" class="headerlink" title="7.制作镜像"></a>7.制作镜像</h1><pre><code>docker stop myhadoop
 docker commit -a &quot;剑神一笑&quot; -m &quot;单机模式hadoop&quot; myhadoop sylucky2004/myhadoop:v1.2
 
 [docker@jus-zhan ~]$ docker images
@@ -539,6 +554,8 @@ f972d139738d: Layer already exists
         <div class="post-tags">
           
             <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/hadoop/" rel="tag">#hadoop</a>
           
         </div>
       
@@ -755,21 +772,21 @@ f972d139738d: Layer already exists
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -835,7 +852,7 @@ f972d139738d: Layer already exists
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（四）–Docker安装与配置hadoop–centOS镜像"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（四）–Docker安装与配置hadoop–centOS镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先下载一个centos镜像"><span class="nav-number">1.1.</span> <span class="nav-text">首先下载一个centos镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#centos容器内安装必要软件"><span class="nav-number">1.2.</span> <span class="nav-text">centos容器内安装必要软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置sshd服务"><span class="nav-number">1.3.</span> <span class="nav-text">设置sshd服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置hadoop环境与jdk环境"><span class="nav-number">1.4.</span> <span class="nav-text">配置hadoop环境与jdk环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试hadoop"><span class="nav-number">1.5.</span> <span class="nav-text">测试hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单机模式启动hadoop"><span class="nav-number">1.6.</span> <span class="nav-text">单机模式启动hadoop</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作镜像"><span class="nav-number">1.7.</span> <span class="nav-text">制作镜像</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-下载centos镜像"><span class="nav-number">1.</span> <span class="nav-text">1.下载centos镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-centos容器内安装必要软件"><span class="nav-number">2.</span> <span class="nav-text">2.centos容器内安装必要软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-设置sshd服务"><span class="nav-number">3.</span> <span class="nav-text">3.设置sshd服务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置与登录"><span class="nav-number">3.1.</span> <span class="nav-text">配置与登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#免密登录"><span class="nav-number">3.2.</span> <span class="nav-text">免密登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-配置hadoop环境与jdk环境"><span class="nav-number">4.</span> <span class="nav-text">4.配置hadoop环境与jdk环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-测试hadoop"><span class="nav-number">5.</span> <span class="nav-text">5.测试hadoop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-单机模式启动hadoop"><span class="nav-number">6.</span> <span class="nav-text">6.单机模式启动hadoop</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-制作镜像"><span class="nav-number">7.</span> <span class="nav-text">7.制作镜像</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

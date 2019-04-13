@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="docker,">
+  <meta name="keywords" content="docker,nginx,web,">
 
 
 
@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（二）–Docker安装与配置centOS环境1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/docker/docker-tutorial.html I. 简介 Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Doc">
-<meta name="keywords" content="docker">
+<meta name="description" content="1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/docker/docker-tutorial.html I. 简介Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Docker类比于Python虚拟环境，可以有效的配置各个版本的开发环境">
+<meta name="keywords" content="docker,nginx,web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker实验室（二）--Docker安装与配置centOS环境">
 <meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（二）--Docker安装与配置centOS环境/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（二）–Docker安装与配置centOS环境1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/docker/docker-tutorial.html I. 简介 Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Doc">
+<meta property="og:description" content="1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/docker/docker-tutorial.html I. 简介Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Docker类比于Python虚拟环境，可以有效的配置各个版本的开发环境">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:24:52.026Z">
+<meta property="og:updated_time" content="2019-04-13T15:25:43.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker实验室（二）--Docker安装与配置centOS环境">
-<meta name="twitter:description" content="docker实验室（二）–Docker安装与配置centOS环境1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/docker/docker-tutorial.html I. 简介 Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Doc">
+<meta name="twitter:description" content="1.Docker介绍阅读本文之前，你需要了解Docker能干什么。菜鸟上有教程可以阅读http://www.runoob.com/docker/docker-tutorial.html I. 简介Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Docker类比于Python虚拟环境，可以有效的配置各个版本的开发环境">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -368,6 +368,21 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -381,20 +396,18 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（二）–Docker安装与配置centOS环境"><a href="#docker实验室（二）–Docker安装与配置centOS环境" class="headerlink" title="docker实验室（二）–Docker安装与配置centOS环境"></a>docker实验室（二）–Docker安装与配置centOS环境</h1><h2 id="1-Docker介绍"><a href="#1-Docker介绍" class="headerlink" title="1.Docker介绍"></a>1.Docker介绍</h2><p>阅读本文之前，你需要了解Docker能干什么。<br>菜鸟上有教程可以阅读<br><a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/docker/docker-tutorial.html</a></p>
-<p>I. 简介</p>
-<p>Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Docker类比于Python虚拟环境，可以有效的配置各个版本的开发环境，比如深度学习与Java环境。</p>
-<p>II. 基本概念</p>
-<p>镜像(Image)</p>
+        <span itemprop="articleBody"><h1 id="1-Docker介绍"><a href="#1-Docker介绍" class="headerlink" title="1.Docker介绍"></a>1.Docker介绍</h1><p>阅读本文之前，你需要了解Docker能干什么。<br>菜鸟上有教程可以阅读<br><a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/docker/docker-tutorial.html</a></p>
+<h2 id="I-简介"><a href="#I-简介" class="headerlink" title="I. 简介"></a>I. 简介</h2><p>Docker是一种新兴的虚拟化技术，能够一定程度上的代替传统虚拟机。不过，Docker 跟传统的虚拟化方式相比具有众多的优势。我也将Docker类比于Python虚拟环境，可以有效的配置各个版本的开发环境，比如深度学习与Java环境。</p>
+<h2 id="II-基本概念"><a href="#II-基本概念" class="headerlink" title="II. 基本概念"></a>II. 基本概念</h2><p>镜像(Image)</p>
 <p>镜像，从认识上简单的来说，就是面向对象中的类，相当于一个模板。从本质上来说，镜像相当于一个文件系统。Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。</p>
 <p>容器(Container)</p>
 <p>容器，从认识上来说，就是类创建的实例，就是依据镜像这个模板创建出来的实体。容器的实质是进程，但与直接在宿主执行的进程不同，容器进程运行于属于自己的独立的命名空间。因此容器可以拥有自己的root 文件系统、自己的网络配置、自己的进程空间，甚至自己的用户ID 空间。容器内的进程是运行在一个隔离的环境里，使用起来，就好像是在一个独立于宿主的系统下操作一样。这种特性使得容器封装的应用比直接在宿主运行更加安全。</p>
 <p>仓库(Repository)</p>
 <p>仓库，从认识上来说，就好像软件包上传下载站，有各种软件的不同版本被上传供用户下载。镜像构建完成后，可以很容易的在当前宿主机上运行，但是，如果需要在其它服务器上使用这个镜像，我们就需要一个集中的存储、分发镜像的服务，Docker Registry 就是这样的服务。</p>
-<h2 id="2-Docker安装"><a href="#2-Docker安装" class="headerlink" title="2.Docker安装"></a>2.Docker安装</h2><h3 id="Win10"><a href="#Win10" class="headerlink" title="Win10"></a>Win10</h3><p>win10安装与使用docker过程中会遇到许多问题，比如环境变量问题，比如映射端口问题，比如Docker Quickstart Terminal启动不了等问题，虽然都有解决方案，但是不推荐。<br>下载：<a href="https://docs.docker.com/docker-for-windows/install/" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/install/</a></p>
+<h1 id="2-Docker安装"><a href="#2-Docker安装" class="headerlink" title="2.Docker安装"></a>2.Docker安装</h1><h2 id="Win10"><a href="#Win10" class="headerlink" title="Win10"></a>Win10</h2><p>win10安装与使用docker过程中会遇到许多问题，比如环境变量问题，比如映射端口问题，比如Docker Quickstart Terminal启动不了等问题，虽然都有解决方案，但是不推荐。<br>下载：<a href="https://docs.docker.com/docker-for-windows/install/" target="_blank" rel="noopener">https://docs.docker.com/docker-for-windows/install/</a></p>
 <p>Docker支持64 位版本的Windows 10 Pro，且必须开启Hyper-V。开启方式为：打开“控制面板”-&gt;“程序”-&gt; “启动或关闭Windows功能”，找到Hyper-V并勾选，确定重启电脑。</p>
 <p>安装下载好的Docker for Windows Installer.exe，安装即可。</p>
-<h3 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a>CentOS安装</h3><p>我使用的是阿里云的ECS，就图方便，不用本地开虚拟机损耗我本已不多的内存。当然你至少需要支付午饭的一顿鸡腿钱。</p>
+<h2 id="CentOS安装"><a href="#CentOS安装" class="headerlink" title="CentOS安装"></a>CentOS安装</h2><p>我使用的是阿里云的ECS，就图方便，不用本地开虚拟机损耗我本已不多的内存。当然你至少需要支付午饭的一顿鸡腿钱。</p>
 <pre><code>[root@jus-zhan html]# cat /etc/redhat-release 
 CentOS Linux release 7.6.1810 (Core) 
 [root@jus-zhan html]# 
@@ -414,7 +427,7 @@ sudo usermod -aG docker $USER
 </code></pre><p>重新启动服务</p>
 <pre><code>sudo systemctl daemon-reload
 sudo systemctl restart docker
-</code></pre><h2 id="3-Docker使用"><a href="#3-Docker使用" class="headerlink" title="3.Docker使用"></a>3.Docker使用</h2><p>启动一次操作容器：docker run IMAGE_NAME [COMMAND] [ARG…]</p>
+</code></pre><h1 id="3-Docker使用"><a href="#3-Docker使用" class="headerlink" title="3.Docker使用"></a>3.Docker使用</h1><p>启动一次操作容器：docker run IMAGE_NAME [COMMAND] [ARG…]</p>
 <p>国际惯例，还是先来一个“hello world”案例，启动一个容器输出hello world。</p>
 <pre><code>docker run ubuntu echo &apos;hello world&apos;
 </code></pre><p>由于刚装上Docker，没有任何镜像，所以你的docker会自己下载一个最新的ubuntu的docker镜像。一次操作容器在处理完操作后会立即关闭容器。</p>
@@ -446,7 +459,7 @@ docker kill myubuntu
 <pre><code>docker logs myubuntu
 </code></pre><p>查看容器内进程，对运行的容器查看其进程：docker top IMAGE_NAME</p>
 <pre><code>docker top myubuntu
-</code></pre><h2 id="4-docker实际运用"><a href="#4-docker实际运用" class="headerlink" title="4.docker实际运用"></a>4.docker实际运用</h2><p>案例：在容器中部署静态网站，容器中部署Nginx服务</p>
+</code></pre><h1 id="4-docker实际运用"><a href="#4-docker实际运用" class="headerlink" title="4.docker实际运用"></a>4.docker实际运用</h1><p>案例：在容器中部署静态网站，容器中部署Nginx服务</p>
 <p>创建映射80端口的交互式容器，并进入容器内部</p>
 <pre><code>docker run -p 80 --name myweb -i -t ubuntu /bin/bash
 </code></pre><p>更新源，更新到当前最新版本</p>
@@ -502,7 +515,8 @@ and the most populous metropolitan area in the world.&lt;/p&gt;
 &lt;/html&gt;
 </code></pre><p>修改Nginx配置文件:<br>查看Nginx安装位置</p>
 <pre><code>whereis nginx
-</code></pre><h1 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h1><pre><code>vim /etc/nginx/sites-enabled/default
+</code></pre><p>修改配置文件</p>
+<pre><code>vim /etc/nginx/sites-enabled/default
 </code></pre><p>容器内启动nginx</p>
 <pre><code>nginx
 </code></pre><p>容器内查看进程确认nignx启动</p>
@@ -537,7 +551,7 @@ sylucky2004/myweb01           latest              6c63ddc9a1c1        4 hours ag
 sylucky2004/myweb01           v1.0                6c63ddc9a1c1        4 hours ago         197MB
 nginx                         latest              62f816a209e6        4 weeks ago         109MB
 [docker@jus-zhan ~]$ 
-</code></pre><h2 id="5-docker镜像"><a href="#5-docker镜像" class="headerlink" title="5.docker镜像"></a>5.docker镜像</h2><p>镜像基本操作</p>
+</code></pre><h1 id="5-docker镜像"><a href="#5-docker镜像" class="headerlink" title="5.docker镜像"></a>5.docker镜像</h1><p>镜像基本操作</p>
 <p>列出镜像：docker images [OPTIONS] [REPOSITORY]</p>
 <p>删除镜像：docker rmi [OPTIONS] IMAGE [IMAGE]</p>
 <p>查找镜像：docker search [OPTIONS] TEAM</p>
@@ -569,7 +583,7 @@ RUN apt-get install -y nginx
 EXPOSE 80
 </code></pre><p>命令：docker build [OPTIONS] DockerFile_PATH | URL | -</p>
 <pre><code>docker build -t=&quot;sylucky2004/myweb01&quot; .
-</code></pre><h2 id="6-镜像迁移"><a href="#6-镜像迁移" class="headerlink" title="6.镜像迁移"></a>6.镜像迁移</h2><p>我们制作好的镜像，一般是作为自己其他项目或者环境使用或分享给其他需要的人，所以提供了几种将我们的镜像迁移、分享给其他人的方式。推荐镜像迁移应该直接使用Docker Registry，无论是直接使用Docker Hub还是使用内网私有Registry都可以。使用镜像频率不高，镜像数量不多的情况下，我们可以选择以下两种方式。</p>
+</code></pre><h1 id="6-镜像迁移"><a href="#6-镜像迁移" class="headerlink" title="6.镜像迁移"></a>6.镜像迁移</h1><p>我们制作好的镜像，一般是作为自己其他项目或者环境使用或分享给其他需要的人，所以提供了几种将我们的镜像迁移、分享给其他人的方式。推荐镜像迁移应该直接使用Docker Registry，无论是直接使用Docker Hub还是使用内网私有Registry都可以。使用镜像频率不高，镜像数量不多的情况下，我们可以选择以下两种方式。</p>
 <p>上传Docker Hub</p>
 <p>首先，需要在<a href="https://hub.docker.com/" target="_blank" rel="noopener">Docker Hub</a>上申请注册一个帐号。然后我们需要创建仓库，指定仓库名称。</p>
 <p>在终端中登录你的Docker Hub账户，输入docker login，输入用户名密码即可登录成功。</p>
@@ -605,7 +619,7 @@ f1dfa8049aa6: Mounted from library/ubuntu
 b8c891f0ffec: Mounted from library/ubuntu 
 v1.0: digest: sha256:c1f9c965eec192aed9580d40376a97a89f800752910eea718a2977adcb165ec3 size: 1574 
 </code></pre><p>我们已经上传成功。</p>
-<h2 id="7-Docker镜像的导入导出"><a href="#7-Docker镜像的导入导出" class="headerlink" title="7.Docker镜像的导入导出"></a>7.Docker镜像的导入导出</h2><p>Docker 还提供了 docker load 和 docker save 命令，用以将镜像保存为一个tar文件。</p>
+<h1 id="7-Docker镜像的导入导出"><a href="#7-Docker镜像的导入导出" class="headerlink" title="7.Docker镜像的导入导出"></a>7.Docker镜像的导入导出</h1><p>Docker 还提供了 docker load 和 docker save 命令，用以将镜像保存为一个tar文件。</p>
 <pre><code>docker save sylucky2004/myweb01:v1.0 | gzip &gt; myweb01.tar.gz
 ls
 docker load -i myweb01.tar.gz
@@ -634,6 +648,10 @@ sylucky2004/myweb01           v1.0                6c63ddc9a1c1        3 hours ag
         <div class="post-tags">
           
             <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
+          
+            <a href="/tags/web/" rel="tag">#web</a>
           
         </div>
       
@@ -850,21 +868,21 @@ sylucky2004/myweb01           v1.0                6c63ddc9a1c1        3 hours ag
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -930,7 +948,7 @@ sylucky2004/myweb01           v1.0                6c63ddc9a1c1        3 hours ag
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（二）–Docker安装与配置centOS环境"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（二）–Docker安装与配置centOS环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Docker介绍"><span class="nav-number">1.1.</span> <span class="nav-text">1.Docker介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Docker安装"><span class="nav-number">1.2.</span> <span class="nav-text">2.Docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Win10"><span class="nav-number">1.2.1.</span> <span class="nav-text">Win10</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CentOS安装"><span class="nav-number">1.2.2.</span> <span class="nav-text">CentOS安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Docker使用"><span class="nav-number">1.3.</span> <span class="nav-text">3.Docker使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-docker实际运用"><span class="nav-number">1.4.</span> <span class="nav-text">4.docker实际运用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#修改配置文件"><span class="nav-number">2.</span> <span class="nav-text">修改配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-docker镜像"><span class="nav-number">2.1.</span> <span class="nav-text">5.docker镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-镜像迁移"><span class="nav-number">2.2.</span> <span class="nav-text">6.镜像迁移</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Docker镜像的导入导出"><span class="nav-number">2.3.</span> <span class="nav-text">7.Docker镜像的导入导出</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Docker介绍"><span class="nav-number">1.</span> <span class="nav-text">1.Docker介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#I-简介"><span class="nav-number">1.1.</span> <span class="nav-text">I. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#II-基本概念"><span class="nav-number">1.2.</span> <span class="nav-text">II. 基本概念</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Docker安装"><span class="nav-number">2.</span> <span class="nav-text">2.Docker安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Win10"><span class="nav-number">2.1.</span> <span class="nav-text">Win10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CentOS安装"><span class="nav-number">2.2.</span> <span class="nav-text">CentOS安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Docker使用"><span class="nav-number">3.</span> <span class="nav-text">3.Docker使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-docker实际运用"><span class="nav-number">4.</span> <span class="nav-text">4.docker实际运用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-docker镜像"><span class="nav-number">5.</span> <span class="nav-text">5.docker镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-镜像迁移"><span class="nav-number">6.</span> <span class="nav-text">6.镜像迁移</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-Docker镜像的导入导出"><span class="nav-number">7.</span> <span class="nav-text">7.Docker镜像的导入导出</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

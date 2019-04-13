@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="docker,">
+  <meta name="keywords" content="docker,hadoop,">
 
 
 
@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（六）–Docker安装与配置hadoop全分布环境选择用Dockfile制作容器并配置HDFS分布式集群环境 准备Dockfile文件Dockfile FROM ubuntu:14.04  MAINTAINER shuijun &amp;lt;ccmxsj@126.com&amp;gt;  WORKDIR /root  # install openssh-server, openjdk and">
-<meta name="keywords" content="docker">
+<meta name="description" content="1.准备Dockfile文件选择用Dockfile制作容器并配置HDFS分布式集群环境： Dockfile FROM ubuntu:14.04  MAINTAINER shuijun &amp;lt;ccmxsj@126.com&amp;gt;  WORKDIR /root  # install openssh-server, openjdk and wget RUN apt-get update &amp;amp;&amp;a">
+<meta name="keywords" content="docker,hadoop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker实验室（六）--Docker安装与配置hadoop全分布环境">
 <meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（六）--Docker安装与配置hadoop全分布环境/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（六）–Docker安装与配置hadoop全分布环境选择用Dockfile制作容器并配置HDFS分布式集群环境 准备Dockfile文件Dockfile FROM ubuntu:14.04  MAINTAINER shuijun &amp;lt;ccmxsj@126.com&amp;gt;  WORKDIR /root  # install openssh-server, openjdk and">
+<meta property="og:description" content="1.准备Dockfile文件选择用Dockfile制作容器并配置HDFS分布式集群环境： Dockfile FROM ubuntu:14.04  MAINTAINER shuijun &amp;lt;ccmxsj@126.com&amp;gt;  WORKDIR /root  # install openssh-server, openjdk and wget RUN apt-get update &amp;amp;&amp;a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:25:23.194Z">
+<meta property="og:updated_time" content="2019-04-13T15:28:45.783Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker实验室（六）--Docker安装与配置hadoop全分布环境">
-<meta name="twitter:description" content="docker实验室（六）–Docker安装与配置hadoop全分布环境选择用Dockfile制作容器并配置HDFS分布式集群环境 准备Dockfile文件Dockfile FROM ubuntu:14.04  MAINTAINER shuijun &amp;lt;ccmxsj@126.com&amp;gt;  WORKDIR /root  # install openssh-server, openjdk and">
+<meta name="twitter:description" content="1.准备Dockfile文件选择用Dockfile制作容器并配置HDFS分布式集群环境： Dockfile FROM ubuntu:14.04  MAINTAINER shuijun &amp;lt;ccmxsj@126.com&amp;gt;  WORKDIR /root  # install openssh-server, openjdk and wget RUN apt-get update &amp;amp;&amp;a">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -368,6 +368,21 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -381,8 +396,8 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（六）–Docker安装与配置hadoop全分布环境"><a href="#docker实验室（六）–Docker安装与配置hadoop全分布环境" class="headerlink" title="docker实验室（六）–Docker安装与配置hadoop全分布环境"></a>docker实验室（六）–Docker安装与配置hadoop全分布环境</h1><p>选择用Dockfile制作容器并配置HDFS分布式集群环境</p>
-<h2 id="准备Dockfile文件"><a href="#准备Dockfile文件" class="headerlink" title="准备Dockfile文件"></a>准备Dockfile文件</h2><p>Dockfile</p>
+        <span itemprop="articleBody"><h1 id="1-准备Dockfile文件"><a href="#1-准备Dockfile文件" class="headerlink" title="1.准备Dockfile文件"></a>1.准备Dockfile文件</h1><p>选择用Dockfile制作容器并配置HDFS分布式集群环境：</p>
+<p>Dockfile</p>
 <pre><code>FROM ubuntu:14.04
 
 MAINTAINER shuijun &lt;ccmxsj@126.com&gt;
@@ -432,13 +447,13 @@ RUN chmod +x ~/start-hadoop.sh &amp;&amp; \
 RUN /usr/local/hadoop/bin/hdfs namenode -format
 
 CMD [ &quot;sh&quot;, &quot;-c&quot;, &quot;service ssh start; bash&quot;]
-</code></pre><h2 id="build-image-sh脚本"><a href="#build-image-sh脚本" class="headerlink" title="build-image.sh脚本"></a>build-image.sh脚本</h2><p>运行脚本sh build-image.sh获取镜像</p>
+</code></pre><h1 id="2-build-image-sh脚本"><a href="#2-build-image-sh脚本" class="headerlink" title="2.build-image.sh脚本"></a>2.build-image.sh脚本</h1><p>运行脚本sh build-image.sh获取镜像</p>
 <pre><code>#!/bin/bash
 echo -e &quot;\nbuild docker hadoop image\n&quot;
 ###tanzhou/hadoop:1.0,这个可以改成你自己的名称，改完之后，start.sh脚本里面启动的镜像    就要改成####自己的这个镜像名称，注意
 docker build -t tanzhou/hadoop:1.0 .
 echo -e &quot;\n镜像打包成功,镜像名称是tanzhou/hadoop:1.0&quot;
-</code></pre><h2 id="启动start-sh"><a href="#启动start-sh" class="headerlink" title="启动start.sh"></a>启动start.sh</h2><p>运行sh start.sh启动容器，默认启动2个datanode，可以改脚本多启动几个</p>
+</code></pre><h1 id="3-启动start-sh"><a href="#3-启动start-sh" class="headerlink" title="3.启动start.sh"></a>3.启动start.sh</h1><p>运行sh start.sh启动容器，默认启动2个datanode，可以改脚本多启动几个</p>
 <pre><code>#!/bin/bash
 # the default node number is 3
 N=${1:-3}    
@@ -471,7 +486,7 @@ done
 
 # get into hadoop master container
 docker exec -it hadoop-master bash
-</code></pre><h2 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h2><p>通过以下命令分别进入主从服务器，修改hosts</p>
+</code></pre><h1 id="4-修改hosts"><a href="#4-修改hosts" class="headerlink" title="4.修改hosts"></a>4.修改hosts</h1><p>通过以下命令分别进入主从服务器，修改hosts</p>
 <pre><code>docker exec -it hadoop-master bash
 docker exec -it hadoop-slave1 bash
 docker exec -it hadoop-slave2 bash
@@ -479,7 +494,7 @@ docker exec -it hadoop-slave2 bash
 <pre><code>172.17.0.2      hadoop-master
 172.17.0.3      hadoop-slave1
 172.17.0.4      hadoop-slave2
-</code></pre><h2 id="start-hadoop-sh"><a href="#start-hadoop-sh" class="headerlink" title="start-hadoop.sh"></a>start-hadoop.sh</h2><p>进入hadoop-master的容器的根目录下执行 sh start-hadoop.sh启动hadoop</p>
+</code></pre><h1 id="5-start-hadoop-sh"><a href="#5-start-hadoop-sh" class="headerlink" title="5.start-hadoop.sh"></a>5.start-hadoop.sh</h1><p>进入hadoop-master的容器的根目录下执行 sh start-hadoop.sh启动hadoop</p>
 <pre><code>#!/bin/bash
 
 # the default node number is 3
@@ -539,13 +554,13 @@ hadoop-slave1: Warning: Permanently added &apos;hadoop-slave1,172.17.0.3&apos; (
 hadoop-slave2: starting nodemanager, logging to /usr/local/hadoop/logs/    yarn-root-nodemanager-hadoop-slave2.out
 hadoop-slave1: starting nodemanager, logging to /usr/local/hadoop/logs/    yarn-root-nodemanager-hadoop-slave1.out
 -e
-</code></pre><h2 id="jps查看进程"><a href="#jps查看进程" class="headerlink" title="jps查看进程"></a>jps查看进程</h2><p>hadoop-master进程</p>
+</code></pre><h1 id="6-jps查看进程"><a href="#6-jps查看进程" class="headerlink" title="6.jps查看进程"></a>6.jps查看进程</h1><p>hadoop-master进程</p>
 <p>hadoop-slave1进程</p>
 <p>hadoop-slave2进程</p>
-<h2 id="run-wordcount-sh"><a href="#run-wordcount-sh" class="headerlink" title="run-wordcount.sh"></a>run-wordcount.sh</h2><p>如果启动了容器，用下面的脚本测试下</p>
+<h1 id="7-run-wordcount-sh"><a href="#7-run-wordcount-sh" class="headerlink" title="7.run-wordcount.sh"></a>7.run-wordcount.sh</h1><p>如果启动了容器，用下面的脚本测试下</p>
 <pre><code>sh run-wordcount.sh
 </code></pre><p>运行成功</p>
-<h1 id="网页查看"><a href="#网页查看" class="headerlink" title="网页查看"></a>网页查看</h1><p>到网页上看看我们的系统<br>通过IP:50070登录，可以查看文件系统以及节点状况</p>
+<h1 id="8-网页查看"><a href="#8-网页查看" class="headerlink" title="8.网页查看"></a>8.网页查看</h1><p>到网页上看看我们的系统<br>通过IP:50070登录，可以查看文件系统以及节点状况</p>
 <p>通过IP:8088登录，可以查看任务执行情况</p>
 </span>
       
@@ -556,6 +571,8 @@ hadoop-slave1: starting nodemanager, logging to /usr/local/hadoop/logs/    yarn-
         <div class="post-tags">
           
             <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/hadoop/" rel="tag">#hadoop</a>
           
         </div>
       
@@ -772,21 +789,21 @@ hadoop-slave1: starting nodemanager, logging to /usr/local/hadoop/logs/    yarn-
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -852,7 +869,7 @@ hadoop-slave1: starting nodemanager, logging to /usr/local/hadoop/logs/    yarn-
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（六）–Docker安装与配置hadoop全分布环境"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（六）–Docker安装与配置hadoop全分布环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备Dockfile文件"><span class="nav-number">1.1.</span> <span class="nav-text">准备Dockfile文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#build-image-sh脚本"><span class="nav-number">1.2.</span> <span class="nav-text">build-image.sh脚本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动start-sh"><span class="nav-number">1.3.</span> <span class="nav-text">启动start.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改hosts"><span class="nav-number">1.4.</span> <span class="nav-text">修改hosts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#start-hadoop-sh"><span class="nav-number">1.5.</span> <span class="nav-text">start-hadoop.sh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jps查看进程"><span class="nav-number">1.6.</span> <span class="nav-text">jps查看进程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-wordcount-sh"><span class="nav-number">1.7.</span> <span class="nav-text">run-wordcount.sh</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网页查看"><span class="nav-number">2.</span> <span class="nav-text">网页查看</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-准备Dockfile文件"><span class="nav-number">1.</span> <span class="nav-text">1.准备Dockfile文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-build-image-sh脚本"><span class="nav-number">2.</span> <span class="nav-text">2.build-image.sh脚本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-启动start-sh"><span class="nav-number">3.</span> <span class="nav-text">3.启动start.sh</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-修改hosts"><span class="nav-number">4.</span> <span class="nav-text">4.修改hosts</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-start-hadoop-sh"><span class="nav-number">5.</span> <span class="nav-text">5.start-hadoop.sh</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-jps查看进程"><span class="nav-number">6.</span> <span class="nav-text">6.jps查看进程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-run-wordcount-sh"><span class="nav-number">7.</span> <span class="nav-text">7.run-wordcount.sh</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#8-网页查看"><span class="nav-number">8.</span> <span class="nav-text">8.网页查看</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

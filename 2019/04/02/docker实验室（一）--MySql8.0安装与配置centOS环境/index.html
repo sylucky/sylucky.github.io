@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（一）–MySql8.0安装与配置centOS环境1.准备环境初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。 2.下载俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载 wget https://repo.mysql.co">
+<meta name="description" content="1.准备环境初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。 2.下载俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载 wget https://repo.mysql.com/mysql80-community-release-el7-1.">
 <meta name="keywords" content="docker,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker实验室（一）--MySql8.0安装与配置centOS环境">
 <meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（一）--MySql8.0安装与配置centOS环境/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（一）–MySql8.0安装与配置centOS环境1.准备环境初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。 2.下载俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载 wget https://repo.mysql.co">
+<meta property="og:description" content="1.准备环境初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。 2.下载俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载 wget https://repo.mysql.com/mysql80-community-release-el7-1.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:24:41.152Z">
+<meta property="og:updated_time" content="2019-04-13T15:15:44.856Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker实验室（一）--MySql8.0安装与配置centOS环境">
-<meta name="twitter:description" content="docker实验室（一）–MySql8.0安装与配置centOS环境1.准备环境初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。 2.下载俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载 wget https://repo.mysql.co">
+<meta name="twitter:description" content="1.准备环境初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。 2.下载俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载 wget https://repo.mysql.com/mysql80-community-release-el7-1.">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -396,8 +396,8 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（一）–MySql8-0安装与配置centOS环境"><a href="#docker实验室（一）–MySql8-0安装与配置centOS环境" class="headerlink" title="docker实验室（一）–MySql8.0安装与配置centOS环境"></a>docker实验室（一）–MySql8.0安装与配置centOS环境</h1><h2 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h2><p>初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。</p>
-<h2 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h2><p>俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载</p>
+        <span itemprop="articleBody"><h1 id="1-准备环境"><a href="#1-准备环境" class="headerlink" title="1.准备环境"></a>1.准备环境</h1><p>初次安装，准备一台干净的Linux。可以自建虚拟机，或者去阿里云等各大云计算服务提供商购买，选择按量付费，只需要一个鸡腿钱即可学会安装配置mysql。</p>
+<h1 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h1><p>俗话说的好，泡最辣的妞，挨最毒的打，学最新的技术。我们下载最新的mysql8.0进行安装。使用wget下载</p>
 <pre><code>wget https://repo.mysql.com/mysql80-community-release-el7-1.noarch.rpm
 </code></pre><blockquote>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]# wget <a href="https://repo.mysql.com/mysql80-community-release-el7-1.noarch.rpm" target="_blank" rel="noopener">https://repo.mysql.com/mysql80-community-release-el7-1.noarch.rpm</a></p>
@@ -410,7 +410,7 @@
 <p>2018-12-07 09:21:59 (197 MB/s) - ‘mysql80-community-release-el7-1.noarch.rpm’ saved [25820/25820]</p>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]# </p>
 </blockquote>
-<h2 id="3-rpm安装"><a href="#3-rpm安装" class="headerlink" title="3.rpm安装"></a>3.rpm安装</h2><pre><code>rpm -ivh mysql80-community-release-el7-1.noarch.rpm
+<h1 id="3-rpm安装"><a href="#3-rpm安装" class="headerlink" title="3.rpm安装"></a>3.rpm安装</h1><pre><code>rpm -ivh mysql80-community-release-el7-1.noarch.rpm
 </code></pre><blockquote>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]# rpm -ivh mysql80-community-release-el7-1.noarch.rpm</p>
 <p>warning: mysql80-community-release-el7-1.noarch.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY</p>
@@ -418,7 +418,7 @@
 <p>Updating / installing…<br>   1:mysql80-community-release-el7-1  ################################# [100%]</p>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]#</p>
 </blockquote>
-<h2 id="4-云更新与安装"><a href="#4-云更新与安装" class="headerlink" title="4.云更新与安装"></a>4.云更新与安装</h2><pre><code>yum update
+<h1 id="4-云更新与安装"><a href="#4-云更新与安装" class="headerlink" title="4.云更新与安装"></a>4.云更新与安装</h1><pre><code>yum update
 yum install mysql-server
 </code></pre><p>等待大概2~3分钟，安装好后先检测mysql安装是否有问题</p>
 <pre><code>mysqladmin --version
@@ -427,7 +427,7 @@ yum install mysql-server
 <p>mysqladmin  Ver 8.0.13 for Linux on x86_64 (MySQL Community Server - GPL)</p>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]# </p>
 </blockquote>
-<h2 id="5-启动服务"><a href="#5-启动服务" class="headerlink" title="5.启动服务"></a>5.启动服务</h2><pre><code>systemctl start mysqld
+<h1 id="5-启动服务"><a href="#5-启动服务" class="headerlink" title="5.启动服务"></a>5.启动服务</h1><pre><code>systemctl start mysqld
 </code></pre><p>查看服务状态， Active: active (running)表示成功启动</p>
 <blockquote>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]# systemctl status mysqld</p>
@@ -445,7 +445,7 @@ yum install mysql-server
 <p>Dec 07 09:33:29 izj6chbxeno02a18c5vbmuz systemd[1]: Started MySQL Server.</p>
 <p>[root@izj6chbxeno02a18c5vbmuz ~]# </p>
 </blockquote>
-<h2 id="6-登录mysql"><a href="#6-登录mysql" class="headerlink" title="6.登录mysql"></a>6.登录mysql</h2><p>尝试直接运行mysql登录</p>
+<h1 id="6-登录mysql"><a href="#6-登录mysql" class="headerlink" title="6.登录mysql"></a>6.登录mysql</h1><p>尝试直接运行mysql登录</p>
 <pre><code>mysql
 </code></pre><p>显示报错</p>
 <blockquote>
@@ -522,7 +522,7 @@ yum install mysql-server
 <p>mysql&gt; FLUSH PRIVILEGES;</p>
 </blockquote>
 <p>密码终于成功了，别忘了刷新用户权限FLUSH PRIVILEGES。</p>
-<h2 id="7-使用"><a href="#7-使用" class="headerlink" title="7.使用"></a>7.使用</h2><p>用新密码登录</p>
+<h1 id="7-使用"><a href="#7-使用" class="headerlink" title="7.使用"></a>7.使用</h1><p>用新密码登录</p>
 <pre><code>mysql -u root -p
 </code></pre><p>键入新密码登录后，创建数据库，创建数据表，插入数据，查询数据等操作都试试。</p>
 <blockquote>
@@ -777,21 +777,21 @@ Query OK, 0 rows affected (0.02 sec)
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -857,7 +857,7 @@ Query OK, 0 rows affected (0.02 sec)
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（一）–MySql8-0安装与配置centOS环境"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（一）–MySql8.0安装与配置centOS环境</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-准备环境"><span class="nav-number">1.1.</span> <span class="nav-text">1.准备环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-下载"><span class="nav-number">1.2.</span> <span class="nav-text">2.下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-rpm安装"><span class="nav-number">1.3.</span> <span class="nav-text">3.rpm安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-云更新与安装"><span class="nav-number">1.4.</span> <span class="nav-text">4.云更新与安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-启动服务"><span class="nav-number">1.5.</span> <span class="nav-text">5.启动服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-登录mysql"><span class="nav-number">1.6.</span> <span class="nav-text">6.登录mysql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-使用"><span class="nav-number">1.7.</span> <span class="nav-text">7.使用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2019-04-06-更新-mysql登录权限问题"><span class="nav-number">2.</span> <span class="nav-text">2019-04-06 更新 mysql登录权限问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-准备环境"><span class="nav-number">1.</span> <span class="nav-text">1.准备环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-下载"><span class="nav-number">2.</span> <span class="nav-text">2.下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-rpm安装"><span class="nav-number">3.</span> <span class="nav-text">3.rpm安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-云更新与安装"><span class="nav-number">4.</span> <span class="nav-text">4.云更新与安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-启动服务"><span class="nav-number">5.</span> <span class="nav-text">5.启动服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-登录mysql"><span class="nav-number">6.</span> <span class="nav-text">6.登录mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#7-使用"><span class="nav-number">7.</span> <span class="nav-text">7.使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2019-04-06-更新-mysql登录权限问题"><span class="nav-number">8.</span> <span class="nav-text">2019-04-06 更新 mysql登录权限问题</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

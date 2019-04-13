@@ -31,7 +31,7 @@
 
 
 
-  <meta name="keywords" content="docker,">
+  <meta name="keywords" content="docker,mysql,">
 
 
 
@@ -42,18 +42,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
 
 
-<meta name="description" content="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） 首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安">
-<meta name="keywords" content="docker">
+<meta name="description" content="不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） ubuntu配置首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安装包vim，wget，net-tools。 apt-get update ap">
+<meta name="keywords" content="docker,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应">
 <meta property="og:url" content="http://sylucky.github.io/2019/04/02/docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应/index.html">
 <meta property="og:site_name" content="剑神一笑的博客">
-<meta property="og:description" content="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） 首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安">
+<meta property="og:description" content="不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） ubuntu配置首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安装包vim，wget，net-tools。 apt-get update ap">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-13T07:25:00.376Z">
+<meta property="og:updated_time" content="2019-04-13T15:23:15.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker实验室（三）--MySql8.0安装之docker容器下安装MySql的系列化学反应">
-<meta name="twitter:description" content="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） 首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安">
+<meta name="twitter:description" content="不知道docker为何物或者不清楚docker安装使用的先去专栏了解Docker安装与配置–centOS环境（二） ubuntu配置首先，还是利用docker最常用的容器ubuntu docker run -i -t ubuntu /bin/bash 进入docker的ubuntu容器后，更新apt-get，安装必要的安装包vim，wget，net-tools。 apt-get update ap">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -368,6 +368,21 @@
         </span>
 
         
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
 
         
           
@@ -381,8 +396,8 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="docker实验室（三）–MySql8-0安装之docker容器下安装MySql的系列化学反应"><a href="#docker实验室（三）–MySql8-0安装之docker容器下安装MySql的系列化学反应" class="headerlink" title="docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应"></a>docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应</h1><p>不知道docker为何物或者不清楚docker安装使用的先去专栏了解<br><a href="https://zhuanlan.zhihu.com/p/51889991" target="_blank" rel="noopener">Docker安装与配置–centOS环境（二）</a></p>
-<p>首先，还是利用docker最常用的容器ubuntu</p>
+        <span itemprop="articleBody"><p>不知道docker为何物或者不清楚docker安装使用的先去专栏了解<br><a href="https://zhuanlan.zhihu.com/p/51889991" target="_blank" rel="noopener">Docker安装与配置–centOS环境（二）</a></p>
+<h1 id="ubuntu配置"><a href="#ubuntu配置" class="headerlink" title="ubuntu配置"></a>ubuntu配置</h1><p>首先，还是利用docker最常用的容器ubuntu</p>
 <pre><code>docker run -i -t ubuntu /bin/bash
 </code></pre><p>进入docker的ubuntu容器后，更新apt-get，安装必要的安装包vim，wget，net-tools。</p>
 <pre><code>apt-get update
@@ -393,8 +408,7 @@ apt-get install net-tools //使用 netstat命令需要添加
 <pre><code>adduser mysql
 </code></pre><p>ubuntu不支持rpm安装，我们使用alien安装</p>
 <pre><code>apt-get install alien
-</code></pre><p>mysql安装与启动</p>
-<pre><code>alien -i package.rpm
+</code></pre><h1 id="mysql安装与启动"><a href="#mysql安装与启动" class="headerlink" title="mysql安装与启动"></a>mysql安装与启动</h1><pre><code>alien -i package.rpm
 apt-get install mysql-server
 service mysql start
 </code></pre><p>然后就可以正常登录了</p>
@@ -406,7 +420,7 @@ show tables;
 </code></pre><p>键入你需要修改的密码</p>
 <p>然后用root就可以登录了</p>
 <pre><code>mysql -u root -p
-</code></pre><p>登录mysql后，还可以新增mysql用户登录，这里我们新增一个用户test，密码test，并给予权限，具体操作如下</p>
+</code></pre><h1 id="mysql使用"><a href="#mysql使用" class="headerlink" title="mysql使用"></a>mysql使用</h1><p>登录mysql后，还可以新增mysql用户登录，这里我们新增一个用户test，密码test，并给予权限，具体操作如下</p>
 <pre><code>use mysql
 insert into mysql.user(Host,User,Password) values(&quot;localhost&quot;,&quot;test&quot;,password(&quot;test&quot;));
 create database testDB;
@@ -430,7 +444,7 @@ mysql&gt; select * from tt;
 2 rows in set (0.00 sec)
 
 mysql&gt; 
-</code></pre><p>顺便尝试输入中文，发现中文根本输入不进去。查下系统编码</p>
+</code></pre><h1 id="解决中文问题"><a href="#解决中文问题" class="headerlink" title="解决中文问题"></a>解决中文问题</h1><p>顺便尝试输入中文，发现中文根本输入不进去。查下系统编码</p>
 <pre><code>show variables like &apos;%character%&apos;;
 
 mysql&gt; show variables like &apos;%character%&apos;;
@@ -584,7 +598,8 @@ mysql&gt; select * from tt;
 1 row in set (0.00 sec)
 
 mysql&gt; 
-</code></pre><p>中文问题至此已经搞定，但是很有研究精神的我们发现切换用户到mysql不能输入中文</p>
+</code></pre><p>中文问题至此已经搞定</p>
+<h1 id="mysql中文问题深究"><a href="#mysql中文问题深究" class="headerlink" title="mysql中文问题深究"></a>mysql中文问题深究</h1><p>但是很有研究精神的我们发现切换用户到mysql不能输入中文</p>
 <pre><code>su - mysql
 </code></pre><p>研究良久发现，应该是docker传给root的环境变量，在其他用户下是不起作用的，即使export LANG=C.UTF-8也不行，尝试用带root环境变量的su mysql解决</p>
 <pre><code>su mysql
@@ -600,7 +615,7 @@ mysql&gt; select * from tt;
 |    2 | 小胖   |
 +------+--------+
 2 rows in set (0.00 sec)
-</code></pre><p>猜想和实际验证结合，得出结论，只有root的环境变量支持输入中文，也算发现docker的一个不大不小的bug，相信永不了多久就可以修复的了。</p>
+</code></pre><p>猜想和实际验证结合，得出结论，只有root的环境变量支持输入中文，也算发现docker的一个不大不小的bug，相信用不了多久就可以修复的了。</p>
 <p>最后，运行下面命令有惊喜</p>
 <pre><code>docker run -it --name=mysql01 -e MYSQL_ROOT_PASSWORD=&quot;1234&quot; -d mysql:8.0
 </code></pre><p>实际运行情况</p>
@@ -664,7 +679,7 @@ mysql&gt; exit
 Bye
 root@89c5d854305b:/# 
 </code></pre><p>和我们自己装的mysql一样的好用。</p>
-<p>下面用映射端口的办法，实现本地连接docker容器内数据库</p>
+<h1 id="mysql服务容器映射端口"><a href="#mysql服务容器映射端口" class="headerlink" title="mysql服务容器映射端口"></a>mysql服务容器映射端口</h1><p>下面用映射端口的办法，实现本地连接docker容器内数据库</p>
 <pre><code>docker run -it --name=mysql02 -p=3306 -e MYSQL_ROOT_PASSWORD=&quot;1234&quot; -v /storage/mysql02/datadir:/var/lib/mysql -d mysql:8.0
 docker exec -it mysql02 env LANG=C.UTF-8 /bin/bash
 </code></pre><p>实际操作</p>
@@ -752,6 +767,8 @@ mysql&gt;
         <div class="post-tags">
           
             <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/mysql/" rel="tag">#mysql</a>
           
         </div>
       
@@ -968,21 +985,21 @@ mysql&gt;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -1048,7 +1065,7 @@ mysql&gt;
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#docker实验室（三）–MySql8-0安装之docker容器下安装MySql的系列化学反应"><span class="nav-number">1.</span> <span class="nav-text">docker实验室（三）–MySql8.0安装之docker容器下安装MySql的系列化学反应</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu配置"><span class="nav-number">1.</span> <span class="nav-text">ubuntu配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql安装与启动"><span class="nav-number">2.</span> <span class="nav-text">mysql安装与启动</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql使用"><span class="nav-number">3.</span> <span class="nav-text">mysql使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决中文问题"><span class="nav-number">4.</span> <span class="nav-text">解决中文问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql中文问题深究"><span class="nav-number">5.</span> <span class="nav-text">mysql中文问题深究</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mysql服务容器映射端口"><span class="nav-number">6.</span> <span class="nav-text">mysql服务容器映射端口</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
