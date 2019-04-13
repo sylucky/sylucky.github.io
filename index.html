@@ -3664,10 +3664,10 @@
         
           <span itemprop="articleBody">
             
-            1.准备环境选择Idea IDE开发，下载Idea并安装，然后修改maven源。
-2.新建spring-boot项目File –&gt; New Project –&gt; Spring Initializr –&gt; next
-填写Group 和 Atifact –&gt; next
-勾选web
+            1.准备环境选择Idea IDE开发，下载Idea并安装，然后修改maven源，修改办法：maven安装目录的conf目录下的settings.xml
+&lt;mirror&gt;
+    &lt;id&gt;nexus-aliyun&lt;/id&gt;
+    &lt;mirrorOf&gt;c
             ...
           </span>
           <div class="post-more-link text-center">
