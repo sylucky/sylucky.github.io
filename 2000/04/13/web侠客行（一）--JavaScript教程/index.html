@@ -1,0 +1,1082 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <meta name="google-site-verification" content="xxx">
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人">
+
+
+
+  <meta name="keywords" content="spring,javascript,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
+
+
+<meta name="description" content="开始第一个jsinnerHTML，当前页面交互并更新页面，下面是示例代码：12345&amp;lt;script&amp;gt;function displayDate()&amp;#123;	document.getElementById(&amp;quot;demo&amp;quot;).innerHTML=Date();&amp;#125;&amp;lt;/script&amp;gt; 对象 var person = {    firstName:”Jo">
+<meta name="keywords" content="spring,javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring春天行动（一）--javascript教程">
+<meta property="og:url" content="http://sylucky.github.io/2000/04/13/web侠客行（一）--JavaScript教程/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="开始第一个jsinnerHTML，当前页面交互并更新页面，下面是示例代码：12345&amp;lt;script&amp;gt;function displayDate()&amp;#123;	document.getElementById(&amp;quot;demo&amp;quot;).innerHTML=Date();&amp;#125;&amp;lt;/script&amp;gt; 对象 var person = {    firstName:”Jo">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-21T04:49:49.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring春天行动（一）--javascript教程">
+<meta name="twitter:description" content="开始第一个jsinnerHTML，当前页面交互并更新页面，下面是示例代码：12345&amp;lt;script&amp;gt;function displayDate()&amp;#123;	document.getElementById(&amp;quot;demo&amp;quot;).innerHTML=Date();&amp;#125;&amp;lt;/script&amp;gt; 对象 var person = {    firstName:”Jo">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> spring春天行动（一）--javascript教程 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              spring春天行动（一）--javascript教程
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2000-04-13T01:02:12+08:00" content="2000-04-13">
+            2000-04-13
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="开始第一个js"><a href="#开始第一个js" class="headerlink" title="开始第一个js"></a>开始第一个js</h1><p>innerHTML，当前页面交互并更新页面，下面是示例代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function displayDate()&#123;</span><br><span class="line">	document.getElementById(&quot;demo&quot;).innerHTML=Date();</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>对象</p>
+<p>var person = {<br>    firstName:”John”,<br>    lastName:”Doe”,<br>    age:50,<br>    eyeColor:”blue”<br>};</p>
+<p>对象的使用<br>person.lastName;<br>或者 person[“lastName”];</p>
+<p>常见的HTML事件的列表：</p>
+<ul>
+<li>onchange    HTML 元素改变</li>
+<li>onclick    用户点击 HTML 元素</li>
+<li>onmouseover    用户在一个HTML元素上移动鼠标</li>
+<li>onmouseout    用户从一个HTML元素上移开鼠标</li>
+<li>onkeydown    用户按下键盘按键</li>
+<li>onload    浏览器已完成页面的加载</li>
+</ul>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=&quot;displayDate()&quot;&gt;现在的时间是?&lt;/button&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="html表单验证"><a href="#html表单验证" class="headerlink" title="html表单验证"></a>html表单验证</h1><p>onsubmit 事件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;form name=&quot;myForm&quot; action=&quot;demo_form.php&quot; onsubmit=&quot;return validateForm()&quot; method=&quot;post&quot;&gt;</span><br><span class="line">名字: &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure></p>
+<p>checkValidity()方法，如果 input 元素中的数据是合法的返回 true，否则返回 false。</p>
+<p>这个例子限制了 min 和 max：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;input id=&quot;id1&quot; type=&quot;number&quot; min=&quot;100&quot; max=&quot;300&quot; required&gt;</span><br><span class="line">&lt;button onclick=&quot;myFunction()&quot;&gt;验证&lt;/button&gt;</span><br><span class="line"> </span><br><span class="line">&lt;p id=&quot;demo&quot;&gt;&lt;/p&gt;</span><br><span class="line"> </span><br><span class="line">&lt;script&gt;</span><br><span class="line">function myFunction() &#123;</span><br><span class="line">    var inpObj = document.getElementById(&quot;id1&quot;);</span><br><span class="line">    if (inpObj.checkValidity() == false) &#123;</span><br><span class="line">        document.getElementById(&quot;demo&quot;).innerHTML = inpObj.validationMessage;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h1><p>约束属性</p>
+<ul>
+<li>validity    布尔属性值，返回 input 输入值是否合法</li>
+<li>validationMessage    浏览器错误提示信息</li>
+<li>willValidate    指定 input 是否需要验证</li>
+</ul>
+<p>validity属性</p>
+<ul>
+<li>customError    设置为 true, 如果设置了自定义的 validity 信息。</li>
+<li>patternMismatch    设置为 true, 如果元素的值不匹配它的模式属性。</li>
+<li>rangeOverflow    设置为 true, 如果元素的值大于设置的最大值。</li>
+<li>rangeUnderflow    设置为 true, 如果元素的值小于它的最小值。</li>
+<li>stepMismatch    设置为 true, 如果元素的值不是按照规定的 step 属性设置。</li>
+<li>tooLong    设置为 true, 如果元素的值超过了 maxLength 属性设置的长度。</li>
+<li>typeMismatch    设置为 true, 如果元素的值不是预期相匹配的类型。</li>
+<li>valueMissing    设置为 true，如果元素 (required 属性) 没有值。</li>
+<li>valid    设置为 true，如果元素的值是合法的。</li>
+</ul>
+<h1 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h1><p>在 JavaScript 中 this 不是固定不变的，它会随着执行环境的改变而改变。</p>
+<ul>
+<li>在方法中，this 表示该方法所属的对象。</li>
+<li>如果单独使用，this 表示全局对象。</li>
+<li>在函数中，this 表示全局对象。</li>
+<li>在函数中，在严格模式下，this 是未定义的(undefined)。</li>
+<li>在事件中，this 表示接收事件的元素。</li>
+<li>类似 call() 和 apply() 方法可以将 this 引用到任何对象。</li>
+</ul>
+<h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><p>JSON 字符串转换为 JavaScript 对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var text = &apos;&#123; &quot;sites&quot; : [&apos; +</span><br><span class="line">&apos;&#123; &quot;name&quot;:&quot;Runoob&quot; , &quot;url&quot;:&quot;www.runoob.com&quot; &#125;,&apos; +</span><br><span class="line">&apos;&#123; &quot;name&quot;:&quot;Google&quot; , &quot;url&quot;:&quot;www.google.com&quot; &#125;,&apos; +</span><br><span class="line">&apos;&#123; &quot;name&quot;:&quot;Taobao&quot; , &quot;url&quot;:&quot;www.taobao.com&quot; &#125; ]&#125;&apos;;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>JSON.parse()    用于将一个 JSON 字符串转换为 JavaScript 对象。</li>
+<li>JSON.stringify()    用于将 JavaScript 值转换为 JSON 字符串。</li>
+</ul>
+<p>javascript:void(0)代表不返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;javascript:void(0);&quot;&gt;点我没有反应的!&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>函数实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const x = (x, y) =&gt; &#123; return x * y &#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="js函数"><a href="#js函数" class="headerlink" title="js函数"></a>js函数</h1><p>Arguments 对象，函数的参数列表<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">x = findMax(1, 123, 500, 115, 44, 88);</span><br><span class="line"> </span><br><span class="line">function findMax() &#123;</span><br><span class="line">    var i, max = arguments[0];</span><br><span class="line">    </span><br><span class="line">    if(arguments.length &lt; 2) return max;</span><br><span class="line"> </span><br><span class="line">    for (i = 0; i &lt; arguments.length; i++) &#123;</span><br><span class="line">        if (arguments[i] &gt; max) &#123;</span><br><span class="line">            max = arguments[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return max;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="JavaScript-HTML-DOM-事件"><a href="#JavaScript-HTML-DOM-事件" class="headerlink" title="JavaScript HTML DOM 事件"></a>JavaScript HTML DOM 事件</h1><p>HTML 事件的例子：</p>
+<ul>
+<li>当用户点击鼠标时</li>
+<li>当网页已加载时</li>
+<li>当图像已加载时</li>
+<li>当鼠标移动到元素上时</li>
+<li>当输入字段被改变时</li>
+<li>当提交 HTML 表单时</li>
+<li>当用户触发按键时</li>
+</ul>
+<p>点击事件示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;h1 onclick=&quot;this.innerHTML=&apos;Ooops!&apos;&quot;&gt;点击文本!&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>向 button 元素分配 onclick 事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;myBtn&quot;).onclick=function()&#123;displayDate()&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>onload事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;body onload=&quot;checkCookies()&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>onchange 事件:onchange 事件常结合对输入字段的验证来使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; id=&quot;fname&quot; onchange=&quot;upperCase()&quot;&gt;</span><br></pre></td></tr></table></figure></p>
+<p>onmouseover 和 onmouseout 事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div onmouseover=&quot;mOver(this)&quot; onmouseout=&quot;mOut(this)&quot; style=&quot;background-color:#D94A38;width:120px;height:20px;padding:40px;&quot;&gt;Mouse Over Me&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function mOver(obj)&#123;</span><br><span class="line">	obj.innerHTML=&quot;Thank You&quot;</span><br><span class="line">&#125;</span><br><span class="line">function mOut(obj)&#123;</span><br><span class="line">	obj.innerHTML=&quot;Mouse Over Me&quot;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="事件监听"><a href="#事件监听" class="headerlink" title="事件监听"></a>事件监听</h1><p>事件监听列表：<br><a href="http://www.runoob.com/jsref/dom-obj-event.html" target="_blank" rel="noopener">http://www.runoob.com/jsref/dom-obj-event.html</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;myBtn&quot;).addEventListener(&quot;click&quot;, displayDate);</span><br><span class="line">function displayDate() &#123;</span><br><span class="line">    document.getElementById(&quot;demo&quot;).innerHTML = Date();</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>removeEventListener() 方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">document.getElementById(&quot;myDIV&quot;).addEventListener(&quot;mousemove&quot;, myFunction);</span><br><span class="line">function myFunction() &#123;</span><br><span class="line">    document.getElementById(&quot;demo&quot;).innerHTML = Math.random();</span><br><span class="line">&#125;</span><br><span class="line">function removeHandler() &#123;</span><br><span class="line">    document.getElementById(&quot;myDIV&quot;).removeEventListener(&quot;mousemove&quot;, myFunction);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>createElement与createTextNode<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">var para = document.createElement(&quot;p&quot;);</span><br><span class="line">var node = document.createTextNode(&quot;这是一个新的段落。&quot;);</span><br><span class="line">para.appendChild(node);</span><br><span class="line"> </span><br><span class="line">var element = document.getElementById(&quot;div1&quot;);</span><br><span class="line">element.appendChild(para);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>appendChild 添加新节点、insertBefore 插入到开始位置、removeChild 删除子节点、</p>
+<h1 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h1><p>所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.document.getElementById(&quot;header&quot;);</span><br></pre></td></tr></table></figure></p>
+<p>其他 Window 方法<br>一些其他方法：</p>
+<ul>
+<li>window.open() - 打开新窗口</li>
+<li>window.close() - 关闭当前窗口</li>
+<li>window.moveTo() - 移动当前窗口</li>
+<li>window.resizeTo() - 调整当前窗口的尺寸</li>
+</ul>
+<p>Window Location Assign：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function newDoc()&#123;</span><br><span class="line">	window.location.assign(&quot;http://www.w3cschool.cc&quot;)</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Window History Back：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function goBack()</span><br><span class="line">    &#123;</span><br><span class="line">        window.history.back()</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Window History Forward：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function goForward()</span><br><span class="line">&#123;</span><br><span class="line">    window.history.forward()</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Window Navigator：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">txt = &quot;&lt;p&gt;浏览器代号: &quot; + navigator.appCodeName + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">txt+= &quot;&lt;p&gt;浏览器名称: &quot; + navigator.appName + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">txt+= &quot;&lt;p&gt;浏览器版本: &quot; + navigator.appVersion + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">txt+= &quot;&lt;p&gt;启用Cookies: &quot; + navigator.cookieEnabled + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">txt+= &quot;&lt;p&gt;硬件平台: &quot; + navigator.platform + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">txt+= &quot;&lt;p&gt;用户代理: &quot; + navigator.userAgent + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">txt+= &quot;&lt;p&gt;用户代理语言: &quot; + navigator.systemLanguage + &quot;&lt;/p&gt;&quot;;</span><br><span class="line">document.getElementById(&quot;example&quot;).innerHTML=txt;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="弹窗"><a href="#弹窗" class="headerlink" title="弹窗"></a>弹窗</h1><p>常用三种弹窗：</p>
+<p>警告框<br>window.alert(“sometext”);</p>
+<p>确认框<br>window.confirm(“sometext”);</p>
+<p>提示框<br>window.prompt(“sometext”,”defaultvalue”);</p>
+<h1 id="JavaScript-计时事件"><a href="#JavaScript-计时事件" class="headerlink" title="JavaScript 计时事件"></a>JavaScript 计时事件</h1><p>setInterval() 方法<br>setInterval() 间隔指定的毫秒数不停地执行指定的代码</p>
+<p>setInterval(function(){alert(“Hello”)},3000);</p>
+<p>clearInterval() 方法 停止执行<br>window.clearInterval(intervalVariable)</p>
+<p>setTimeout() 方法<br>setTimeout(function(){alert(“Hello”)},3000);</p>
+<h1 id="JavaScript-Cookie"><a href="#JavaScript-Cookie" class="headerlink" title="JavaScript Cookie"></a>JavaScript Cookie</h1><p>Cookie 用于存储 web 页面的用户信息。</p>
+<p>Cookie 是一些数据, 存储于你电脑上的文本文件中。</p>
+<p>当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。</p>
+<p>Cookie 的作用就是用于解决 “如何记录客户端的用户信息”:</p>
+<p>当用户访问 web 页面时，他的名字可以记录在 cookie 中。<br>在用户下一次访问该页面时，可以在 cookie 中读取用户访问记录。</p>
+<p>读取cookie<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x = document.cookie;</span><br></pre></td></tr></table></figure></p>
+<p>修改cookie<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie=&quot;username=John Smith; expires=Thu, 18 Dec 2043 12:00:00 GMT; path=/&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>删除cookie<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.cookie = &quot;username=; expires=Thu, 01 Jan 1970 00:00:00 GMT&quot;;</span><br></pre></td></tr></table></figure></p>
+<p>综合案例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">function setCookie(cname,cvalue,exdays)&#123;</span><br><span class="line">	var d = new Date();</span><br><span class="line">	d.setTime(d.getTime()+(exdays*24*60*60*1000));</span><br><span class="line">	var expires = &quot;expires=&quot;+d.toGMTString();</span><br><span class="line">	document.cookie = cname+&quot;=&quot;+cvalue+&quot;; &quot;+expires;</span><br><span class="line">&#125;</span><br><span class="line">function getCookie(cname)&#123;</span><br><span class="line">	var name = cname + &quot;=&quot;;</span><br><span class="line">	var ca = document.cookie.split(&apos;;&apos;);</span><br><span class="line">	for(var i=0; i&lt;ca.length; i++) &#123;</span><br><span class="line">		var c = ca[i].trim();</span><br><span class="line">		if (c.indexOf(name)==0) &#123; return c.substring(name.length,c.length); &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	return &quot;&quot;;</span><br><span class="line">&#125;</span><br><span class="line">function checkCookie()&#123;</span><br><span class="line">	var user=getCookie(&quot;username&quot;);</span><br><span class="line">	if (user!=&quot;&quot;)&#123;</span><br><span class="line">		alert(&quot;欢迎 &quot; + user + &quot; 再次访问&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	else &#123;</span><br><span class="line">		user = prompt(&quot;请输入你的名字:&quot;,&quot;&quot;);</span><br><span class="line">  		if (user!=&quot;&quot; &amp;&amp; user!=null)&#123;</span><br><span class="line">    		setCookie(&quot;username&quot;,user,30);</span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">	</span><br><span class="line">&lt;body onload=&quot;checkCookie()&quot;&gt;&lt;/body&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<h1 id="JQUERY、Prototype、MooTools"><a href="#JQUERY、Prototype、MooTools" class="headerlink" title="JQUERY、Prototype、MooTools"></a>JQUERY、Prototype、MooTools</h1><p>jQuery 是目前最受欢迎的 JavaScript 框架。它使用 CSS 选择器来访问和操作网页上的 HTML 元素（DOM 对象）。jQuery 同时提供 companion UI（用户界面）和插件。</p>
+<p>Prototype 是一种库，提供用于执行常见 web 任务的简单 API。API 是应用程序编程接口（Application Programming Interface）的缩写。它是包含属性和方法的库，用于操作 HTML DOM。Prototype 通过提供类和继承，实现了对 JavaScript 的增强。</p>
+<p>MooTools 也是一个框架，提供了可使常见的 JavaScript 编程更为简单的 API。MooTools 也含有一些轻量级的效果和动画函数。</p>
+<p>其他框架<br>下面是其他一些在上面未涉及的框架：</p>
+<p>YUI - Yahoo! User Interface Framework，涵盖大量函数的大型库，从简单的 JavaScript 功能到完整的 internet widget。</p>
+<p>Ext JS - 可定制的 widget，用于构建富因特网应用程序（rich Internet applications）。</p>
+<p>Dojo - 用于 DOM 操作、事件、widget 等的工具包。</p>
+<p>script.aculo.us - 开源的 JavaScript 框架，针对可视效果和界面行为。</p>
+<p>UIZE - Widget、AJAX、DOM、模板等等。</p>
+<h1 id="CDN-内容分发网络"><a href="#CDN-内容分发网络" class="headerlink" title="CDN -内容分发网络"></a>CDN -内容分发网络</h1><p>您总是希望网页可以尽可能地快。您希望页面的容量尽可能地小，同时您希望浏览器尽可能多地进行缓存。</p>
+<p>如果许多不同的网站使用相同的 JavaScript 框架，那么把框架库存放在一个通用的位置供每个网页分享就变得很有意义了。</p>
+<p>CDN (Content Delivery Network) 解决了这个问题。CDN 是包含可分享代码库的服务器网络。</p>
+<p>Google 为一系列 JavaScript 库提供了免费的 CDN，包括：</p>
+<ul>
+<li>jQuery</li>
+<li>Prototype</li>
+<li>MooTools</li>
+<li>Dojo</li>
+<li>Yahoo! YUI</li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/spring/" rel="tag">#spring</a>
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2000/04/13/web侠客行（二）--服务器通讯教程/" rel="prev">web侠客行（二）--服务器通讯教程</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0" style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image">
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始第一个js"><span class="nav-number">1.</span> <span class="nav-text">开始第一个js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html表单验证"><span class="nav-number">2.</span> <span class="nav-text">html表单验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DOM"><span class="nav-number">3.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#this关键字"><span class="nav-number">4.</span> <span class="nav-text">this关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#json"><span class="nav-number">5.</span> <span class="nav-text">json</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#js函数"><span class="nav-number">6.</span> <span class="nav-text">js函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-HTML-DOM-事件"><span class="nav-number">7.</span> <span class="nav-text">JavaScript HTML DOM 事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#事件监听"><span class="nav-number">8.</span> <span class="nav-text">事件监听</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOM"><span class="nav-number">9.</span> <span class="nav-text">BOM</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#弹窗"><span class="nav-number">10.</span> <span class="nav-text">弹窗</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-计时事件"><span class="nav-number">11.</span> <span class="nav-text">JavaScript 计时事件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-Cookie"><span class="nav-number">12.</span> <span class="nav-text">JavaScript Cookie</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JQUERY、Prototype、MooTools"><span class="nav-number">13.</span> <span class="nav-text">JQUERY、Prototype、MooTools</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CDN-内容分发网络"><span class="nav-number">14.</span> <span class="nav-text">CDN -内容分发网络</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </div></main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
