@@ -1,0 +1,1688 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="xxx" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人" />
+
+
+
+  <meta name="keywords" content="Hexo,Mala" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="自定义指令 Directive                                              .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middl">
+<meta name="keywords" content="剑神一笑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑神一笑的博客">
+<meta property="og:url" content="http://sylucky.github.io/2019/04/29/web侠客行（五）--Vue高级教程/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="自定义指令 Directive                                              .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middl">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-29T12:39:33.610Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑神一笑的博客">
+<meta name="twitter:description" content="自定义指令 Directive                                              .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middl">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title>  | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2019-04-29T20:35:25+08:00" content="2019-04-29">
+            2019-04-29
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html>
+    <html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>自定义指令 Directive</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <hr>
+<h2 id="title-web%E4%BE%A0%E5%AE%A2%E8%A1%8C%E4%BA%94--vue%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8Bdate-2000-04-13-050212tags--vue--appcategories--%E6%95%99%E7%A8%8B--web">title: web侠客行（五）--Vue高级教程
+date: 2000-04-13 05:02:12
+tags:
+- vue
+- app
+categories:
+- 教程
+- web</h2>
+<h1 id="%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4-directive">自定义指令 Directive</h1>
+<p>el.focus 聚焦元素，使用 v-focus
+其中，inserted是钩子函数</p>
+<h2 id="%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0">钩子函数</h2>
+<p>指令定义函数提供了几个钩子函数（可选）：
+• bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
+• inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document 中）。
+• update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
+• componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
+• unbind: 只调用一次， 指令与元素解绑时调用。</p>
+<h2 id="%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">钩子函数参数</h2>
+<p>接下来我们来看一下钩子函数的参数 (包括 el，binding，vnode，oldVnode) 。
+钩子函数被赋予了以下参数：
+• el: 指令所绑定的元素，可以用来直接操作 DOM 。
+• binding: 一个对象，包含以下属性： ◦ name: 指令名，不包括 v- 前缀。
+◦ value: 指令的绑定值， 例如： v-my-directive=&quot;1 + 1&quot;, value 的值是 2。
+◦ oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+◦ expression: 绑定值的字符串形式。 例如 v-my-directive=&quot;1 + 1&quot; ， expression 的值是 &quot;1 + 1&quot;。
+◦ arg: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 &quot;foo&quot;。
+◦ modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。</p>
+<p>• vnode: Vue 编译生成的虚拟节点，查阅 VNode API 了解更多详情。
+• oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。</p>
+<h2 id="%E6%B3%A8%E5%86%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6">注册自定义组件</h2>
+<p>当页面加载时，元素将获得焦点。事实上，你访问后还没点击任何内容，input 就获得了焦点。现在让我们完善这个指令：</p>
+<pre><code><div>// 注册一个全局自定义指令 v-focus
+&lt;input type=&quot;text&quot; name=&quot;&quot; id=&quot;&quot; value=&quot;&quot; v-focus/&gt;
+
+Vue.directive('focus', {
+  // 当绑定元素插入到 DOM 中。
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+</div></code></pre>
+<p>也可以注册局部指令，组件中接受一个 directives 的选项：</p>
+<p>directives: {
+focus: {
+// 指令的定义---
+}
+}</p>
+<p>然后你可以在模板中任何元素上使用新的 v-focus 属性：</p>
+<h2 id="%E4%BD%BF%E7%94%A8%E9%92%A9%E5%AD%90%E6%A0%B7%E4%BE%8B">使用钩子样例</h2>
+<pre><code><div>&lt;div id=&quot;hook-arguments-example&quot; v-demo:hello.a.b=&quot;message&quot;&gt;&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.directive('demo', {
+        bind: function (el, binding, vnode) {
+        var s = JSON.stringify
+        el.innerHTML =
+            'name: '       + s(binding.name) + '&lt;br&gt;' +
+            'value: '      + s(binding.value) + '&lt;br&gt;' +
+            'expression: ' + s(binding.expression) + '&lt;br&gt;' +
+            'argument: '   + s(binding.arg) + '&lt;br&gt;' +
+            'modifiers: '  + s(binding.modifiers) + '&lt;br&gt;' +
+            'vnode keys: ' + Object.keys(vnode).join(', ')
+        }
+    })
+                
+    var vm = new Vue({
+        el: '#hook-arguments-example',
+        data: {
+        message: 'hello!'
+        }
+    })
+&lt;/script&gt;
+</div></code></pre>
+<p>页面显示结果</p>
+<pre><code><div>name: &quot;demo&quot;
+value: &quot;hello!&quot;
+expression: &quot;message&quot;
+argument: &quot;hello&quot;
+modifiers: {&quot;a&quot;:true,&quot;b&quot;:true}
+vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder
+</div></code></pre>
+<h2 id="%E5%87%BD%E6%95%B0%E7%AE%80%E5%86%99">函数简写</h2>
+<p>大多数情况下，我们可能想在 bind 和 update 钩子上做重复动作，并且不想关心其它的钩子函数。可以这样写:</p>
+<pre><code><div>Vue.directive('color-swatch', function (el, binding) {
+  el.style.backgroundColor = binding.value
+})
+</div></code></pre>
+<h2 id="%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F">对象字面量</h2>
+<p>如果指令需要多个值，可以传入一个 JavaScript 对象字面量。记住，指令函数能够接受所有合法类型的 Javascript 表达式。</p>
+<pre><code><div>&lt;div v-demo=&quot;{ color: 'white', text: 'hello!' }&quot;&gt;&lt;/div&gt;
+
+Vue.directive('demo', function (el, binding) {
+  console.log(binding.value.color) // =&gt; &quot;white&quot;
+  console.log(binding.value.text)  // =&gt; &quot;hello!&quot;
+})
+</div></code></pre>
+<h1 id="render%E5%87%BD%E6%95%B0">Render函数</h1>
+<p>需要 JavaScript 的完全编程的能力，这就是 render 函数，它比 template 更接近编译器。可以理解为动态模板
+script type 扩展，可以用 type=&quot;text/x-template&quot;代表模板</p>
+<pre><code><div>&lt;script type=&quot;text/x-template&quot; id=&quot;anchored-heading-template&quot;&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+</div></code></pre>
+<p>而可以直接用模板的id引入模板</p>
+<pre><code><div>Vue.component('anchored-heading', {
+    template: '#anchored-heading-template',
+    props: {
+    level: {
+        type: Number,
+        required: true
+    }
+    }
+})
+</div></code></pre>
+<h2 id="render%E7%A4%BA%E4%BE%8B">render示例</h2>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+    &lt;anchored-heading :level=&quot;1&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;2&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;3&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;4&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;5&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;6&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/x-template&quot; id=&quot;anchored-heading-template&quot;&gt;
+    &lt;div&gt;
+    &lt;h1 v-if=&quot;level === 1&quot;&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/h1&gt;
+    &lt;h2 v-if=&quot;level === 2&quot;&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/h2&gt;
+    &lt;h3 v-if=&quot;level === 3&quot;&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/h3&gt;
+    &lt;h4 v-if=&quot;level === 4&quot;&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/h4&gt;
+    &lt;h5 v-if=&quot;level === 5&quot;&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/h5&gt;
+    &lt;h6 v-if=&quot;level === 6&quot;&gt;
+        &lt;slot&gt;&lt;/slot&gt;
+    &lt;/h6&gt;
+    &lt;/div&gt;
+&lt;/script&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('anchored-heading', {
+        template: '#anchored-heading-template',
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    })
+    
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</div></code></pre>
+<h2 id="props%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95">props高级用法</h2>
+<p>props用对象表示的时候，表示对值的限定，例如</p>
+<pre><code><div>props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  }
+</div></code></pre>
+<p>限定level是数字并有默认值。</p>
+<h2 id="createelement">createElement</h2>
+<p>在 createElement 函数中生成模板。这里是 createElement 接受的参数：</p>
+<pre><code><div>// @returns {VNode}
+createElement(
+  // {String | Object | Function}
+  // 一个 HTML 标签，组件设置，或一个函数
+  // 必须 Return 上述其中一个
+  'div',
+  // {Object}
+  // 一个对应属性的数据对象
+  // 您可以在 template 中使用.可选项.
+  {
+    // (下一章，将详细说明相关细节)
+  },
+  // {String | Array}
+  // 子节点(VNodes). 可选项.
+  [
+    createElement('h1', 'hello world'),
+    createElement(MyComponent, {
+      props: {
+        someProp: 'foo'
+      }
+    }),
+    'bar'
+  ]
+)
+</div></code></pre>
+<h2 id="render%E5%87%BD%E6%95%B0%E7%A4%BA%E4%BE%8B">render函数示例</h2>
+<pre><code><div>Vue.component('anchored-heading', {
+  render: function (createElement) {
+    return createElement(
+      'h' + this.level,   // tag name 标签名称
+      this.$slots.default // 子组件中的阵列
+    )
+  },
+  props: {
+    level: {
+      type: Number,
+      required: true
+    }
+  }
+})
+</div></code></pre>
+<h2 id="%E5%AE%8C%E6%95%B4%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1">完整数据对象</h2>
+<p>有一件事要注意：在 templates 中，v-bind:class 和 v-bind:style ，会有特别的处理，他们在 VNode 数据对象中，为最高级配置。</p>
+<pre><code><div>{
+  // 和`v-bind:class`一样的 API
+  'class': {
+    foo: true,
+    bar: false
+  },
+  // 和`v-bind:style`一样的 API
+  style: {
+    color: 'red',
+    fontSize: '14px'
+  },
+  // 正常的 HTML 特性
+  attrs: {
+    id: 'foo'
+  },
+  // 组件 props
+  props: {
+    myProp: 'bar'
+  },
+  // DOM 属性
+  domProps: {
+    innerHTML: 'baz'
+  },
+  // 事件监听器基于 &quot;on&quot;
+  // 所以不再支持如 v-on:keyup.enter 修饰器
+  // 需要手动匹配 keyCode。
+  on: {
+    click: this.clickHandler
+  },
+  // 仅对于组件，用于监听原生事件，而不是组件使用 vm.$emit 触发的事件。
+  nativeOn: {
+    click: this.nativeClickHandler
+  },
+  // 自定义指令. 注意事项：不能对绑定的旧值设值
+  // Vue 会为您持续追踨
+  directives: [
+    {
+      name: 'my-custom-directive',
+      value: '2'
+      expression: '1 + 1',
+      arg: 'foo',
+      modifiers: {
+        bar: true
+      }
+    }
+  ],
+  // 如果子组件有定义 slot 的名称
+  slot: 'name-of-slot'
+  // 其他特殊顶层属性
+  key: 'myKey',
+  ref: 'myRef'
+}
+</div></code></pre>
+<h2 id="%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B">完整示例</h2>
+<p>有了这方面的知识，我们现在可以完成我们最开始想实现的组件：
+this.$slots.default，当你不使用 slot 属性向组件中传递内容时，比如 anchored-heading 中的 Hello world!, 这些子元素被存储在组件实例中的 $slots.default中。</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;    
+    &lt;anchored-heading :level=&quot;1&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;2&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;3&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;4&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;5&quot;&gt;Hello world!&lt;/anchored-heading&gt;
+    &lt;anchored-heading :level=&quot;6&quot;&gt;Hello world!&lt;/anchored-heading&gt;    
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var getChildrenTextContent = function (children) {
+        return children.map(function (node) {
+        return node.children
+            ? getChildrenTextContent(node.children)
+            : node.text
+        }).join('')
+    }
+    Vue.component('anchored-heading', {
+        render: function (createElement) {
+        // create kebabCase id
+        var headingId = getChildrenTextContent(this.$slots.default)
+            // 转换小写
+            .toLowerCase()
+            // 空格转换 -
+            .replace(/\W+/g, '-')
+            //其他转换 空
+            .replace(/(^\-|\-$)/g, '')
+        return createElement(
+            // 第一个参数 h1 - h6
+            'h' + this.level,
+            // 第二个参数空
+            // 第三个参数 在h1 节点中增加a子节点，子节点属性 attrs，子节点的值用 this.$slots.default 取回来 
+            [
+            createElement('a', {
+                attrs: {
+                name: headingId,
+                href: '#' + headingId
+                }
+            }, this.$slots.default)
+            ]
+        )
+        },
+        props: {
+        level: {
+            type: Number,
+            required: true
+        }
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</div></code></pre>
+<h2 id="vnodes-%E5%BF%85%E9%A1%BB%E5%94%AF%E4%B8%80">VNodes 必须唯一</h2>
+<p>所有组件树中的 VNodes 必须唯一。这意味着，下面的 render function 是无效的：</p>
+<pre><code><div>render: function (createElement) {
+  var myParagraphVNode = createElement('p', 'hi')
+  return createElement('div', [
+    // Yikes - duplicate VNodes!
+    myParagraphVNode, myParagraphVNode
+  ])
+}
+</div></code></pre>
+<p>如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这个例子 render 函数完美有效地渲染了 20 个重复的段落：</p>
+<pre><code><div>render: function (createElement) {
+  return createElement('div',
+    Array.apply(null, { length: 20 }).map(function () {
+      return createElement('p', 'hi')
+    })
+  )
+}
+</div></code></pre>
+<h2 id="%E9%87%8D%E5%A4%8D%E7%A4%BA%E4%BE%8B">重复示例</h2>
+<p>div中重复20次 p</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+    &lt;anchored-heading&gt;Hello world!&lt;/anchored-heading&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+    Vue.component('anchored-heading', {
+        render: function(createElement) {
+            return createElement('div',
+                Array.apply(null, {
+                    length: 20
+                }).map(function() {
+                    return createElement('p', 'hi')
+                    // 增加属性对象的写法
+                    // return createElement('p', {
+					//			style: {
+					//				color: 'red'
+					//			}
+					//		},
+					//		'hi')
+                })
+            )
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app'
+    })
+&lt;/script&gt;
+</div></code></pre>
+<h2 id="%E4%BD%BF%E7%94%A8-javascript-%E4%BB%A3%E6%9B%BF%E6%A8%A1%E6%9D%BF%E5%8A%9F%E8%83%BD">使用 JavaScript 代替模板功能</h2>
+<p>无论什么都可以使用原生的 JavaScript 来实现，Vue 的 render 函数不会提供专用的 API。比如， template 中的 v-if 和 v-for:</p>
+<pre><code><div>&lt;ul v-if=&quot;items.length&quot;&gt;
+  &lt;li v-for=&quot;item in items&quot;&gt;{{ item.name }}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p v-else&gt;No items found.&lt;/p&gt;
+</div></code></pre>
+<p>这些都会在 render 函数中被 JavaScript 的 if/else 和 map 重写：</p>
+<pre><code><div>render: function (createElement) {
+  if (this.items.length) {
+    return createElement('ul', this.items.map(function (item) {
+      return createElement('li', item.name)
+    }))
+  } else {
+    return createElement('p', 'No items found.')
+  }
+}
+</div></code></pre>
+<h2 id="jsx">JSX</h2>
+<p>如果你写了很多 render 函数，可能会觉得痛苦：</p>
+<pre><code><div>createElement(
+  'anchored-heading', {
+    props: {
+      level: 1
+    }
+  }, [
+    createElement('span', 'Hello'),
+    ' world!'
+  ]
+)
+</div></code></pre>
+<p>特别是模板如此简单的情况下：</p>
+<pre><code><div>&lt;anchored-heading :level=&quot;1&quot;&gt;
+  &lt;span&gt;Hello&lt;/span&gt; world!
+&lt;/anchored-heading&gt;
+</div></code></pre>
+<p>这就是会有一个 Babel plugin 插件，用于在 Vue 中使用 JSX 语法的原因，它可以让我们回到于更接近模板的语法上。</p>
+<pre><code><div>import AnchoredHeading from './AnchoredHeading.vue'
+new Vue({
+  el: '#demo',
+  render (h) {
+    return (
+      &lt;AnchoredHeading level={1}&gt;
+        &lt;span&gt;Hello&lt;/span&gt; world!
+      &lt;/AnchoredHeading&gt;
+    )
+  }
+})
+</div></code></pre>
+<p>将 h 作为 createElement 的别名是一个通用惯例，你会发现在 Vue 生态系统中，实际上必须用到 JSX，如果在作用域中 h 失去作用， 在应用中会触发报错。
+示例</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+    &lt;anchored-heading&gt;Hello world!&lt;/anchored-heading&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+    new Vue({
+        el: '#app',
+        data: {
+            level: 1,
+            type: 'button'
+        },
+        render(h) {
+            return h(
+                // 第一个参数 input 元素
+                'input',
+                // 第二个参数 type为button
+                {
+                attrs: {
+                    type: 'button',
+                    value: 'btn'
+                }
+                },
+                // 第三个参数 空
+                ''
+            )
+        }
+    })
+&lt;/script&gt;
+</div></code></pre>
+<h2 id="%E5%87%BD%E6%95%B0%E5%8C%96%E7%BB%84%E4%BB%B6-functional">函数化组件 functional</h2>
+<p>之前创建的锚点标题组件是比较简单，没有管理或者监听任何传递给他的状态，也没有生命周期方法。它只是一个接收参数的函数。
+在这个例子中，我们标记组件为 functional， 这意味它是无状态（没有 data），无实例（没有 this 上下文）。
+一个 函数化组件 就像这样：</p>
+<p>Vue.component('my-component', {
+functional: true,
+// 为了弥补缺少的实例
+// 提供第二个参数作为上下文
+render: function (createElement, context) {
+// ...
+},
+// Props 可选
+props: {
+// ...
+}
+})</p>
+<p>组件需要的一切都是通过上下文传递，包括：
+• props: 提供props 的对象
+• children: VNode 子节点的数组
+• slots: slots 对象
+• data: 传递给组件的 data 对象
+• parent: 对父组件的引用</p>
+<p>在添加 functional: true 之后，锚点标题组件的 render 函数之间简单更新增加 context 参数，this.$slots.default 更新为 context.children，之后this.level 更新为 context.props.level。</p>
+<p>函数化组件只是一个函数，所以渲染开销也低很多。但同样它也有完整的组件封装，你需要知道这些， 比如：
+• 程序化地在多个组件中选择一个
+• 在将 children, props, data 传递给子组件之前操作它们。</p>
+<p>下面是一个依赖传入 props 的值的 smart-list 组件例子，它能代表更多具体的组件：</p>
+<pre><code><div>var EmptyList = { /* ... */ }
+var TableList = { /* ... */ }
+var OrderedList = { /* ... */ }
+var UnorderedList = { /* ... */ }
+Vue.component('smart-list', {
+  functional: true,
+  render: function (createElement, context) {
+    function appropriateListComponent () {
+      var items = context.props.items
+      if (items.length === 0)           return EmptyList
+      if (typeof items[0] === 'object') return TableList
+      if (context.props.isOrdered)      return OrderedList
+      return UnorderedList
+    }
+    return createElement(
+      appropriateListComponent(),
+      context.data,
+      context.children
+    )
+  },
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+    isOrdered: Boolean
+  }
+})
+</div></code></pre>
+<h2 id="slots-%E5%92%8C-children-%E5%AF%B9%E6%AF%94">slots() 和 children 对比</h2>
+<p>你可能想知道为什么同时需要 slots() 和 children。slots().default 不是和 children 类似的吗？在一些场景中，是这样，但是如果是函数式组件和下面这样的 children 呢？</p>
+<pre><code><div>&lt;my-functional-component&gt;
+  &lt;p slot=&quot;foo&quot;&gt;
+    first
+  &lt;/p&gt;
+  &lt;p&gt;second&lt;/p&gt;
+&lt;/my-functional-component&gt;
+</div></code></pre>
+<p>对于这个组件，children 会给你两个段落标签，而 slots().default 只会传递第二个匿名段落标签，slots().foo 会传递第一个具名段落标签。同时拥有 children 和 slots() ，因此你可以选择让组件通过 slot() 系统分发或者简单的通过 children 接收，让其他组件去处理。</p>
+<h1 id="%E6%8F%92%E4%BB%B6">插件</h1>
+<h2 id="%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6">开发插件</h2>
+<p>插件通常会为Vue添加全局功能。插件的范围没有限制——一般有下面几种：</p>
+<ol>
+<li>
+<p>添加全局方法或者属性，如: vue-element</p>
+</li>
+<li>
+<p>添加全局资源：指令/过滤器/过渡等，如 vue-touch</p>
+</li>
+<li>
+<p>通过全局 mixin方法添加一些组件选项，如: vuex</p>
+</li>
+<li>
+<p>添加 Vue 实例方法，通过把它们添加到 Vue.prototype 上实现。</p>
+</li>
+<li>
+<p>一个库，提供自己的 API，同时提供上面提到的一个或多个功能，如 vue-router</p>
+</li>
+</ol>
+<p>Vue.js 的插件应当有一个公开方法 install 。这个方法的第一个参数是 Vue 构造器 , 第二个参数是一个可选的选项对象:</p>
+<pre><code><div>MyPlugin.install = function (Vue, options) {
+  // 1. 添加全局方法或属性
+  Vue.myGlobalMethod = function () {
+    // 逻辑...
+  }
+  // 2. 添加全局资源
+  Vue.directive('my-directive', {
+    bind (el, binding, vnode, oldVnode) {
+      // 逻辑...
+    }
+    ...
+  })
+  // 3. 注入组件
+  Vue.mixin({
+    created: function () {
+      // 逻辑...
+    }
+    ...
+  })
+  // 4. 添加事例方法
+  Vue.prototype.$myMethod = function (options) {
+    // 逻辑...
+  }
+}
+</div></code></pre>
+<h2 id="%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6">使用插件</h2>
+<p>通过全局方法 Vue.use() 使用插件:</p>
+<pre><code><div>// 调用 `MyPlugin.install(Vue)`
+Vue.use(MyPlugin)
+
+也可以传入一个选项对象: 
+
+Vue.use(MyPlugin, { someOption: true })
+
+Vue.use 会自动阻止注册相同插件多次，届时只会注册一次该插件。 
+
+一些插件，如 vue-router 如果 Vue 是全局变量则自动调用 Vue.use() 。不过在模块环境中应当始终显式调用 Vue.use() : 
+
+// 通过 Browserify 或 Webpack 使用 CommonJS 兼容模块
+var Vue = require('vue')
+var VueRouter = require('vue-router')
+// 不要忘了调用此方法
+Vue.use(VueRouter)
+</div></code></pre>
+<p>awesome-vue 集合了来自社区贡献的数以千计的插件和库。</p>
+<h2 id="letconst%E4%B8%8Evar%E7%9A%84%E5%8C%BA%E5%88%AB">let,const与var的区别</h2>
+<p>let：作用域为代码块内
+const：只读，必须立即初始化，作用域为代码块内。常量不可更改，对象可以更改
+var：变量提升，可以先使用后申明</p>
+<h1 id="%E8%B7%AF%E7%94%B1-vue-router">路由 vue-router</h1>
+<h2 id="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%AF%E7%94%B1">从零开始简单的路由</h2>
+<p>如果只需要非常简单的路由而不需要引入整个路由库，可以动态渲染一个页面级的组件像这样：</p>
+<pre><code><div>const NotFound = { template: '&lt;p&gt;Page not found&lt;/p&gt;' }
+const Home = { template: '&lt;p&gt;home page&lt;/p&gt;' }
+const About = { template: '&lt;p&gt;about page&lt;/p&gt;' }
+const routes = {
+  '/': Home,
+  '/about': About
+}
+new Vue({
+  el: '#app',
+  data: {
+    currentRoute: window.location.pathname
+  },
+  computed: {
+    ViewComponent () {
+      return routes[this.currentRoute] || NotFound
+    }
+  },
+  render (h) { return h(this.ViewComponent) }
+})
+</div></code></pre>
+<p>结合HTML5 History API，你可以建立一个非常基本但功能齐全的客户端路由器。可以直接看实例应用</p>
+<p>整合第三方路由</p>
+<p>如果有非常喜欢的第三方路由，如Page.js或者 Director, 整合很简单。 这有个用了Page.js的复杂示例 。</p>
+<h2 id="%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE">新建项目</h2>
+<p>vuetest为项目名</p>
+<pre><code><div>vue init webpack vuetest
+</div></code></pre>
+<h2 id="%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">安装依赖</h2>
+<p>安装sass:</p>
+<pre><code><div>cnpm install node-sass --save-dev
+cnpm install sass-loader --save-dev
+</div></code></pre>
+<p>安装vuex:</p>
+<pre><code><div>cnpm install vuex --save
+</div></code></pre>
+<h2 id="vue-router">vue-router</h2>
+<p>router-link 组件支持用户在具有路由功能的应用中 (点击) 导航。 通过 to 属性指定目标地址，默认渲染成带有正确链接的 a 标签，可以通过配置 tag 属性生成别的标签.。另外，当目标路由成功激活时，链接元素自动设置一个表示激活的 CSS 类名。</p>
+<h2 id="%E5%B0%86%E6%BF%80%E6%B4%BB-class-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%A4%96%E5%B1%82%E5%85%83%E7%B4%A0">将激活 class 应用在外层元素</h2>
+<pre><code><div>&lt;router-link tag=&quot;li&quot; to=&quot;/foo&quot;&gt;
+  &lt;a&gt;/foo&lt;/a&gt;
+&lt;/router-link&gt;
+</div></code></pre>
+<h2 id="to">to</h2>
+<p>表示目标路由的链接。当被点击后，内部会立刻把 to 的值传到 router.push()，所以这个值可以是一个字符串或者是描述目标位置的对象。</p>
+<pre><code><div>&lt;!-- 字符串 --&gt;
+&lt;router-link to=&quot;home&quot;&gt;Home&lt;/router-link&gt;
+&lt;!-- 渲染结果 --&gt;
+&lt;a href=&quot;home&quot;&gt;Home&lt;/a&gt;
+
+&lt;!-- 使用 v-bind 的 JS 表达式 --&gt;
+&lt;router-link v-bind:to=&quot;'home'&quot;&gt;Home&lt;/router-link&gt;
+
+&lt;!-- 不写 v-bind 也可以，就像绑定别的属性一样 --&gt;
+&lt;router-link :to=&quot;'home'&quot;&gt;Home&lt;/router-link&gt;
+
+&lt;!-- 同上 --&gt;
+&lt;router-link :to=&quot;{ path: 'home' }&quot;&gt;Home&lt;/router-link&gt;
+
+&lt;!-- 命名的路由 --&gt;
+&lt;router-link :to=&quot;{ name: 'user', params: { userId: 123 }}&quot;&gt;User&lt;/router-link&gt;
+
+&lt;!-- 带查询参数，下面的结果为 /register?plan=private --&gt;
+&lt;router-link :to=&quot;{ path: 'register', query: { plan: 'private' }}&quot;&gt;Register&lt;/router-link&gt;
+</div></code></pre>
+<h1 id="vue-resource">vue-resource</h1>
+<pre><code><div>1、安装依赖包
+cnpm install vue-resource --save
+2、进行ajax请求
+{
+  // GET /someUrl
+  this.$http.get('/someUrl').then(response =&gt; {
+
+    // get body data
+    this.someData = response.body;
+
+  }, response =&gt; {
+    // error callback
+  });
+}
+</div></code></pre>
+<h1 id="vuex-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86">vuex 状态管理</h1>
+<p>mapState mapActions
+weex 与 vue</p>
+<h1 id="vuejs-%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6">Vue.js 使用插件</h1>
+<h2 id="vuejs-%E4%BD%BF%E7%94%A8sass">Vue.js 使用sass</h2>
+<pre><code><div>1、安装sass依赖包
+cnpm install --save-dev sass-loader
+//sass-loader依赖于node-sass
+cnpm install --save-dev node-sass
+
+2、在build文件夹下的webpack.base.conf.js的rules里面添加配置
+{
+  test: /\.sass$/,
+  loaders: ['style', 'css', 'sass']
+}
+
+3、在APP.vue中修改style标签
+&lt;style lang=&quot;scss&quot;&gt;
+</div></code></pre>
+<h2 id="vuejs-%E4%BD%BF%E7%94%A8less">Vue.js 使用less</h2>
+<pre><code><div>1、安装less依赖包
+cnpm install less less-loader --save
+
+2、修改webpack.config.js文件，配置loader加载依赖，让其支持外部的less,在原来的代码上添加
+{
+    test: /\.less$/,
+    loader: &quot;style-loader!css-loader!less-loader&quot;,
+},
+
+3、在APP.vue中修改style标签
+&lt;style lang=&quot;less&quot;&gt;
+</div></code></pre>
+
+    </body>
+    </html></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2999/04/13/资源宇宙--持续更新/" rel="prev">资源宇宙--持续更新</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/29/web侠客行（四）--Vue基础教程/" rel="next"></a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-web%E4%BE%A0%E5%AE%A2%E8%A1%8C%E4%BA%94--vue%E9%AB%98%E7%BA%A7%E6%95%99%E7%A8%8Bdate-2000-04-13-050212tags--vue--appcategories--%E6%95%99%E7%A8%8B--web"><span class="nav-number">1.</span> <span class="nav-text">title: web侠客行（五）--Vue高级教程
+date: 2000-04-13 05:02:12
+tags:
+- vue
+- app
+categories:
+- 教程
+- web</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4-directive"><span class="nav-number"></span> <span class="nav-text">自定义指令 Directive</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">钩子函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">钩子函数参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">注册自定义组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%92%A9%E5%AD%90%E6%A0%B7%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">使用钩子样例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E7%AE%80%E5%86%99"><span class="nav-number">5.</span> <span class="nav-text">函数简写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">6.</span> <span class="nav-text">对象字面量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#render%E5%87%BD%E6%95%B0"><span class="nav-number"></span> <span class="nav-text">Render函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#render%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">render示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#props%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">props高级用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#createelement"><span class="nav-number">3.</span> <span class="nav-text">createElement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#render%E5%87%BD%E6%95%B0%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">render函数示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">5.</span> <span class="nav-text">完整数据对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E7%A4%BA%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">完整示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vnodes-%E5%BF%85%E9%A1%BB%E5%94%AF%E4%B8%80"><span class="nav-number">7.</span> <span class="nav-text">VNodes 必须唯一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%A4%8D%E7%A4%BA%E4%BE%8B"><span class="nav-number">8.</span> <span class="nav-text">重复示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-javascript-%E4%BB%A3%E6%9B%BF%E6%A8%A1%E6%9D%BF%E5%8A%9F%E8%83%BD"><span class="nav-number">9.</span> <span class="nav-text">使用 JavaScript 代替模板功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jsx"><span class="nav-number">10.</span> <span class="nav-text">JSX</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8C%96%E7%BB%84%E4%BB%B6-functional"><span class="nav-number">11.</span> <span class="nav-text">函数化组件 functional</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#slots-%E5%92%8C-children-%E5%AF%B9%E6%AF%94"><span class="nav-number">12.</span> <span class="nav-text">slots() 和 children 对比</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number"></span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%8F%92%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">开发插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">使用插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#letconst%E4%B8%8Evar%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">3.</span> <span class="nav-text">let,const与var的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1-vue-router"><span class="nav-number"></span> <span class="nav-text">路由 vue-router</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%AF%E7%94%B1"><span class="nav-number">1.</span> <span class="nav-text">从零开始简单的路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="nav-number">3.</span> <span class="nav-text">安装依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-router"><span class="nav-number">4.</span> <span class="nav-text">vue-router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%86%E6%BF%80%E6%B4%BB-class-%E5%BA%94%E7%94%A8%E5%9C%A8%E5%A4%96%E5%B1%82%E5%85%83%E7%B4%A0"><span class="nav-number">5.</span> <span class="nav-text">将激活 class 应用在外层元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#to"><span class="nav-number">6.</span> <span class="nav-text">to</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-resource"><span class="nav-number"></span> <span class="nav-text">vue-resource</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vuex-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number"></span> <span class="nav-text">vuex 状态管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vuejs-%E4%BD%BF%E7%94%A8%E6%8F%92%E4%BB%B6"><span class="nav-number"></span> <span class="nav-text">Vue.js 使用插件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#vuejs-%E4%BD%BF%E7%94%A8sass"><span class="nav-number">1.</span> <span class="nav-text">Vue.js 使用sass</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vuejs-%E4%BD%BF%E7%94%A8less"><span class="nav-number">2.</span> <span class="nav-text">Vue.js 使用less</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

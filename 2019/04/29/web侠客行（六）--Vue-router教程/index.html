@@ -1,0 +1,1579 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="xxx" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人" />
+
+
+
+  <meta name="keywords" content="Hexo,Mala" />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="Vue-router quick start                                              .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align">
+<meta name="keywords" content="剑神一笑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="剑神一笑的博客">
+<meta property="og:url" content="http://sylucky.github.io/2019/04/29/web侠客行（六）--Vue-router教程/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="Vue-router quick start                                              .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-29T12:40:20.014Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="剑神一笑的博客">
+<meta name="twitter:description" content="Vue-router quick start                                              .task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title>  | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2019-04-29T20:25:34+08:00" content="2019-04-29">
+            2019-04-29
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><!DOCTYPE html>
+    <html>
+    <head><meta name="generator" content="Hexo 3.8.0">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Vue-router quick start</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <hr>
+<h2 id="title-web%E4%BE%A0%E5%AE%A2%E8%A1%8C%E5%85%AD--vue-router%E6%95%99%E7%A8%8Bdate-2000-04-13-060212tags--vue--app--vue-routercategories--%E6%95%99%E7%A8%8B--web">title: web侠客行（六）--Vue-router教程
+date: 2000-04-13 06:02:12
+tags:
+- vue
+- app
+- vue-router
+categories:
+- 教程
+- web</h2>
+<h1 id="vue-router-quick-start">Vue-router quick start</h1>
+<h2 id="1%E5%BC%95%E5%85%A5js">1.引入js</h2>
+<pre><code><div>&lt;script src=&quot;js/vue.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/vue-router.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+</div></code></pre>
+<h2 id="2%E5%AE%9A%E4%B9%89%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6">2.定义路由组件</h2>
+<pre><code><div>const Foo = { template: '&lt;div&gt;foo&lt;/div&gt;' }
+const Bar = { template: '&lt;div&gt;bar&lt;/div&gt;' }
+</div></code></pre>
+<h2 id="3%E5%88%9B%E5%BB%BA%E8%B7%AF%E7%94%B1-router">3.创建路由 router</h2>
+<pre><code><div>const routes = [
+			  { path: '/foo', component: Foo },
+			  { path: '/bar', component: Bar }
+			]
+</div></code></pre>
+<h2 id="4%E5%88%9B%E5%BB%BA-router-%E5%AE%9E%E4%BE%8B%E7%84%B6%E5%90%8E%E4%BC%A0-routes-%E9%85%8D%E7%BD%AE">4.创建 router 实例，然后传 <code>routes</code> 配置</h2>
+<p>其中，routes: routes 可以缩写成 routes</p>
+<pre><code><div>const router = new VueRouter({
+  routes: routes
+})
+</div></code></pre>
+<h2 id="5%E5%88%9B%E5%BB%BA%E5%92%8C%E6%8C%82%E8%BD%BD%E6%A0%B9%E5%AE%9E%E4%BE%8B">5.创建和挂载根实例。</h2>
+<pre><code><div>const app = new Vue({
+			  router: router,
+			  el: '#app'
+			})
+</div></code></pre>
+<h2 id="6html%E8%B6%85%E9%93%BE%E6%8E%A5-router-link">6.html超链接 router-link</h2>
+<p>router-link 代替 a-href ，用 to 属性指定 path</p>
+<pre><code><div>&lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
+&lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;
+</div></code></pre>
+<h2 id="7%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E6%B8%B2%E6%9F%93-router-view">7.路由组件渲染 router-view</h2>
+<p>router-view 相当与 路由模板</p>
+<pre><code><div>&lt;router-view&gt;&lt;/router-view&gt;
+</div></code></pre>
+<h2 id="8%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B">8.代码示例</h2>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+  &lt;h1&gt;Hello App!&lt;/h1&gt;
+  &lt;p&gt;
+    &lt;!-- 使用 router-link 组件来导航. --&gt;
+    &lt;!-- 通过传入 `to` 属性指定链接. --&gt;
+    &lt;!-- &lt;router-link&gt; 默认会被渲染成一个 `&lt;a&gt;` 标签 --&gt;
+    &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;
+    &lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;
+  &lt;/p&gt;
+  &lt;!-- 路由出口 --&gt;
+  &lt;!-- 路由匹配到的组件将渲染在这里 --&gt;
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+  // 0. 如果使用模块化机制编程， 要调用 Vue.use(VueRouter)
+    
+  // 1. 定义（路由）组件。
+  // 可以从其他文件 import 进来
+  const Foo = { template: '&lt;div&gt;foo&lt;/div&gt;' }
+  const Bar = { template: '&lt;div&gt;bar&lt;/div&gt;' }
+  
+  // 2. 定义路由
+  // 每个路由应该映射一个组件。 其中&quot;component&quot; 可以是
+  // 通过 Vue.extend() 创建的组件构造器，
+  // 或者，只是一个组件配置对象。
+  // 我们晚点再讨论嵌套路由。
+  const routes = [
+    { path: '/foo', component: Foo },
+    { path: '/bar', component: Bar }
+  ]
+    
+  // 3. 创建 router 实例，然后传 `routes` 配置
+  // 你还可以传别的配置参数, 不过先这么简单着吧。
+  const router = new VueRouter({
+    routes: routes // （缩写）routes
+  })
+    
+  // 4. 创建和挂载根实例。
+  // 记得要通过 router 配置参数注入路由，
+  // 从而让整个应用都有路由功能
+  const app = new Vue({
+    router: router,
+    el: '#app'
+  })
+    
+&lt;/script&gt;
+</div></code></pre>
+<h1 id="vue-router-%E5%AE%89%E8%A3%85">vue-router 安装</h1>
+<h2 id="%E5%9C%A8-vue-%E5%90%8E%E9%9D%A2%E5%8A%A0%E8%BD%BD-vue-router">在 Vue 后面加载 vue-router</h2>
+<pre><code><div>&lt;script src=&quot;/path/to/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;/path/to/vue-router.js&quot;&gt;&lt;/script&gt;
+</div></code></pre>
+<h2 id="npm-install">NPM install</h2>
+<pre><code><div>npm install vue-router 
+</div></code></pre>
+<h2 id="%E6%A8%A1%E5%9D%97%E5%8C%96%E5%B7%A5%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8-import-%E5%92%8C-vueuse">模块化工程中使用 import 和 Vue.use</h2>
+<p>如果在一个模块化工程中使用它，必须要通过 Vue.use() 明确地安装路由功能：</p>
+<pre><code><div>import Vue from 'vue'
+import VueRouter from 'vue-router'
+ 
+Vue.use(VueRouter)
+</div></code></pre>
+<p>如果使用全局的 script 标签，则无须如此（手动安装）。</p>
+<h2 id="%E6%9E%84%E5%BB%BA%E5%BC%80%E5%8F%91%E7%89%88">构建开发版</h2>
+<p>从 GitHub 上直接 clone，然后自己 build 一个 vue-router。</p>
+<pre><code><div>git clone https://github.com/vuejs/vue-router.git node_modules/vue-router
+cd node_modules/vue-router
+npm install
+npm run build
+</div></code></pre>
+<h1 id="vue-router-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8C%B9%E9%85%8D">vue-router 动态路由匹配</h1>
+<h2 id="%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E8%B7%AF%E5%BE%84">动态路由路径</h2>
+<p>path路径带冒号 :
+我们经常需要把某种模式匹配到的所有路由，全都映射到同个组件。例如，我们有一个 User 组件，对于所有 ID 各不相同的用户，都要使用这个组件来渲染。那么，我们可以在 vue-router 的路由路径中使用『动态路径参数』（dynamic segment）来达到这个效果：</p>
+<pre><code><div>const User = {
+  template: '&lt;div&gt;User&lt;/div&gt;'
+}
+ 
+const router = new VueRouter({
+  routes: [
+    // 动态路径参数 以冒号开头
+    { path: '/user/:id', component: User }
+  ]
+})
+</div></code></pre>
+<p>这样 /user/foo 和 /user/bar 都将映射到相同的路由。</p>
+<h2 id="%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0">动态路由参数</h2>
+<p>每个组件都会生成一个路由对象 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">参</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">获</mi><mi mathvariant="normal">取</mi><mi mathvariant="normal">：</mi><mi>t</mi><mi>h</mi><mi>i</mi><mi>s</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">route，参数获取：this.</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">获</span><span class="mord cjk_fallback">取</span><span class="mord cjk_fallback">：</span><span class="mord mathdefault">t</span><span class="mord mathdefault">h</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord">.</span></span></span></span>route.params.[参数名]
+一个『路径参数』使用冒号 : 标记。当匹配到一个路由时，参数值会被设置到 this.$route.params，可以在每个组件内使用。于是，我们可以更新 User 的模板，输出当前用户的 ID：</p>
+<pre><code><div>const User = {
+  template: '&lt;div&gt;User {{ $route.params.id }}&lt;/div&gt;'
+}
+</div></code></pre>
+<p>可以支持多段参数映射，例如：</p>
+<pre><code><div>/user/:username  /user/evan  { username: 'evan' }  
+/user/:username/post/:post_id  /user/evan/post/123  { username: 'evan', post_id: 123 }  
+</div></code></pre>
+<p>除了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>p</mi><mi>a</mi><mi>r</mi><mi>a</mi><mi>m</mi><mi>s</mi><mi mathvariant="normal">外</mi><mi mathvariant="normal">，</mi></mrow><annotation encoding="application/x-tex">route.params 外，</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord">.</span><span class="mord mathdefault">p</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">a</span><span class="mord mathdefault">m</span><span class="mord mathdefault">s</span><span class="mord cjk_fallback">外</span><span class="mord cjk_fallback">，</span></span></span></span>route 对象还提供了其它有用的信息，例如，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>r</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>e</mi><mi mathvariant="normal">.</mi><mi>q</mi><mi>u</mi><mi>e</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">（</mi><mi mathvariant="normal">如</mi><mi mathvariant="normal">果</mi><mi>U</mi><mi>R</mi><mi>L</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">查</mi><mi mathvariant="normal">询</mi><mi mathvariant="normal">参</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">）</mi><mi mathvariant="normal">、</mi></mrow><annotation encoding="application/x-tex">route.query（如果 URL 中有查询参数）、</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">o</span><span class="mord mathdefault">u</span><span class="mord mathdefault">t</span><span class="mord mathdefault">e</span><span class="mord">.</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mord mathdefault">u</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord cjk_fallback">（</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord mathdefault" style="margin-right:0.10903em;">U</span><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="mord mathdefault">L</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">查</span><span class="mord cjk_fallback">询</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">）</span><span class="mord cjk_fallback">、</span></span></span></span>route.hash 等等。</p>
+<h2 id="%E5%93%8D%E5%BA%94%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%98%E5%8C%96">响应路由参数的变化</h2>
+<p>当使用路由参数时，例如从 /user/foo 导航到 user/bar，原来的组件实例会被复用。因为两个路由都渲染同个组件，比起销毁再创建，复用则显得更加高效。不过，这也意味着组件的生命周期钩子不会再被调用。</p>
+<p>复用组件时，想对路由参数的变化作出响应的话，你可以简单地 watch（监测变化） $route 对象：</p>
+<pre><code><div>const User = {
+  template: '...',
+  watch: {
+    '$route' (to, from) {
+      // 对路由变化作出响应...
+    }
+  }
+}
+</div></code></pre>
+<p>vue-router 使用 path-to-regexp 作为路径匹配引擎，所以支持很多高级的匹配模式，例如：可选的动态路径参数、匹配零个或多个、一个或多个，甚至是自定义正则匹配。
+同一个路径可以匹配多个路由，此时，匹配的优先级就按照路由的定义顺序：谁先定义的，谁的优先级就最高。</p>
+<h1 id="vue-router-%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1">vue-router 嵌套路由</h1>
+<p>简单的嵌套路由</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+ 
+const User = {
+  template: '&lt;div&gt;User {{ $route.params.id }}&lt;/div&gt;'
+}
+ 
+const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User }
+  ]
+})
+</div></code></pre>
+<p>这里的 <router-view> 是最顶层的出口，渲染最高级路由匹配到的组件。
+同样地，一个被渲染组件同样可以包含自己的嵌套 <router-view>。
+例如，在 User 组件的模板添加一个 <router-view>：</router-view></router-view></router-view></p>
+<pre><code><div>const User = {
+  template: `
+    &lt;div class=&quot;user&quot;&gt;
+      &lt;h2&gt;User {{ $route.params.id }}&lt;/h2&gt;
+      &lt;router-view&gt;&lt;/router-view&gt;
+    &lt;/div&gt;
+  ` } 
+</div></code></pre>
+<p>要在嵌套的出口中渲染组件，需要在 VueRouter 的参数中使用 children 配置：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    { path: '/user/:id', component: User,
+      children: [
+        {
+          // 当 /user/:id/profile 匹配成功，
+          // UserProfile 会被渲染在 User 的 &lt;router-view&gt; 中
+          path: 'profile',
+          component: UserProfile
+        },
+        {
+          // 当 /user/:id/posts 匹配成功
+          // UserPosts 会被渲染在 User 的 &lt;router-view&gt; 中
+          path: 'posts',
+          component: UserPosts
+        }
+      ]
+    }
+  ]
+})
+</div></code></pre>
+<p>不用children也可以跳转，例如：{path:'/user/:id/profile'} 但是不能渲染模板内的 router-view
+也可以提供空的子路由，额外的渲染一些组件：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    {
+      path: '/user/:id', component: User,
+      children: [
+        // 当 /user/:id 匹配成功，
+        // UserHome 会被渲染在 User 的 &lt;router-view&gt; 中
+        { path: '', component: UserHome },
+ 
+        // ...其他子路由
+      ]
+    }
+  ]
+})
+</div></code></pre>
+<p>children示例：</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+  &lt;h1&gt;Hello App!&lt;/h1&gt;
+  &lt;p&gt;
+    &lt;router-link to=&quot;/foo/usr&quot;&gt;Go to Foo&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/foo/usr1&quot;&gt;Go to Foo1&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/foo/usr2&quot;&gt;Go to Foo2&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/foo/usr3&quot;&gt;Go to Foo3&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/bar/name&quot;&gt;Go to Bar1&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/bar/name/a&quot;&gt;Go to Bar2&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link to=&quot;/bar/name/user&quot;&gt;Go to Bar3&lt;/router-link&gt;&lt;br /&gt;
+  &lt;/p&gt;
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+  const Foo = { template: '&lt;div&gt;&lt;h1&gt;foo {{ this.$route.params.user }}&lt;/h1&gt;&lt;/div&gt;' }
+  const Bar = { template: '&lt;div&gt;&lt;h1&gt;User {{ this.$route.params.routeid }}&lt;/h1&gt;&lt;router-view&gt;&lt;/router-view&gt;&lt;/div&gt;' }
+  const User = { template: '&lt;div&gt;&lt;h1&gt;this is a user template&lt;/h1&gt;&lt;/div&gt;' }
+  
+  const routes = [
+    { path: '/foo/:user', component: Foo },
+    // /bar/name/user 映射的组件 User 会渲染在组件 Bar 的 router-view 中
+    { path: '/bar/:routeid', component: Bar,
+      children: [
+        { path: 'user', component: User},
+      ]
+    },
+  ]
+    
+  const router = new VueRouter({
+    routes: routes 
+  })
+    
+  const app = new Vue({
+    router: router,
+    el: '#app',
+  })
+    
+&lt;/script&gt;
+</div></code></pre>
+<h1 id="vue-router-%E7%BC%96%E7%A8%8B%E5%BC%8F%E7%9A%84%E5%AF%BC%E8%88%AA">vue-router 编程式的导航</h1>
+<p>除了使用 <router-link> 创建 a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现。
+这个方法会向 history 栈添加一个新的记录，所以，当用户点击浏览器后退按钮时，则回到之前的 URL。
+当你点击 <router-link> 时，这个方法会在内部调用，所以说，点击 <router-link :to="..."> 等同于调用 router.push(...)。</router-link></router-link></router-link></p>
+<h2 id="routerpushlocation">router.push(location)</h2>
+<pre><code><div>&lt;router-link :to=&quot;...&quot;&gt; 
+或者
+router.push(...)  
+</div></code></pre>
+<p>该方法的参数可以是一个字符串路径，或者一个描述地址的对象。例如：</p>
+<pre><code><div>// 字符串
+router.push('home')
+ 
+// 对象
+router.push({ path: 'home' })
+ 
+// 命名的路由
+router.push({ name: 'user', params: { userId: 123 }})
+ 
+// 带查询参数，变成 /register?plan=private
+router.push({ path: 'register', query: { plan: 'private' }})
+</div></code></pre>
+<h2 id="routerreplacelocation">router.replace(location)</h2>
+<p>跟 router.push 很像，唯一的不同就是，它不会向 history 添加新记录，而是跟它的方法名一样 —— 替换掉当前的 history 记录。</p>
+<pre><code><div>&lt;router-link :to=&quot;...&quot; replace&gt;
+或者
+router.replace(...)  
+</div></code></pre>
+<h2 id="routergon">router.go(n)</h2>
+<p>这个方法的参数是一个整数，意思是在 history 记录中向前或者后退多少步，类似 window.history.go(n)。
+例子:</p>
+<pre><code><div>// 在浏览器记录中前进一步，等同于 history.forward()
+router.go(1)
+ 
+// 后退一步记录，等同于 history.back()
+router.go(-1)
+ 
+// 前进 3 步记录
+router.go(3)
+ 
+// 如果 history 记录不够用，那就默默地失败呗
+router.go(-100)
+router.go(100)
+</div></code></pre>
+<h2 id="%E6%93%8D%E4%BD%9C-history">操作 History</h2>
+<p>你也许注意到 router.push、 router.replace 和 router.go 跟 window.history.pushState、 window.history.replaceState 和 window.history.go好像， 实际上它们确实是效仿 window.history API 的。
+因此，如果你已经熟悉 Browser History APIs，那么在 vue-router 中操作 history 就是超级简单的。
+还有值得提及的，vue-router 的导航方法 （push、 replace、 go） 在各类路由模式（history、 hash 和 abstract）下表现一致。</p>
+<p>#　vue-router 命名路由
+VueRouter 的 name
+有时候，通过一个名称来标识一个路由显得更方便一些，特别是在链接一个路由，或者是执行一些跳转的时候。你可以在创建 Router 实例的时候，在 routes 配置中给某个路由设置名称。</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    {
+      path: '/user/:id',
+      name: 'user',
+      component: User
+    }
+  ]
+}) 
+</div></code></pre>
+<p>要链接到一个命名路由，可以给 router-link 的 to 属性传一个对象：</p>
+<pre><code><div>&lt;router-link :to=&quot;{ name: 'user', params: { userId: 123 }}&quot;&gt;User&lt;/router-link&gt; 
+</div></code></pre>
+<p>这跟代码调用 router.push() 是一回事：</p>
+<pre><code><div>router.push({ name: 'user', params: { userId: 123 }}) 
+</div></code></pre>
+<p>完整的例子:
+注意最好用 :to 代替 to，用v-bind绑定给to 属性一个对象
+$<a href="http://route.name" target="_blank" rel="noopener">route.name</a> 代表 route 的 name 属性</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+  &lt;h1&gt;Hello App!&lt;/h1&gt;
+  &lt;p&gt;
+    &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;&lt;br /&gt;
+    &lt;!--// 注意最好用 :to 代替 to，用绑定更好--&gt;
+    &lt;router-link :to=&quot;{name: 'a'}&quot;&gt;Go to Foo&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link :to=&quot;{name: 'b'}&quot;&gt;Go to Foo1&lt;/router-link&gt;&lt;br /&gt;
+    &lt;router-link :to=&quot;{name: 'ex'}&quot;&gt;Go to Foo2&lt;/router-link&gt;&lt;br /&gt;
+  &lt;/p&gt;
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+  const Foo = { template: '&lt;div&gt;&lt;h1&gt;foo {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  const Bar = { template: '&lt;div&gt;&lt;h1&gt;User {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  const example = { template: '&lt;div&gt;&lt;h1&gt;example {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  
+  const routes = [
+    { path: '/foo', name:'a', component: Foo },
+    { path: '/bar', name:'b', component: Bar },
+    { path: '/example', name:'ex', component: example }
+  ]
+    
+  const router = new VueRouter({
+    routes: routes 
+  })
+    
+  const app = new Vue({
+    router: router,
+    el: '#app',
+  })
+    
+&lt;/script&gt;
+</div></code></pre>
+<h1 id="vue-router-%E5%91%BD%E5%90%8D%E8%A7%86%E5%9B%BE">vue-router 命名视图</h1>
+<p>VueRouter 中的 components
+展示多个视图，而不是嵌套展示，例如创建一个布局，有 sidebar（侧导航） 和 main（主内容） 两个视图，这个时候命名视图就派上用场了。
+你可以在界面中拥有多个单独命名的视图，而不是只有一个单独的出口。如果 router-view 没有设置名字，那么默认为 default。</p>
+<pre><code><div>&lt;router-view class=&quot;view one&quot;&gt;&lt;/router-view&gt;
+&lt;router-view class=&quot;view two&quot; name=&quot;a&quot;&gt;&lt;/router-view&gt;
+&lt;router-view class=&quot;view three&quot; name=&quot;b&quot;&gt;&lt;/router-view&gt;
+</div></code></pre>
+<p>一个视图使用一个组件渲染，因此对于同个路由，多个视图就需要多个组件。确保正确使用 components 配置（带上 s）：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    {
+      path: '/',
+      components: {
+        default: Foo,
+        a: Bar,
+        b: Baz
+      }
+    }
+  ]
+})
+</div></code></pre>
+<p>完整示例</p>
+<pre><code><div>		&lt;div id=&quot;app&quot;&gt;
+			&lt;h1&gt;Hello App!&lt;/h1&gt;
+			&lt;router-view&gt;&lt;/router-view&gt;
+			&lt;router-view name=&quot;a&quot;&gt;&lt;/router-view&gt;
+			&lt;router-view name=&quot;b&quot;&gt;&lt;/router-view&gt;
+		&lt;/div&gt;
+
+		&lt;script type=&quot;text/javascript&quot;&gt;
+
+			const Foo = { template: '&lt;div&gt;&lt;h1&gt;foo {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+			const Bar = { template: '&lt;div&gt;&lt;h1&gt;User {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+			const User = { template: '&lt;div&gt;&lt;h1&gt;this is a user template&lt;/h1&gt;&lt;/div&gt;' }
+			 
+			const router = new VueRouter({
+			  routes: [
+			  	{
+			  		path: '/',
+			  		name: 'homepage',
+			  		components: {
+			  			default: Foo,
+			  			a: Bar,
+			  			b: User
+			  		}
+			  	}
+			  ]
+			})
+			 
+			const app = new Vue({
+			  router: router,
+			  el: '#app',
+			})
+			 
+		&lt;/script&gt;
+</div></code></pre>
+<h1 id="vue-router-%E9%87%8D%E5%AE%9A%E5%90%91-%E5%92%8C-%E5%88%AB%E5%90%8D">vue-router 重定向 和 别名</h1>
+<h2 id="%E9%87%8D%E5%AE%9A%E5%90%91">重定向</h2>
+<p>重定向也是通过 routes 配置来完成，下面例子是从 /a 重定向到 /b：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: '/b' }
+  ]
+}) 
+</div></code></pre>
+<p>重定向的目标也可以是一个命名的路由：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: { name: 'foo' }}
+  ]
+}) 
+</div></code></pre>
+<p>甚至是一个方法，动态返回重定向目标：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    { path: '/a', redirect: to =&gt; {
+      // 方法接收 目标路由 作为参数
+      // return 重定向的 字符串路径/路径对象
+    }}
+  ]
+})
+</div></code></pre>
+<p>示例：
+/foo 重定向 redirect 到 /user</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+  &lt;h1&gt;Hello App!&lt;/h1&gt;
+
+  &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;&lt;br /&gt;
+  &lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;&lt;br /&gt;
+  &lt;router-link to=&quot;/user&quot;&gt;Go to Bar&lt;/router-link&gt;&lt;br /&gt;
+  
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+  const Foo = { template: '&lt;div&gt;&lt;h1&gt;foo {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  const Bar = { template: '&lt;div&gt;&lt;h1&gt;User {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  const User = { template: '&lt;div&gt;&lt;h1&gt;this is a user template&lt;/h1&gt;&lt;/div&gt;' }
+    
+  const router = new VueRouter({
+    routes: [
+      {
+        path: '/foo',
+        redirect: '/user',
+        name: 'foopage',
+        component: Foo
+      },
+      {
+        path: '/bar',
+        name: 'barpage',
+        component: Bar
+      },
+      {
+        path: '/user',
+        name: 'homepage',
+        component: User
+      }
+    ]
+  })
+    
+  const app = new Vue({
+    router: router,
+    el: '#app',
+  })
+    
+&lt;/script&gt;
+</div></code></pre>
+<h2 id="%E5%88%AB%E5%90%8D">别名</h2>
+<p>『重定向』的意思是，当用户访问 /a时，URL 将会被替换成 /b，然后匹配路由为 /b。
+/a 的别名是 /b，意味着，当用户访问 /b 时，URL 会保持为 /b，但是路由匹配则为 /a，就像用户访问 /a 一样。</p>
+<p>上面对应的路由配置为：</p>
+<pre><code><div>const router = new VueRouter({
+  routes: [
+    { path: '/a', component: A, alias: '/b' }
+  ]
+}) 
+</div></code></pre>
+<p>『别名』的功能让你可以自由地将 UI 结构映射到任意的 URL，而不是受限于配置的嵌套路由结构。
+别名示例：</p>
+<pre><code><div>&lt;div id=&quot;app&quot;&gt;
+  &lt;h1&gt;Hello App!&lt;/h1&gt;
+
+  &lt;router-link to=&quot;/foo&quot;&gt;Go to Foo&lt;/router-link&gt;&lt;br /&gt;
+  &lt;router-link to=&quot;/bar&quot;&gt;Go to Bar&lt;/router-link&gt;&lt;br /&gt;
+  &lt;router-link to=&quot;/user&quot;&gt;Go to User&lt;/router-link&gt;&lt;br /&gt;
+  &lt;router-link to=&quot;/hello&quot;&gt;Go to Hello&lt;/router-link&gt;&lt;br /&gt;
+  &lt;router-link to=&quot;/a&quot;&gt;Go to a&lt;/router-link&gt;&lt;br /&gt;
+  
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+
+  const Foo = { template: '&lt;div&gt;&lt;h1&gt;foo {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  const Bar = { template: '&lt;div&gt;&lt;h1&gt;User {{ this.$route.name }}&lt;/h1&gt;&lt;/div&gt;' }
+  const User = { template: '&lt;div&gt;&lt;h1&gt;this is a user template&lt;/h1&gt;&lt;/div&gt;' }
+    
+  const router = new VueRouter({
+    routes: [
+      {
+        path: '/foo',
+      //redirect: '/user', // 直接重定向到另外一个地址
+        redirect: { name: 'barpage' }, //用 名称对象同样可以
+        name: 'foopage',
+        component: Foo,
+        alias: ['/hello','/a'] // 别名，可以字符串或者数组
+      },
+      {
+        path: '/bar',
+        name: 'barpage',
+        component: Bar
+      },
+      {
+        path: '/user',
+        name: 'homepage',
+        component: User
+      }
+    ]
+  })
+    
+  const app = new Vue({
+    router: router,
+    el: '#app',
+  })
+    
+&lt;/script&gt;
+</div></code></pre>
+<h1 id="vue-router-html5-history-%E6%A8%A1%E5%BC%8F">vue-router HTML5 History 模式</h1>
+<p>vue-router 默认 hash 模式 —— 使用 URL 的 hash 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。
+用路由的 history 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。</p>
+<pre><code><div>const router = new VueRouter({
+  mode: 'history',
+  routes: [...]
+}) 
+</div></code></pre>
+<p>当你使用 history 模式时，URL 就像正常的 url，例如 <a href="http://yoursite.com/user/id" target="_blank" rel="noopener">http://yoursite.com/user/id</a> ,也好看！</p>
+<p>不过这种模式要玩好，还需要后台配置支持。因为我们的应用是个单页客户端应用，如果后台没有正确的配置，当用户在浏览器直接访问 <a href="http://oursite.com/user/id" target="_blank" rel="noopener">http://oursite.com/user/id</a> 就会返回 404，这就不好看了。</p>
+<p>所以呢，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。</p>
+<p>后端配置例子</p>
+<pre><code><div>Apache 
+&lt;IfModule mod_rewrite.c&gt;
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+&lt;/IfModule&gt;
+
+
+nginx 
+location / {
+  try_files $uri $uri/ /index.html;
+}
+</div></code></pre>
+<p>Node.js (Express)</p>
+<p><a href="https://github.com/bripkens/connect-history-api-fallback" target="_blank" rel="noopener">https://github.com/bripkens/connect-history-api-fallback</a></p>
+<p>警告</p>
+<p>给个警告，因为这么做以后，你的服务器就不再返回 404 错误页面，因为对于所有路径都会返回 index.html 文件。为了避免这种情况，你应该在 Vue 应用里面覆盖所有的路由情况，然后在给出一个 404 页面。</p>
+<pre><code><div>const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '*', component: NotFoundComponent }
+  ]
+})
+</div></code></pre>
+<p>或者，如果你是用 Node.js 作后台，可以使用服务端的路由来匹配 URL，当没有匹配到路由的时候返回 404，从而实现 fallback。</p>
+
+    </body>
+    </html></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/29/web侠客行（四）--Vue基础教程/" rel="prev"></a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/13/linux核反应（一）--linux内核/" rel="next">linux核反应（一）--linux内核</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#title-web%E4%BE%A0%E5%AE%A2%E8%A1%8C%E5%85%AD--vue-router%E6%95%99%E7%A8%8Bdate-2000-04-13-060212tags--vue--app--vue-routercategories--%E6%95%99%E7%A8%8B--web"><span class="nav-number">1.</span> <span class="nav-text">title: web侠客行（六）--Vue-router教程
+date: 2000-04-13 06:02:12
+tags:
+- vue
+- app
+- vue-router
+categories:
+- 教程
+- web</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-quick-start"><span class="nav-number"></span> <span class="nav-text">Vue-router quick start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E5%BC%95%E5%85%A5js"><span class="nav-number">1.</span> <span class="nav-text">1.引入js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E5%AE%9A%E4%B9%89%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2.定义路由组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E5%88%9B%E5%BB%BA%E8%B7%AF%E7%94%B1-router"><span class="nav-number">3.</span> <span class="nav-text">3.创建路由 router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E5%88%9B%E5%BB%BA-router-%E5%AE%9E%E4%BE%8B%E7%84%B6%E5%90%8E%E4%BC%A0-routes-%E9%85%8D%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">4.创建 router 实例，然后传 routes 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E5%88%9B%E5%BB%BA%E5%92%8C%E6%8C%82%E8%BD%BD%E6%A0%B9%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">5.创建和挂载根实例。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6html%E8%B6%85%E9%93%BE%E6%8E%A5-router-link"><span class="nav-number">6.</span> <span class="nav-text">6.html超链接 router-link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7%E8%B7%AF%E7%94%B1%E7%BB%84%E4%BB%B6%E6%B8%B2%E6%9F%93-router-view"><span class="nav-number">7.</span> <span class="nav-text">7.路由组件渲染 router-view</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">8.</span> <span class="nav-text">8.代码示例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-%E5%AE%89%E8%A3%85"><span class="nav-number"></span> <span class="nav-text">vue-router 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8-vue-%E5%90%8E%E9%9D%A2%E5%8A%A0%E8%BD%BD-vue-router"><span class="nav-number">1.</span> <span class="nav-text">在 Vue 后面加载 vue-router</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-install"><span class="nav-number">2.</span> <span class="nav-text">NPM install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%E5%B7%A5%E7%A8%8B%E4%B8%AD%E4%BD%BF%E7%94%A8-import-%E5%92%8C-vueuse"><span class="nav-number">3.</span> <span class="nav-text">模块化工程中使用 import 和 Vue.use</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E5%BC%80%E5%8F%91%E7%89%88"><span class="nav-number">4.</span> <span class="nav-text">构建开发版</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8C%B9%E9%85%8D"><span class="nav-number"></span> <span class="nav-text">vue-router 动态路由匹配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E8%B7%AF%E5%BE%84"><span class="nav-number">1.</span> <span class="nav-text">动态路由路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">动态路由参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E8%B7%AF%E7%94%B1%E5%8F%82%E6%95%B0%E7%9A%84%E5%8F%98%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">响应路由参数的变化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-%E5%B5%8C%E5%A5%97%E8%B7%AF%E7%94%B1"><span class="nav-number"></span> <span class="nav-text">vue-router 嵌套路由</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-%E7%BC%96%E7%A8%8B%E5%BC%8F%E7%9A%84%E5%AF%BC%E8%88%AA"><span class="nav-number"></span> <span class="nav-text">vue-router 编程式的导航</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#routerpushlocation"><span class="nav-number">1.</span> <span class="nav-text">router.push(location)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#routerreplacelocation"><span class="nav-number">2.</span> <span class="nav-text">router.replace(location)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#routergon"><span class="nav-number">3.</span> <span class="nav-text">router.go(n)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C-history"><span class="nav-number">4.</span> <span class="nav-text">操作 History</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-%E5%91%BD%E5%90%8D%E8%A7%86%E5%9B%BE"><span class="nav-number"></span> <span class="nav-text">vue-router 命名视图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-%E9%87%8D%E5%AE%9A%E5%90%91-%E5%92%8C-%E5%88%AB%E5%90%8D"><span class="nav-number"></span> <span class="nav-text">vue-router 重定向 和 别名</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">1.</span> <span class="nav-text">重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%AB%E5%90%8D"><span class="nav-number">2.</span> <span class="nav-text">别名</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-router-html5-history-%E6%A8%A1%E5%BC%8F"><span class="nav-number"></span> <span class="nav-text">vue-router HTML5 History 模式</span></a></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
