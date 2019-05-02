@@ -1,0 +1,1012 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <meta name="google-site-verification" content="xxx">
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人">
+
+
+
+  <meta name="keywords" content="vue,app,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
+
+
+<meta name="description" content="使用模块式开发实现简单的导航栏。 1.新建目录，创建项目1234567891011121314151617// 安装vuenpm install vue// 安装vue-clinpm install vue-cli新建目录 csdn-projvue init webpack csdn // 一路回车下去// 安装依赖npm install // 安装vue-router npm install v">
+<meta name="keywords" content="vue,app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web侠客行（八）--Vue模块式开发教程">
+<meta property="og:url" content="http://sylucky.github.io/2000/04/13/web侠客行（八）--Vue模块式开发教程/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="使用模块式开发实现简单的导航栏。 1.新建目录，创建项目1234567891011121314151617// 安装vuenpm install vue// 安装vue-clinpm install vue-cli新建目录 csdn-projvue init webpack csdn // 一路回车下去// 安装依赖npm install // 安装vue-router npm install v">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-02T13:27:28.604Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web侠客行（八）--Vue模块式开发教程">
+<meta name="twitter:description" content="使用模块式开发实现简单的导航栏。 1.新建目录，创建项目1234567891011121314151617// 安装vuenpm install vue// 安装vue-clinpm install vue-cli新建目录 csdn-projvue init webpack csdn // 一路回车下去// 安装依赖npm install // 安装vue-router npm install v">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> web侠客行（八）--Vue模块式开发教程 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              web侠客行（八）--Vue模块式开发教程
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2000-04-13T06:02:12+08:00" content="2000-04-13">
+            2000-04-13
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/web/" itemprop="url" rel="index">
+                  <span itemprop="name">web</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>使用模块式开发实现简单的导航栏。</p>
+<h1 id="1-新建目录，创建项目"><a href="#1-新建目录，创建项目" class="headerlink" title="1.新建目录，创建项目"></a>1.新建目录，创建项目</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// 安装vue</span><br><span class="line">npm install vue</span><br><span class="line"></span><br><span class="line">// 安装vue-cli</span><br><span class="line">npm install vue-cli</span><br><span class="line"></span><br><span class="line">新建目录 csdn-proj</span><br><span class="line">vue init webpack csdn // 一路回车下去</span><br><span class="line"></span><br><span class="line">// 安装依赖</span><br><span class="line">npm install </span><br><span class="line"></span><br><span class="line">// 安装vue-router </span><br><span class="line">npm install vue-router </span><br><span class="line"></span><br><span class="line">// 安装vuex</span><br><span class="line">npm install vuex</span><br></pre></td></tr></table></figure>
+<p>测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 启动服务</span><br><span class="line">npm run dev </span><br><span class="line"></span><br><span class="line">// 浏览器测试</span><br><span class="line">localhost:8080</span><br></pre></td></tr></table></figure></p>
+<h1 id="2-代码结构"><a href="#2-代码结构" class="headerlink" title="2. 代码结构"></a>2. 代码结构</h1><p>项目结构：<br>项目代码主要在src目录下<br>assets目录：静态资源<br>components目录：组件<br>router目录：路由<br>main.js：主文件<br>App.vue：主组件</p>
+<h2 id="默认主js-main-js"><a href="#默认主js-main-js" class="headerlink" title="默认主js main.js"></a>默认主js main.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import App from &apos;./App&apos;</span><br><span class="line">import router from &apos;./router&apos;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = false</span><br><span class="line"></span><br><span class="line">new Vue(&#123;</span><br><span class="line">  el: &apos;#app&apos;,</span><br><span class="line">  router,</span><br><span class="line">  components: &#123; App &#125;,</span><br><span class="line">  template: &apos;&lt;App/&gt;&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="默认主组件-App-vue"><a href="#默认主组件-App-vue" class="headerlink" title="默认主组件 App.vue"></a>默认主组件 App.vue</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;img src=&quot;./assets/logo.png&quot;&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;App&apos;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: &apos;Avenir&apos;, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="默认router-router-index-js"><a href="#默认router-router-index-js" class="headerlink" title="默认router router/index.js"></a>默认router router/index.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import Router from &apos;vue-router&apos;</span><br><span class="line">import HelloWorld from &apos;@/components/HelloWorld&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &apos;/&apos;,</span><br><span class="line">      name: &apos;HelloWorld&apos;,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h1 id="3-实施步骤"><a href="#3-实施步骤" class="headerlink" title="3.实施步骤"></a>3.实施步骤</h1><h2 id="导航栏组件"><a href="#导航栏组件" class="headerlink" title="导航栏组件"></a>导航栏组件</h2><p>导航页面，位于页面最顶端</p>
+<ul>
+<li>默认加载 export default</li>
+<li>name: ‘TopBar’属性表示组件名</li>
+<li>template 要用 div 包裹</li>
+<li>style 要加 scoped 本地使用</li>
+</ul>
+<p>components/TopBar.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;hello&quot;&gt;</span><br><span class="line">		&lt;h1&gt;这是一个导航页面&lt;/h1&gt;</span><br><span class="line">		&lt;h2&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li&gt;</span><br><span class="line">        &lt;router-link to=&quot;/menu&quot;&gt;菜单&lt;/router-link&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">      &lt;li&gt;</span><br><span class="line">        &lt;router-link to=&quot;/user&quot;&gt;用户&lt;/router-link&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">      &lt;li&gt;</span><br><span class="line">        &lt;router-link to=&quot;/about&quot;&gt;关于&lt;/router-link&gt;</span><br><span class="line">      &lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;TopBar&apos;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      message: &apos;Welcome to TopBar&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">h1, h2 &#123;</span><br><span class="line">  font-weight: normal;</span><br><span class="line">&#125;</span><br><span class="line">ul &#123;</span><br><span class="line">  list-style-type: none;</span><br><span class="line">  padding: 0;</span><br><span class="line">&#125;</span><br><span class="line">li &#123;</span><br><span class="line">  display: inline-block;</span><br><span class="line">  margin: 0 10px;</span><br><span class="line">&#125;</span><br><span class="line">a &#123;</span><br><span class="line">  color: #42b983;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="菜单组件"><a href="#菜单组件" class="headerlink" title="菜单组件"></a>菜单组件</h2><p>components/Menu.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;这是一个Menu页面&lt;/h1&gt;</span><br><span class="line">		&lt;h2&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		name: &apos;Menu&apos;,</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				message: &apos;Hello Menu&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="用户组件"><a href="#用户组件" class="headerlink" title="用户组件"></a>用户组件</h2><p>components/User.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;这是一个User页面&lt;/h1&gt;</span><br><span class="line">		&lt;h2&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		name: &apos;User&apos;,</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				message: &apos;Hello User&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于组件"><a href="#关于组件" class="headerlink" title="关于组件"></a>关于组件</h2><p>components/About.vue<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;这是一个About页面&lt;/h1&gt;</span><br><span class="line">		&lt;h2&gt;&#123;&#123;message&#125;&#125;&lt;/h2&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		name: &apos;About&apos;,</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				message: &apos;Hello About&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><ul>
+<li>import 组件，@代表编译目录</li>
+<li>一定要用 Vue.use(Router) 使用Router<br>router/index.js<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import Router from &apos;vue-router&apos;</span><br><span class="line">import HelloWorld from &apos;@/components/HelloWorld&apos;</span><br><span class="line">import Menu from &apos;@/components/Menu&apos;</span><br><span class="line">import User from &apos;@/components/User&apos;</span><br><span class="line">import About from &apos;@/components/About&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line">export default new Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &apos;/&apos;,</span><br><span class="line">      name: &apos;HelloWorld&apos;,</span><br><span class="line">      component: HelloWorld</span><br><span class="line">    &#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			path: &apos;/menu&apos;,</span><br><span class="line">			name: &apos;Menu&apos;,</span><br><span class="line">			component: Menu</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			path: &apos;/user&apos;,</span><br><span class="line">			name: &apos;User&apos;,</span><br><span class="line">			component: User</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			path: &apos;/about&apos;,</span><br><span class="line">			name: &apos;About&apos;,</span><br><span class="line">			component: About</span><br><span class="line">		&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="App-vue改写"><a href="#App-vue改写" class="headerlink" title="App.vue改写"></a>App.vue改写</h2><ul>
+<li>模板增加 TopBar 导航</li>
+<li>import TopBar</li>
+<li>增加 components: TopBar<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">		&lt;TopBar&gt;&lt;/TopBar&gt;</span><br><span class="line">    &lt;img src=&quot;./assets/logo.png&quot;&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import TopBar from &apos;@/components/TopBar&apos;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;App&apos;,</span><br><span class="line">	components: &#123;</span><br><span class="line">		TopBar</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">#app &#123;</span><br><span class="line">  font-family: &apos;Avenir&apos;, Helvetica, Arial, sans-serif;</span><br><span class="line">  -webkit-font-smoothing: antialiased;</span><br><span class="line">  -moz-osx-font-smoothing: grayscale;</span><br><span class="line">  text-align: center;</span><br><span class="line">  color: #2c3e50;</span><br><span class="line">  margin-top: 60px;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="错误解决"><a href="#错误解决" class="headerlink" title="错误解决"></a>错误解决</h1><p>tab缩进错误，这是eslint检查机制问题</p>
+<h2 id="文件内忽略错误"><a href="#文件内忽略错误" class="headerlink" title="文件内忽略错误"></a>文件内忽略错误</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">忽略下一行检查</span><br><span class="line">// eslint-disable-next-line</span><br><span class="line"></span><br><span class="line">忽略整个文件检查</span><br><span class="line">/* eslint-disable */</span><br></pre></td></tr></table></figure>
+<p>具体参考 <a href="https://eslint.org/docs/user-guide/configuring" target="_blank" rel="noopener">https://eslint.org/docs/user-guide/configuring</a></p>
+<h2 id="eslintignore-配置"><a href="#eslintignore-配置" class="headerlink" title=".eslintignore 配置"></a>.eslintignore 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 增加以下配置，忽略src目录 eslint 检查</span><br><span class="line">/src/</span><br></pre></td></tr></table></figure>
+<h2 id="config-index-js-配置"><a href="#config-index-js-配置" class="headerlink" title="config/index.js 配置"></a>config/index.js 配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 禁用eslint</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">useEslint: false</span><br><span class="line">···</span><br><span class="line"></span><br><span class="line">/ * eslint script-indent：“error” * /</span><br><span class="line"></span><br><span class="line">/ * eslint script-indent：[“error”，2，&#123;“baseIndent”：1&#125;] * /</span><br></pre></td></tr></table></figure>
+<h2 id="eslint配置-推荐"><a href="#eslint配置-推荐" class="headerlink" title="eslint配置(推荐)"></a>eslint配置(推荐)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">rules: &#123;</span><br><span class="line">    // 忽略indent检查</span><br><span class="line">		&apos;indent&apos;: &apos;off&apos;,</span><br><span class="line"></span><br><span class="line">    // 忽略no-tabs检查</span><br><span class="line">		&apos;no-tabs&apos;: &apos;off&apos;, </span><br><span class="line"></span><br><span class="line">    // 忽略函数前空格检查</span><br><span class="line">    &apos;space-before-function-paren&apos;: &apos;off&apos;,</span><br></pre></td></tr></table></figure>
+<p>使用eslint –init配置</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag">#vue</a>
+          
+            <a href="/tags/app/" rel="tag">#app</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2000/04/13/web侠客行（六）--Vue-router教程/" rel="prev">web侠客行（六）--Vue-router教程</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2000/04/13/web侠客行（五）--Vue高级教程/" rel="next">web侠客行（五）--Vue高级教程</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0" style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image">
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-新建目录，创建项目"><span class="nav-number">1.</span> <span class="nav-text">1.新建目录，创建项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-代码结构"><span class="nav-number">2.</span> <span class="nav-text">2. 代码结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主js-main-js"><span class="nav-number">2.1.</span> <span class="nav-text">默认主js main.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认主组件-App-vue"><span class="nav-number">2.2.</span> <span class="nav-text">默认主组件 App.vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认router-router-index-js"><span class="nav-number">2.3.</span> <span class="nav-text">默认router router/index.js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-实施步骤"><span class="nav-number">3.</span> <span class="nav-text">3.实施步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#导航栏组件"><span class="nav-number">3.1.</span> <span class="nav-text">导航栏组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#菜单组件"><span class="nav-number">3.2.</span> <span class="nav-text">菜单组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户组件"><span class="nav-number">3.3.</span> <span class="nav-text">用户组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于组件"><span class="nav-number">3.4.</span> <span class="nav-text">关于组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#路由"><span class="nav-number">3.5.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#App-vue改写"><span class="nav-number">3.6.</span> <span class="nav-text">App.vue改写</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误解决"><span class="nav-number">4.</span> <span class="nav-text">错误解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件内忽略错误"><span class="nav-number">4.1.</span> <span class="nav-text">文件内忽略错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eslintignore-配置"><span class="nav-number">4.2.</span> <span class="nav-text">.eslintignore 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#config-index-js-配置"><span class="nav-number">4.3.</span> <span class="nav-text">config/index.js 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eslint配置-推荐"><span class="nav-number">4.4.</span> <span class="nav-text">eslint配置(推荐)</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </div></main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
