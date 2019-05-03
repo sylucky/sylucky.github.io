@@ -1,0 +1,1052 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <meta name="google-site-verification" content="xxx">
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人">
+
+
+
+  <meta name="keywords" content="vue,app,uni-app,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
+
+
+<meta name="description" content="使用uni-app开发app应用。 什么是 uni-appuni-app 是一个使用 Vue.js 开发跨平台应用的前端框架，开发者编写一套代码，可编译到iOS、Android、H5、小程序等多个平台。  uni-app在跨端数量、扩展能力、性能体验、周边生态、学习成本、开发成本等6大关键指标上拥有极强的竞争优势 。  跨端数量更多 平台能力不受限 性能体验更优秀 周边生态丰富 学习成本低 开发成">
+<meta name="keywords" content="vue,app,uni-app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web侠客行（十）--使用uni-app开发项目教程">
+<meta property="og:url" content="http://sylucky.github.io/2000/04/13/web侠客行（十）--使用uni-app开发项目教程/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="使用uni-app开发app应用。 什么是 uni-appuni-app 是一个使用 Vue.js 开发跨平台应用的前端框架，开发者编写一套代码，可编译到iOS、Android、H5、小程序等多个平台。  uni-app在跨端数量、扩展能力、性能体验、周边生态、学习成本、开发成本等6大关键指标上拥有极强的竞争优势 。  跨端数量更多 平台能力不受限 性能体验更优秀 周边生态丰富 学习成本低 开发成">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-03T17:21:22.761Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web侠客行（十）--使用uni-app开发项目教程">
+<meta name="twitter:description" content="使用uni-app开发app应用。 什么是 uni-appuni-app 是一个使用 Vue.js 开发跨平台应用的前端框架，开发者编写一套代码，可编译到iOS、Android、H5、小程序等多个平台。  uni-app在跨端数量、扩展能力、性能体验、周边生态、学习成本、开发成本等6大关键指标上拥有极强的竞争优势 。  跨端数量更多 平台能力不受限 性能体验更优秀 周边生态丰富 学习成本低 开发成">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> web侠客行（十）--使用uni-app开发项目教程 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              web侠客行（十）--使用uni-app开发项目教程
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2000-04-13T10:02:12+08:00" content="2000-04-13">
+            2000-04-13
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/web/" itemprop="url" rel="index">
+                  <span itemprop="name">web</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>使用uni-app开发app应用。</p>
+<h1 id="什么是-uni-app"><a href="#什么是-uni-app" class="headerlink" title="什么是 uni-app"></a>什么是 uni-app</h1><p>uni-app 是一个使用 Vue.js 开发跨平台应用的前端框架，开发者编写一套代码，可编译到iOS、Android、H5、小程序等多个平台。 </p>
+<p>uni-app在跨端数量、扩展能力、性能体验、周边生态、学习成本、开发成本等6大关键指标上拥有极强的竞争优势 。</p>
+<ul>
+<li>跨端数量更多</li>
+<li>平台能力不受限</li>
+<li>性能体验更优秀</li>
+<li>周边生态丰富</li>
+<li>学习成本低</li>
+<li>开发成本低</li>
+</ul>
+<h1 id="quick-start"><a href="#quick-start" class="headerlink" title="quick start"></a>quick start</h1><p>参考： <a href="https://uniapp.dcloud.io/quickstart" target="_blank" rel="noopener">https://uniapp.dcloud.io/quickstart</a></p>
+<h2 id="1-创建uni-app"><a href="#1-创建uni-app" class="headerlink" title="1.创建uni-app"></a>1.创建uni-app</h2><p>HBuildx，在点击工具栏里的文件 -&gt; 新建 -&gt; 项目，选择uni-app，输入工程名，如：hello-uniapp，点击创建，即可成功创建 uni-app。点击模板里的 Hello uni-app 即可体验官方示例。</p>
+<h2 id="2-运行uni-app"><a href="#2-运行uni-app" class="headerlink" title="2.运行uni-app"></a>2.运行uni-app</h2><ul>
+<li>浏览器运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到浏览器 -&gt; 选择浏览器，即可在浏览器里面体验uni-app 的 H5 版。</li>
+<li>真机运行：连接手机，开启USB调试，进入hello-uniapp项目，点击工具栏的运行 -&gt; 真机运行 -&gt; 选择运行的设备，即可在该设备里面体验uni-app。</li>
+<li>在微信开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 微信开发者工具，即可在微信开发者工具里面体验uni-app。<br>注意：如果是第一次使用，需要先配置小程序ide的相关路径，才能运行成功。如下图，需在输入框输入微信开发者工具的安装路径。 若HBuilderX不能正常启动微信开发者工具，需要开发者手动启动，然后将uni-app生成小程序工程的路径拷贝到微信开发者工具里面，在HBuilderX里面开发，在微信开发者工具里面就可看到实时的效果。<br>uni-app默认把项目编译到根目录的unpackage目录。 </li>
+<li>在支付宝小程序开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 支付宝小程序开发者工具，即可在支付宝小程序开发者工具里面体验uni-app。 </li>
+<li>在百度开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 百度开发者工具，即可在百度开发者工具里面体验uni-app。 </li>
+<li>在字节跳动开发者工具里运行：进入hello-uniapp项目，点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 字节跳动开发者工具，即可在字节跳动开发者工具里面体验uni-app。 </li>
+</ul>
+<p>如果是第一次使用，需要配置开发工具的相关路径。点击工具栏的运行 -&gt; 运行到小程序模拟器 -&gt; 运行设置，配置相应小程序开发者工具的路径。</p>
+<p>支付宝/百度/字节跳动小程序工具，不支持直接指定项目启动并运行。因此开发工具启动后，请将 HBuilderX 控制台中提示的项目路径，在相应小程序开发者工具中打开。</p>
+<p>如果自动启动小程序开发工具失败，请手动启动小程序开发工具并将 HBuilderX 控制台提示的项目路径，打开项目。</p>
+<h1 id="发布uni-app"><a href="#发布uni-app" class="headerlink" title="发布uni-app"></a>发布uni-app</h1><h2 id="打包为原生App（云端）"><a href="#打包为原生App（云端）" class="headerlink" title="打包为原生App（云端）"></a>打包为原生App（云端）</h2><p>在HBuilderX工具栏，点击发行，选择原生app-云端打包。</p>
+<h2 id="打包为原生App（离线）"><a href="#打包为原生App（离线）" class="headerlink" title="打包为原生App（离线）"></a>打包为原生App（离线）</h2><p>uni-app 支持离线打包，在 HBuilderX 生成离线打包资源，然后参考 离线打包（或参考其他用户写的 离线打包日记），即可进行离线打包。</p>
+<p>在HBuilderX工具栏，点击发行，选择本地打包，点击即可生成离线打包资源。</p>
+<h2 id="发布为H5"><a href="#发布为H5" class="headerlink" title="发布为H5"></a>发布为H5</h2><p>1.在 manifest.json 的可视化界面，进行如下配置（发行在网站根目录可不配置应用基本路径），此时发行网站路径是 <a href="http://www.xxx.com/h5，如：https://uniapp.dcloud.io/h5。" target="_blank" rel="noopener">www.xxx.com/h5，如：https://uniapp.dcloud.io/h5。</a></p>
+<p>2.在HBuilderX工具栏，点击发行，选择网站-H5手机版，如下图，点击即可生成 H5 的相关资源文件，保存于 unpackage 目录。</p>
+<h2 id="发布为小程序"><a href="#发布为小程序" class="headerlink" title="发布为小程序"></a>发布为小程序</h2><h3 id="发布为微信小程序"><a href="#发布为微信小程序" class="headerlink" title="发布为微信小程序"></a>发布为微信小程序</h3><p>申请微信小程序AppID。<br>在HBuilderX中顶部菜单依次点击 “发行” =&gt; “小程序-微信”，输入小程序名称和appid点击发行即可在 unpackage/dist/build/mp-weixin 生成微信小程序项目代码。</p>
+<p>在微信开小程序发者工具中，导入生成的微信小程序项目，测试项目代码运行正常后，点击“上传”按钮，之后按照 “提交审核” =&gt; “发布” 小程序标准流程，逐步操作即可，详细查看：微信官方教程。</p>
+<h3 id="发布为百度小程序"><a href="#发布为百度小程序" class="headerlink" title="发布为百度小程序"></a>发布为百度小程序</h3><p>入驻小程序并申请百度小程序AppID，参考：百度小程序教程。<br>在HBuilderX中顶部菜单依次点击 “发行” =&gt; “小程序-百度”，输入小程序名称和appid点击发行即可在 /unpackage/dist/build/mp-baidu 生成百度小程序项目代码。</p>
+<p>在百度小程序开发者工具中，导入生成的百度小程序项目，测试项目代码运行正常后，点击“上传”按钮上传代码，之后在百度小程序的 管理中心 选择创建的应用点击前往发布，选择对应的版本然后提交审核。</p>
+<h3 id="发布为支付宝小程序"><a href="#发布为支付宝小程序" class="headerlink" title="发布为支付宝小程序"></a>发布为支付宝小程序</h3><p>入驻支付宝小程序，参考：支付宝小程序教程。<br>在HBuilderX中顶部菜单依次点击 “发行” =&gt; “小程序-支付宝”，即可在 /unpackage/dist/build/mp-alipay 生成支付宝小程序项目代码。</p>
+<p>在支付宝小程序开发者工具中，导入生成的支付宝小程序项目，测试项目代码运行正常后，点击“上传”按钮上传代码，在 支付宝小程序后台，选择刚提交的版本点击提交审核，详见：支付宝小程序文档。</p>
+<h3 id="发布为头条小程序"><a href="#发布为头条小程序" class="headerlink" title="发布为头条小程序"></a>发布为头条小程序</h3><p>入驻头条小程序，参考：头条小程序教程。<br>在HBuilderX中顶部菜单依次点击 “发行” =&gt; “小程序-字节跳动”，即可在 /unpackage/dist/build/mp-alipay 生成头条小程序项目代码。</p>
+<p>在字节跳动小程序开发者工具中，导入生成的头条小程序项目，测试项目代码运行正常后，点击“上传”按钮上传代码，在 头条小程序后台，选择刚提交的版本点击提交审核，详见：头条小程序文档。</p>
+<h1 id="vue-cli创建uni-app"><a href="#vue-cli创建uni-app" class="headerlink" title="vue-cli创建uni-app"></a>vue-cli创建uni-app</h1><h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><p>全局安装vue-cli<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br></pre></td></tr></table></figure></p>
+<h2 id="创建uni-app"><a href="#创建uni-app" class="headerlink" title="创建uni-app"></a>创建uni-app</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create -p dcloudio/uni-preset-vue my-project</span><br></pre></td></tr></table></figure>
+<h2 id="运行并发布uni-app"><a href="#运行并发布uni-app" class="headerlink" title="运行并发布uni-app"></a>运行并发布uni-app</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run dev:%PLATFORM%</span><br><span class="line">npm run build:%PLATFORM%</span><br></pre></td></tr></table></figure>
+<p>%PLATFORM% 可取值如下：</p>
+<p>值    平台<br>h5    H5<br>mp-alipay    支付宝小程序<br>mp-baidu    百度小程序<br>mp-weixin    微信小程序<br>mp-toutiao    头条小程序</p>
+<h1 id="项目开发"><a href="#项目开发" class="headerlink" title="项目开发"></a>项目开发</h1><h2 id="项目基础工作"><a href="#项目基础工作" class="headerlink" title="项目基础工作"></a>项目基础工作</h2><ul>
+<li>common目录拷贝到项目目录</li>
+<li>App.vue需要引入 @import “./common/uni.css”</li>
+</ul>
+<h2 id="pages-index-index-vue"><a href="#pages-index-index-vue" class="headerlink" title="pages/index/index.vue"></a>pages/index/index.vue</h2><p>1.删除template,script,style多余的部分</p>
+<p>2.template用<strong>uli</strong>生成uListMedia代码块，url改为<a href="https://unidemo.dcloud.net.cn/api/news" target="_blank" rel="noopener">https://unidemo.dcloud.net.cn/api/news</a></p>
+<p>3.success中返回res，需求接口如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">访问地址：https://unidemo.dcloud.net.cn/api/news</span><br><span class="line">- 返回数据格式</span><br><span class="line">- post_id 新闻id 如 ： 72980</span><br><span class="line">- title 标题</span><br><span class="line">- created_at 创建时间</span><br><span class="line">- author_avatar 图标</span><br><span class="line"></span><br><span class="line">地址：https://unidemo.dcloud.net.cn/api/news/36kr/ + id（id为新闻id，上个页面传过来的）</span><br><span class="line"></span><br><span class="line">使用 rich-text 【富文本组件】来展示新闻内容</span><br><span class="line">&lt;rich-text class=&quot;richText&quot; :nodes=&quot;strings&quot;&gt;&lt;/rich-text&gt;</span><br></pre></td></tr></table></figure></p>
+<p>4.定义data数组news，赋值this.news=res.data，template循环改为news</p>
+<p>5.修改item对象的属性，author_avatar为图片，created_at为时间</p>
+<p>6.修改样式uni-media-list-body每个新闻块高度，uni-media-list-text-top新闻标题行高</p>
+<p>7.用navigator标签包裹，或者js实现（推荐），绑定单击事件@click=”openinfo”。</p>
+<p>8.methods增加openinfo方法，<strong>unav</strong>激活代码块，url写../info/info，.vue可以省略</p>
+<p>9.pages.json增加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;path&quot; : &quot;pages/info/info&quot;,</span><br><span class="line">    &quot;style&quot; : &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最终pages.json为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;pages&quot;: [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;path&quot;: &quot;pages/index/index&quot;,</span><br><span class="line">			&quot;style&quot;: &#123;</span><br><span class="line">				&quot;navigationBarTitleText&quot;: &quot;uni-app&quot;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">            &quot;path&quot; : &quot;pages/info/info&quot;,</span><br><span class="line">            &quot;style&quot; : &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">	],</span><br><span class="line">	&quot;globalStyle&quot;: &#123;</span><br><span class="line">		&quot;navigationBarTextStyle&quot;: &quot;black&quot;,</span><br><span class="line">		&quot;navigationBarTitleText&quot;: &quot;uni-app&quot;,</span><br><span class="line">		&quot;navigationBarBackgroundColor&quot;: &quot;#F8F8F8&quot;,</span><br><span class="line">		&quot;backgroundColor&quot;: &quot;#F8F8F8&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>10.绑定newsid  :data-newsid=”item.post_id”</p>
+<p>11.修改openinfo，改为带参数openinfo(e)，e通过打印日志查看获取。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var newsid = e.currentTarget.dataset.newsid;</span><br><span class="line">uni.navigateTo(&#123;</span><br><span class="line">    url: &apos;../info/info?newsid=&apos; + newsid</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>最终，index.vue如下，主要处理，页面载入访问远程服务器，点击访问本地info.vue组件，组件中再去访问远程服务器。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view class=&quot;content&quot;&gt;</span><br><span class="line">		&lt;view class=&quot;uni-list&quot;&gt;</span><br><span class="line">			&lt;view class=&quot;uni-list-cell&quot; hover-class=&quot;uni-list-cell-hover&quot; v-for=&quot;(item,index) in news&quot; :key=&quot;index&quot; @tap=&quot;openinfo&quot; :data-newsid=&quot;item.post_id&quot;&gt;</span><br><span class="line">				&lt;view class=&quot;uni-media-list&quot;&gt;</span><br><span class="line">					&lt;image class=&quot;uni-media-list-logo&quot; :src=&quot;item.author_avatar&quot;&gt;&lt;/image&gt;</span><br><span class="line">					&lt;view class=&quot;uni-media-list-body&quot;&gt;</span><br><span class="line">						&lt;view class=&quot;uni-media-list-text-top&quot;&gt;&#123;&#123;item.title&#125;&#125;&lt;/view&gt;</span><br><span class="line">						&lt;view class=&quot;uni-media-list-text-bottom uni-ellipsis&quot;&gt;&#123;&#123;item.created_at&#125;&#125;&lt;/view&gt;</span><br><span class="line">					&lt;/view&gt;</span><br><span class="line">				&lt;/view&gt;</span><br><span class="line">			&lt;/view&gt;</span><br><span class="line">		&lt;/view&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				news : []</span><br><span class="line">			&#125;;</span><br><span class="line">		&#125;,</span><br><span class="line">		onLoad:function()&#123;</span><br><span class="line">			uni.showLoading(&#123;</span><br><span class="line">				title:&quot;加载中....&quot;</span><br><span class="line">			&#125;)</span><br><span class="line">			uni.request(&#123;</span><br><span class="line">				url: &apos;https://unidemo.dcloud.net.cn/api/news&apos;,</span><br><span class="line">				method: &apos;GET&apos;,</span><br><span class="line">				data: &#123;&#125;,</span><br><span class="line">				success: res =&gt; &#123;</span><br><span class="line">					this.news = res.data;</span><br><span class="line">					uni.hideLoading();</span><br><span class="line">				&#125;,</span><br><span class="line">				fail: () =&gt; &#123;&#125;,</span><br><span class="line">				complete: () =&gt; &#123;&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;,</span><br><span class="line">		methods: &#123;</span><br><span class="line">			openinfo(e) &#123;</span><br><span class="line">				// console.log(e);</span><br><span class="line">				var newsid = e.currentTarget.dataset.newsid;</span><br><span class="line">				uni.navigateTo(&#123;</span><br><span class="line">					url: &apos;../info/info?newsid=&apos; + newsid</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.uni-media-list-body&#123;height: auto;&#125;</span><br><span class="line">.uni-media-list-text-top&#123;line-height:1.6em;&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="pages-info-info-vue"><a href="#pages-info-info-vue" class="headerlink" title="pages/info/info.vue"></a>pages/info/info.vue</h2><p>12.onload方法，onload:function(e)，e传输了newsid参数。</p>
+<p>13.<strong>ure</strong>快捷输入代码块，uni.request，url: ‘<a href="https://unidemo.dcloud.net.cn/api/news/36kr/&#39;" target="_blank" rel="noopener">https://unidemo.dcloud.net.cn/api/news/36kr/&#39;</a> + e.newsid,</p>
+<p>14.success，测试res，console.log(res)</p>
+<p>15.处理title</p>
+<ul>
+<li>模板增加web侠客行（十）--使用uni-app开发项目教程</li>
+<li>data增加title</li>
+<li>title变量赋值</li>
+<li>样式改写<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">// 模板增加title，值为&#123;&#123;title&#125;&#125;</span><br><span class="line">&lt;view class=&quot;title&quot;&gt;</span><br><span class="line">    &#123;&#123;title&#125;&#125;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line"></span><br><span class="line">// data中增加title变量</span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        title:&apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">// title变量赋值</span><br><span class="line">success: res =&gt; &#123;</span><br><span class="line">    console.log(res);</span><br><span class="line">    this.title = res.data.title</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">// content与title样式</span><br><span class="line">.content&#123;</span><br><span class="line">	padding: 10upx 2%;</span><br><span class="line">	width: 96%;</span><br><span class="line">	flex-wrap: wrap; /* 允许元素换行 */</span><br><span class="line">&#125;</span><br><span class="line">.title&#123;</span><br><span class="line">	line-height: 2em;</span><br><span class="line">	font-weight: 700;</span><br><span class="line">	font-size: 38upx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>16.处理内容，rich-text展示html内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;art-content&quot;&gt;</span><br><span class="line">    &lt;rich-text class=&quot;richText&quot; :nodes=&quot;content&quot;&gt;&lt;/rich-text&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line"></span><br><span class="line">data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">        title:&apos;&apos;,</span><br><span class="line">        content:&apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">success: res =&gt; &#123;</span><br><span class="line">    console.log(res);</span><br><span class="line">    this.title = res.data.title</span><br><span class="line">    this.content = res.data.content</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<p>17.最终info.vue内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;view class=&quot;content&quot;&gt;</span><br><span class="line">		&lt;view class=&quot;title&quot;&gt;</span><br><span class="line">			&#123;&#123;title&#125;&#125;</span><br><span class="line">		&lt;/view&gt;</span><br><span class="line">		&lt;view class=&quot;art-content&quot;&gt;</span><br><span class="line">			&lt;rich-text class=&quot;richText&quot; :nodes=&quot;content&quot;&gt;&lt;/rich-text&gt;</span><br><span class="line">		&lt;/view&gt;</span><br><span class="line">	&lt;/view&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">	export default &#123;</span><br><span class="line">		data() &#123;</span><br><span class="line">			return &#123;</span><br><span class="line">				title:&apos;&apos;,</span><br><span class="line">				content:&apos;&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;,</span><br><span class="line">		onLoad:function(e)&#123;</span><br><span class="line">			console.log(e);</span><br><span class="line">			uni.request(&#123;</span><br><span class="line">				url: &apos;https://unidemo.dcloud.net.cn/api/news/36kr/&apos; + e.newsid,</span><br><span class="line">				method: &apos;GET&apos;,</span><br><span class="line">				data: &#123;&#125;,</span><br><span class="line">				success: res =&gt; &#123;</span><br><span class="line">					console.log(res);</span><br><span class="line">					this.title = res.data.title</span><br><span class="line">					this.content = res.data.content</span><br><span class="line">				&#125;,</span><br><span class="line">				fail: () =&gt; &#123;&#125;,</span><br><span class="line">				complete: () =&gt; &#123;&#125;</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">.content&#123;</span><br><span class="line">	padding: 10upx 2%;</span><br><span class="line">	width: 96%;</span><br><span class="line">	flex-wrap: wrap; /* 允许元素换行 */</span><br><span class="line">&#125;</span><br><span class="line">.title&#123;</span><br><span class="line">	line-height: 2em;</span><br><span class="line">	font-weight: 700;</span><br><span class="line">	font-size: 38upx;</span><br><span class="line">&#125;</span><br><span class="line">.art-content&#123;</span><br><span class="line">	line-height: 2em;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="开发模式的配置condition"><a href="#开发模式的配置condition" class="headerlink" title="开发模式的配置condition"></a>开发模式的配置condition</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;condition&quot;: &#123; //模式配置，仅开发期间生效</span><br><span class="line">    &quot;current&quot;: 0, //当前激活的模式（list 的索引项）</span><br><span class="line">    &quot;list&quot;: [&#123;</span><br><span class="line">            &quot;name&quot;: &quot;test&quot;, //模式名称</span><br><span class="line">            &quot;path&quot;: &quot;pages/info/info&quot;, //启动页面，必选</span><br><span class="line">            &quot;query&quot;: &quot;newsid=5158607&quot; //启动参数，在页面的onLoad函数里面得到。</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后ctrl+r，运行test即可。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag">#vue</a>
+          
+            <a href="/tags/app/" rel="tag">#app</a>
+          
+            <a href="/tags/uni-app/" rel="tag">#uni-app</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/02/docker实验室（一）--MySql8.0安装与配置centOS环境/" rel="prev">docker实验室（一）--MySql8.0安装与配置centOS环境</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2000/04/13/web侠客行（九）--Vue项目使用BootStrap教程/" rel="next">web侠客行（九）--Vue项目使用BootStrap教程</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0" style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image">
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是-uni-app"><span class="nav-number">1.</span> <span class="nav-text">什么是 uni-app</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#quick-start"><span class="nav-number">2.</span> <span class="nav-text">quick start</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-创建uni-app"><span class="nav-number">2.1.</span> <span class="nav-text">1.创建uni-app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-运行uni-app"><span class="nav-number">2.2.</span> <span class="nav-text">2.运行uni-app</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#发布uni-app"><span class="nav-number">3.</span> <span class="nav-text">发布uni-app</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#打包为原生App（云端）"><span class="nav-number">3.1.</span> <span class="nav-text">打包为原生App（云端）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包为原生App（离线）"><span class="nav-number">3.2.</span> <span class="nav-text">打包为原生App（离线）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布为H5"><span class="nav-number">3.3.</span> <span class="nav-text">发布为H5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发布为小程序"><span class="nav-number">3.4.</span> <span class="nav-text">发布为小程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布为微信小程序"><span class="nav-number">3.4.1.</span> <span class="nav-text">发布为微信小程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布为百度小程序"><span class="nav-number">3.4.2.</span> <span class="nav-text">发布为百度小程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布为支付宝小程序"><span class="nav-number">3.4.3.</span> <span class="nav-text">发布为支付宝小程序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布为头条小程序"><span class="nav-number">3.4.4.</span> <span class="nav-text">发布为头条小程序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-cli创建uni-app"><span class="nav-number">4.</span> <span class="nav-text">vue-cli创建uni-app</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#环境安装"><span class="nav-number">4.1.</span> <span class="nav-text">环境安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建uni-app"><span class="nav-number">4.2.</span> <span class="nav-text">创建uni-app</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行并发布uni-app"><span class="nav-number">4.3.</span> <span class="nav-text">运行并发布uni-app</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#项目开发"><span class="nav-number">5.</span> <span class="nav-text">项目开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目基础工作"><span class="nav-number">5.1.</span> <span class="nav-text">项目基础工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pages-index-index-vue"><span class="nav-number">5.2.</span> <span class="nav-text">pages/index/index.vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pages-info-info-vue"><span class="nav-number">5.3.</span> <span class="nav-text">pages/info/info.vue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发模式的配置condition"><span class="nav-number">5.4.</span> <span class="nav-text">开发模式的配置condition</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </div></main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
