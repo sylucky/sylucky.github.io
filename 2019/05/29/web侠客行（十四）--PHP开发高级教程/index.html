@@ -1,0 +1,1054 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+  <meta name="google-site-verification" content="xxx" />
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人" />
+
+
+
+  <meta name="keywords" content="开发,PHP," />
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml" />
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="PHP 表单和用户输入和 $_REQUEST``` 的区别？12345678910$_GET 变量接受所有以 get 方式发送的请求，及浏览器地址栏中的 ? 之后的内容。$_POST 变量接受所有以 post 方式发送的请求，例如，一个 form 以 method=post 提交，提交后 php 会处理 post 过来的全部变量。$_REQUEST 支持两种方式发送过来的请求，即 post 和 g">
+<meta name="keywords" content="开发,PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web侠客行（十三）--PHP开发高级教程">
+<meta property="og:url" content="http://sylucky.github.io/2019/05/29/web侠客行（十四）--PHP开发高级教程/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="PHP 表单和用户输入和 $_REQUEST``` 的区别？12345678910$_GET 变量接受所有以 get 方式发送的请求，及浏览器地址栏中的 ? 之后的内容。$_POST 变量接受所有以 post 方式发送的请求，例如，一个 form 以 method=post 提交，提交后 php 会处理 post 过来的全部变量。$_REQUEST 支持两种方式发送过来的请求，即 post 和 g">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-30T08:33:32.999Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web侠客行（十三）--PHP开发高级教程">
+<meta name="twitter:description" content="PHP 表单和用户输入和 $_REQUEST``` 的区别？12345678910$_GET 变量接受所有以 get 方式发送的请求，及浏览器地址栏中的 ? 之后的内容。$_POST 变量接受所有以 post 方式发送的请求，例如，一个 form 以 method=post 提交，提交后 php 会处理 post 过来的全部变量。$_REQUEST 支持两种方式发送过来的请求，即 post 和 g">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> web侠客行（十三）--PHP开发高级教程 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              web侠客行（十三）--PHP开发高级教程
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2019-05-29T10:02:12+08:00" content="2019-05-29">
+            2019-05-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/网站建设/" itemprop="url" rel="index">
+                  <span itemprop="name">网站建设</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="PHP-表单和用户输入"><a href="#PHP-表单和用户输入" class="headerlink" title="PHP 表单和用户输入"></a>PHP 表单和用户输入</h1><figure class="highlight plain"><figcaption><span>和 $_REQUEST``` 的区别？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$_GET 变量接受所有以 get 方式发送的请求，及浏览器地址栏中的 ? 之后的内容。</span><br><span class="line"></span><br><span class="line">$_POST 变量接受所有以 post 方式发送的请求，例如，一个 form 以 method=post 提交，提交后 php 会处理 post 过来的全部变量。</span><br><span class="line"></span><br><span class="line">$_REQUEST 支持两种方式发送过来的请求，即 post 和 get 它都可以接受，显示不显示要看传递方法，get 会显示在 url 中（有字符数限制），post 不会在 url 中显示，可以传递任意多的数据（只要服务器支持）。</span><br><span class="line"></span><br><span class="line">## 简单的表单提交案例</span><br><span class="line"></span><br><span class="line">form.html</span><br></pre></td></tr></table></figure>
+<html><br><head><meta name="generator" content="Hexo 3.8.0"><br><meta charset="utf-8"><br><title>菜鸟教程(runoob.com)</title><br></head><br><body><br><br><form action="welcome.php" method="post"><br>名字: <input type="text" name="fname"><br>年龄: <input type="text" name="age"><br><input type="submit" value="提交"><br></form><br><br></body><br></html><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">welcome.php</span><br></pre></td></tr></table></figure><br><br>欢迎&lt;?php echo $_POST[“fname”]; ?&gt;!<br><br>你的年龄是 &lt;?php echo $_POST[“age”]; ?&gt;  岁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## PHP 获取下拉菜单的数据</span><br><span class="line">PHP 下拉菜单单选</span><br><span class="line">以下实例我们设置了下拉菜单三个选项，表单使用 GET 方式获取数据，action 属性值为空表示提交到当前脚本，我们可以通过 select 的 name 属性获取下拉菜单的值：</span><br><span class="line">php_form_select.php 文件代码：</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>$q = isset($_GET[‘q’])? htmlspecialchars($_GET[‘q’]) : ‘’;<br>if($q) {<br>        if($q ==’RUNOOB’) {<br>                echo ‘菜鸟教程<br><a href="http://www.runoob.com&#39;" target="_blank" rel="noopener">http://www.runoob.com&#39;</a>;<br>        } else if($q ==’GOOGLE’) {<br>                echo ‘Google 搜索<br><a href="http://www.google.com&#39;" target="_blank" rel="noopener">http://www.google.com&#39;</a>;<br>        } else if($q ==’TAOBAO’) {<br>                echo ‘淘宝<br><a href="http://www.taobao.com&#39;" target="_blank" rel="noopener">http://www.taobao.com&#39;</a>;<br>        }<br>} else {<br>?&gt;<br><form action method="get"><br>    <select name="q"><br>    <option value>选择一个站点:</option><br>    <option value="RUNOOB">Runoob</option><br>    <option value="GOOGLE">Google</option><br>    <option value="TAOBAO">Taobao</option><br>    </select><br>    <input type="submit" value="提交"><br>    </form><br>&lt;?php<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## PHP 下拉菜单多选</span><br><span class="line">如果下拉菜单是多选的（ multiple=&quot;multiple&quot;），我们可以通过将设置 select name=&quot;q[]&quot; 以数组的方式获取，以下使用 POST 方式提交，代码如下所示：</span><br><span class="line"></span><br><span class="line">php_form_select_mul.php 文件代码：</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>$q = isset($_POST[‘q’])? $_POST[‘q’] : ‘’;<br>if(is_array($q)) {<br>    $sites = array(<br>            ‘RUNOOB’ =&gt; ‘菜鸟教程: <a href="http://www.runoob.com&#39;" target="_blank" rel="noopener">http://www.runoob.com&#39;</a>,<br>            ‘GOOGLE’ =&gt; ‘Google 搜索: <a href="http://www.google.com&#39;" target="_blank" rel="noopener">http://www.google.com&#39;</a>,<br>            ‘TAOBAO’ =&gt; ‘淘宝: <a href="http://www.taobao.com&#39;" target="_blank" rel="noopener">http://www.taobao.com&#39;</a>,<br>    );<br>    foreach($q as $val) {<br>        // PHP_EOL 为常量，用于换行<br>        echo $sites[$val] . PHP_EOL;<br>    }<br><br>} else {<br>?&gt;<br><form action method="post"><br>    <select multiple="multiple" name="q[]"><br>    <option value>选择一个站点:</option><br>    <option value="RUNOOB">Runoob</option><br>    <option value="GOOGLE">Google</option><br>    <option value="TAOBAO">Taobao</option><br>    </select><br>    <input type="submit" value="提交"><br>    </form><br>&lt;?php<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 单选按钮表单</span><br><span class="line">PHP 单选按钮表单中 name 属性的值是一致的，value 值是不同的，代码如下所示：</span><br><span class="line"></span><br><span class="line">php_form_radio.php 文件代码：</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>$q = isset($_GET[‘q’])? htmlspecialchars($_GET[‘q’]) : ‘’;<br>if($q) {<br>        if($q ==’RUNOOB’) {<br>                echo ‘菜鸟教程<br><a href="http://www.runoob.com&#39;" target="_blank" rel="noopener">http://www.runoob.com&#39;</a>;<br>        } else if($q ==’GOOGLE’) {<br>                echo ‘Google 搜索<br><a href="http://www.google.com&#39;" target="_blank" rel="noopener">http://www.google.com&#39;</a>;<br>        } else if($q ==’TAOBAO’) {<br>                echo ‘淘宝<br><a href="http://www.taobao.com&#39;" target="_blank" rel="noopener">http://www.taobao.com&#39;</a>;<br>        }<br>} else {<br>?&gt;<form action method="get"><br>    <input type="radio" name="q" value="RUNOOB">Runoob<br>    <input type="radio" name="q" value="GOOGLE">Google<br>    <input type="radio" name="q" value="TAOBAO">Taobao<br>    <input type="submit" value="提交"><br></form><br>&lt;?php<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## checkbox 复选框</span><br><span class="line">PHP checkbox 复选框可以选择多个值：</span><br></pre></td></tr></table></figure><br><br>php_form_select_checkbox.php 文件代码：<br>&lt;?php<br>$q = isset($_POST[‘q’])? $_POST[‘q’] : ‘’;<br>if(is_array($q)) {<br>    $sites = array(<br>            ‘RUNOOB’ =&gt; ‘菜鸟教程: <a href="http://www.runoob.com&#39;" target="_blank" rel="noopener">http://www.runoob.com&#39;</a>,<br>            ‘GOOGLE’ =&gt; ‘Google 搜索: <a href="http://www.google.com&#39;" target="_blank" rel="noopener">http://www.google.com&#39;</a>,<br>            ‘TAOBAO’ =&gt; ‘淘宝: <a href="http://www.taobao.com&#39;" target="_blank" rel="noopener">http://www.taobao.com&#39;</a>,<br>    );<br>    foreach($q as $val) {<br>        // PHP_EOL 为常量，用于换行<br>        echo $sites[$val] . PHP_EOL;<br>    }<br><br>} else {<br>?&gt;<form action method="post"><br>    <input type="checkbox" name="q[]" value="RUNOOB"> Runoob<br><br>    <input type="checkbox" name="q[]" value="GOOGLE"> Google<br><br>    <input type="checkbox" name="q[]" value="TAOBAO"> Taobao<br><br>    <input type="submit" value="提交"><br></form><br>&lt;?php<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 表单验证案例</span><br><span class="line">$_SERVER[&quot;PHP_SELF&quot;]是超级全局变量，返回当前正在执行脚本的文件名。所以， $_SERVER[&quot;PHP_SELF&quot;] 会发送表单数据到当前页面，而不是跳转到不同的页面。</span><br><span class="line"></span><br><span class="line">htmlspecialchars() 函数把一些预定义的字符转换为 HTML 实体。</span><br><span class="line">预定义的字符是：</span><br></pre></td></tr></table></figure><br><br>&amp; （和号） 成为 &amp;<br>“ （双引号） 成为 &quot;<br>‘ （单引号） 成为 &#039;<br>&lt; （小于） 成为 &lt;<br>&gt; （大于） 成为 &gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">当用户提交表单时，我们将做以下两件事情：</span><br><span class="line"></span><br><span class="line">使用 PHP trim() 函数去除用户输入数据中不必要的字符 (如：空格，tab，换行)。</span><br><span class="line">使用PHP stripslashes()函数去除用户输入数据中的反斜杠 (\)</span><br><span class="line">接下来让我们将这些过滤的函数写在一个我们自己定义的函数中，这样可以大大提高代码的复用性。</span><br><span class="line"></span><br><span class="line">将函数命名为 test_input()。</span><br></pre></td></tr></table></figure><br><br>function test_input($data)<br>{<br>  $data = trim($data);<br>  $data = stripslashes($data);<br>  $data = htmlspecialchars($data);<br>  return $data;<br>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">代码</span><br></pre></td></tr></table></figure><br><br>&lt;!DOCTYPE HTML&gt;<br><html><br><head><meta name="generator" content="Hexo 3.8.0"><br><meta charset="utf-8"><br><title>菜鸟教程(runoob.com)</title><br><style><br>.error {color: #FF0000;}<br></style><br></head><br><body><br><br>&lt;?php<br>// 定义变量并默认设置为空值<br>$nameErr = $emailErr = $genderErr = $websiteErr = “”;<br>$name = $email = $gender = $comment = $website = “”;<br><br>if ($_SERVER[“REQUEST_METHOD”] == “POST”)<br>{<br>    if (empty($_POST[“name”]))<br>    {<br>        $nameErr = “名字是必需的”;<br>    }<br>    else<br>    {<br>        $name = test_input($_POST[“name”]);<br>        // 检测名字是否只包含字母跟空格<br>        if (!preg_match(“/^[a-zA-Z ]<em>$/“,$name))<br>        {<br>            $nameErr = “只允许字母和空格”;<br>        }<br>    }<br><br>    if (empty($_POST[“email”]))<br>    {<br>      $emailErr = “邮箱是必需的”;<br>    }<br>    else<br>    {<br>        $email = test_input($_POST[“email”]);<br>        // 检测邮箱是否合法<br>        if (!preg_match(“/([\w-]+\@[\w-]+.[\w-]+)/“,$email))<br>        {<br>            $emailErr = “非法邮箱格式”;<br>        }<br>    }<br><br>    if (empty($_POST[“website”]))<br>    {<br>        $website = “”;<br>    }<br>    else<br>    {<br>        $website = test_input($_POST[“website”]);<br>        // 检测 URL 地址是否合法<br>        if (!preg_match(“/\b(?:(?:https?|ftp):\/\/|www.)[-a-z0-9+&amp;@#\/%?=~_|!:,.;]</em>[-a-z0-9+&amp;@#\/%=~_|]/i”,$website))<br>        {<br>            $websiteErr = “非法的 URL 的地址”;<br>        }<br>    }<br><br>    if (empty($_POST[“comment”]))<br>    {<br>        $comment = “”;<br>    }<br>    else<br>    {<br>        $comment = test_input($_POST[“comment”]);<br>    }<br><br>    if (empty($_POST[“gender”]))<br>    {<br>        $genderErr = “性别是必需的”;<br>    }<br>    else<br>    {<br>        $gender = test_input($_POST[“gender”]);<br>    }<br>}<br><br>function test_input($data)<br>{<br>    $data = trim($data);<br>    $data = stripslashes($data);<br>    $data = htmlspecialchars($data);<br>    return $data;<br>}<br>?&gt;<br><br><h2>PHP 表单验证实例</h2><br><p><span class="error"><em> 必需字段。</em></span></p><br>&lt;form method=”post” action=”&lt;?php echo htmlspecialchars($_SERVER[“PHP_SELF”]);?&gt;”&gt;<br>   名字: <input type="text" name="name" value="<?php echo $name;?>"><br>   <span class="error"> &lt;?php echo $nameErr;?&gt;</span><br>   <br><br><br>   E-mail: <input type="text" name="email" value="<?php echo $email;?>"><br>   <span class="error"><em> &lt;?php echo $emailErr;?&gt;</em></span><br>   <br><br><br>   网址: <input type="text" name="website" value="<?php echo $website;?>"><br>   <span class="error">&lt;?php echo $websiteErr;?&gt;</span><br>   <br><br><br>   备注: <textarea name="comment" rows="5" cols="40">&lt;?php echo $comment;?&gt;</textarea><br>   <br><br><br>   性别:<br>   &lt;input type=”radio” name=”gender” &lt;?php if (isset($gender) &amp;&amp; $gender==”female”) echo “checked”;?&gt;  value=”female”&gt;女<br>   &lt;input type=”radio” name=”gender” &lt;?php if (isset($gender) &amp;&amp; $gender==”male”) echo “checked”;?&gt;  value=”male”&gt;男<br>   <span class="error"> &lt;?php echo $genderErr;?&gt;</span><br>   <br><br><br>   <input type="submit" name="submit" value="Submit"><br><br><br>&lt;?php<br>echo “<h2>您输入的内容是:</h2>“;<br>echo $name;<br>echo “<br>“;<br>echo $email;<br>echo “<br>“;<br>echo $website;<br>echo “<br>“;<br>echo $comment;<br>echo “<br>“;<br>echo $gender;<br>?&gt;<br><br></body><br></html><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## PHP代码安全</span><br><span class="line">$_SERVER[&quot;PHP_SELF&quot;] 变量有可能会被黑客使用</span><br><span class="line"></span><br><span class="line">考虑到用户会在浏览器地址栏中输入以下地址:</span><br></pre></td></tr></table></figure><br><br><a href="http://www.runoob.com/test_form.php/%22%3E%3Cscript%3Ealert(&#39;hacked&#39;)%3C/script%3E" target="_blank" rel="noopener">http://www.runoob.com/test_form.php/%22%3E%3Cscript%3Ealert(&#39;hacked&#39;)%3C/script%3E</a><br>以上的 URL 中，将被解析为如下代码并执行：<br><br><form method="post" action="test_form.php/"><script>alert(‘hacked’)</script><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$_SERVER[&quot;PHP_SELF&quot;] 可以通过 htmlspecialchars() 函数来避免被利用。</span><br><span class="line"></span><br><span class="line">form 代码如下所示：</span><br></pre></td></tr></table></figure><br><br>&lt;form method=”post” action=”&lt;?php echo htmlspecialchars($_SERVER[“PHP_SELF”]);?&gt;”&gt;<br><br>htmlspecialchars() 把一些预定义的字符转换为 HTML 实体。现在如果用户想利用 PHP_SELF 变量, 结果将输出如下所示：<br><br><form method="post" action="test_form.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># PHP 多维数组</span><br></pre></td></tr></table></figure><br><br>// 二维数组<br>&lt;?php<br>// 二维数组:<br>$cars = array<br>(<br>    array(“Volvo”,100,96),<br>    array(“BMW”,60,59),<br>    array(“Toyota”,110,100)<br>);<br>?&gt;<br><br>// 多维数组<br>&lt;?php<br>$sites = array<br>(<br>    “runoob”=&gt;array<br>    (<br>        “菜鸟教程”,<br>        “<a href="http://www.runoob.com&quot;" target="_blank" rel="noopener">http://www.runoob.com&quot;</a><br>    ),<br>    “google”=&gt;array<br>    (<br>        “Google 搜索”,<br>        “<a href="http://www.google.com&quot;" target="_blank" rel="noopener">http://www.google.com&quot;</a><br>    ),<br>    “taobao”=&gt;array<br>    (<br>        “淘宝”,<br>        “<a href="http://www.taobao.com&quot;" target="_blank" rel="noopener">http://www.taobao.com&quot;</a><br>    )<br>);<br>print(“<pre>“); // 格式化输出数组<br>print_r($sites);<br>print(“</pre>“);<br>?&gt;<br><br>// 值得使用<br>echo $sites[‘runoob’][0] . ‘地址为：’ . $sites[‘runoob’][1];<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># PHP date() 函数</span><br><span class="line">日期函数</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>echo date(“Y/m/d”) . “<br>“;<br>echo date(“Y.m.d”) . “<br>“;<br>echo date(“Y-m-d”);<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># PHP include 和 require 语句</span><br><span class="line">可以在服务器执行 PHP 文件之前在该文件中插入一个文件的内容。</span><br></pre></td></tr></table></figure><br><br><html><br><head><meta name="generator" content="Hexo 3.8.0"><br><meta charset="utf-8"><br><title>菜鸟教程(runoob.com)</title><br></head><br><body><br><br>&lt;?php include ‘header.php’; ?&gt;<br><h1>欢迎来到我的主页!</h1><br><p>一些文本。</p><br><br></body><br></html><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># PHP 文件处理</span><br></pre></td></tr></table></figure><br><br><html><br><body><br><br>&lt;?php<br>$file=fopen(“welcome.txt”,”r”);<br>?&gt;<br><br></body><br></html><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">## 逐行读取</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>$file = fopen(“welcome.txt”, “r”) or exit(“无法打开文件!”);<br>// 读取文件每一行，直到文件结尾<br>while(!feof($file))<br>{<br>    echo fgets($file). “<br>“;<br>}<br>fclose($file);<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 上传</span><br><span class="line">form.html</span><br></pre></td></tr></table></figure><br><br><html><br><head><meta name="generator" content="Hexo 3.8.0"><br><meta charset="utf-8"><br><title>菜鸟教程(runoob.com)</title><br></head><br><body><br><br><form action="upload_file.php" method="post" enctype="multipart/form-data"><br>    <label for="file">文件名：</label><br>    <input type="file" name="file" id="file"><br><br>    <input type="submit" name="submit" value="提交"><br></form><br><br></body><br></html><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">upload_file.php</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>// 允许上传的图片后缀<br>$allowedExts = array(“gif”, “jpeg”, “jpg”, “png”);<br>$temp = explode(“.”, $_FILES[“file”][“name”]);<br>echo $_FILES[“file”][“size”];<br>$extension = end($temp);     // 获取文件后缀名<br>if ((($_FILES[“file”][“type”] == “image/gif”)<br>|| ($_FILES[“file”][“type”] == “image/jpeg”)<br>|| ($_FILES[“file”][“type”] == “image/jpg”)<br>|| ($_FILES[“file”][“type”] == “image/pjpeg”)<br>|| ($_FILES[“file”][“type”] == “image/x-png”)<br>|| ($_FILES[“file”][“type”] == “image/png”))<br>&amp;&amp; ($_FILES[“file”][“size”] &lt; 204800)   // 小于 200 kb<br>&amp;&amp; in_array($extension, $allowedExts))<br>{<br>    if ($_FILES[“file”][“error”] &gt; 0)<br>    {<br>        echo “错误：: “ . $_FILES[“file”][“error”] . “<br>“;<br>    }<br>    else<br>    {<br>        echo “上传文件名: “ . $_FILES[“file”][“name”] . “<br>“;<br>        echo “文件类型: “ . $_FILES[“file”][“type”] . “<br>“;<br>        echo “文件大小: “ . ($_FILES[“file”][“size”] / 1024) . “ kB<br>“;<br>        echo “文件临时存储的位置: “ . $_FILES[“file”][“tmp_name”] . “<br>“;<br><br>        // 判断当期目录下的 upload 目录是否存在该文件<br>        // 如果没有 upload 目录，你需要创建它，upload 目录权限为 777<br>        if (file_exists(“upload/“ . $_FILES[“file”][“name”]))<br>        {<br>            echo $_FILES[“file”][“name”] . “ 文件已经存在。 “;<br>        }<br>        else<br>        {<br>            // 如果 upload 目录不存在该文件则将文件上传到 upload 目录下<br>            move_uploaded_file($_FILES[“file”][“tmp_name”], “upload/“ . $_FILES[“file”][“name”]);<br>            echo “文件存储在: “ . “upload/“ . $_FILES[“file”][“name”];<br>        }<br>    }<br>}<br>else<br>{<br>    echo “非法的文件格式”;<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 有关上面的 HTML 表单的一些注意项列举如下</span><br><span class="line"></span><br><span class="line">```&lt;form&gt;``` 标签的 enctype 属性规定了在提交表单时要使用哪种内容类型。在表单需要二进制数据时，比如文件内容，请使用 &quot;multipart/form-data&quot;。</span><br><span class="line">```&lt;input&gt;``` 标签的 type=&quot;file&quot; 属性规定了应该把输入作为文件来处理。举例来说，当在浏览器中预览时，会看到输入框旁边有一个浏览按钮。</span><br><span class="line"></span><br><span class="line">### 使用 PHP 的全局数组 $_FILES</span><br><span class="line">通过使用 PHP 的全局数组 $_FILES，你可以从客户计算机向远程服务器上传文件。</span><br><span class="line"></span><br><span class="line">第一个参数是表单的 input name，第二个下标可以是 &quot;name&quot;、&quot;type&quot;、&quot;size&quot;、&quot;tmp_name&quot; 或 &quot;error&quot;。如下所示：</span><br><span class="line"></span><br><span class="line">* $_FILES[&quot;file&quot;][&quot;name&quot;] - 上传文件的名称</span><br><span class="line">* $_FILES[&quot;file&quot;][&quot;type&quot;] - 上传文件的类型</span><br><span class="line">* $_FILES[&quot;file&quot;][&quot;size&quot;] - 上传文件的大小，以字节计</span><br><span class="line">* $_FILES[&quot;file&quot;][&quot;tmp_name&quot;] - 存储在服务器的文件的临时副本的名称</span><br><span class="line">* $_FILES[&quot;file&quot;][&quot;error&quot;] - 由文件上传导致的错误代码</span><br><span class="line"></span><br><span class="line">### 上传限制</span><br><span class="line">在这个脚本中，我们增加了对文件上传的限制。用户只能上传 .gif、.jpeg、.jpg、.png 文件，文件大小必须小于 200 kB</span><br><span class="line"></span><br><span class="line"># PHP Cookie</span><br><span class="line">cookie 常用于识别用户。</span><br><span class="line"></span><br><span class="line">设置一个月过期的cookie</span><br></pre></td></tr></table></figure><br><br>&lt;?php<br>$expire=time()+60<em>60</em>24*30;<br>setcookie(“user”, “runoob”, $expire);<br>?&gt;<br><br>&lt;?php<br>// 输出 cookie 值<br>echo $_COOKIE[“user”];<br><br>// 查看所有 cookie<br>print_r($_COOKIE);<br>?&gt;<br><br>// 删除cookie<br>&lt;?php<br>// 设置 cookie 过期时间为过去 1 小时<br>setcookie(“user”, “”, time()-3600);<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure><br><br><html><br><head><meta name="generator" content="Hexo 3.8.0"><br><meta charset="utf-8"><br><title>菜鸟教程(runoob.com)</title><br></head><br><body><br><br>&lt;?php<br>if (isset($_COOKIE[“user”]))<br>    echo “欢迎 “ . $_COOKIE[“user”] . “!<br>“;<br>else<br>    echo “普通访客!<br>“;<br>?&gt;<br><br></body><br></html><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">如果浏览器不支持 cookie 用表单提交的方法</span><br><span class="line"></span><br><span class="line"># PHP Session</span><br><span class="line">PHP session 变量用于存储关于用户会话（session）的信息，或者更改用户会话（session）的设置。Session 变量存储单一用户的信息，并且对于应用程序中的所有页面都是可用的。</span><br></pre></td></tr></table></figure><br><br>//启动会话<br>&lt;?php session_start();<br><br> // 存储 session 数据<br>$_SESSION[‘views’]=1;<br>?&gt;<br><br><html><br><head><meta name="generator" content="Hexo 3.8.0"><br><meta charset="utf-8"><br><title>菜鸟教程(runoob.com)</title><br></head><br><body><br><br>&lt;?php<br>// 检索 session 数据<br>echo “浏览量：”. $_SESSION[‘views’];<br>?&gt;<br><br></body><br></html>
+
+<p>// 销毁<br>&lt;?php<br>session_start();<br>if(isset($_SESSION[‘views’]))<br>{<br>    unset($_SESSION[‘views’]);<br>}<br>?&gt;<br>// 或者使用 destroy<br>&lt;?php<br>session_destroy();<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">浏览量实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>session_start();</p>
+<p>if(isset($_SESSION[‘views’]))<br>{<br>    $_SESSION[‘views’]=$_SESSION[‘views’]+1;<br>}<br>else<br>{<br>    $_SESSION[‘views’]=1;<br>}<br>echo “浏览量：”. $_SESSION[‘views’];<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># PHP 发送电子邮件</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$to = “<a href="mailto:someone@example.com" target="_blank" rel="noopener">someone@example.com</a>“;         // 邮件接收者<br>$subject = “参数邮件”;                // 邮件标题<br>$message = “Hello! 这是邮件的内容。”;  // 邮件正文<br>$from = “<a href="mailto:someonelse@example.com" target="_blank" rel="noopener">someonelse@example.com</a>“;   // 邮件发送者<br>$headers = “From:” . $from;         // 头部信息设置<br>mail($to,$subject,$message,$headers);<br>echo “邮件已发送”;<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## PHP 防止 E-mail 注入</span><br><span class="line">防止 e-mail 注入的最好方法是对输入进行验证。</span><br><span class="line"></span><br><span class="line">经增加了检测表单中 email 字段的输入验证程序：</span><br></pre></td></tr></table></figure></p>
+<p><html></html></p>
+<p><head><meta name="generator" content="Hexo 3.8.0"></head></p>
+<p><meta charset="utf-8"></p>
+<p><title>菜鸟教程(runoob.com)</title><br></p>
+<p><body><br>&lt;?php<br>function spamcheck($field)<br>{<br>    // filter_var() 过滤 e-mail<br>    // 使用 FILTER_SANITIZE_EMAIL<br>    $field=filter_var($field, FILTER_SANITIZE_EMAIL);</body></p>
+<pre><code>//filter_var() 过滤 e-mail
+// 使用 FILTER_VALIDATE_EMAIL
+if(filter_var($field, FILTER_VALIDATE_EMAIL))
+{
+    return TRUE;
+}
+else
+{
+    return FALSE;
+}
+</code></pre><p>}</p>
+<p>if (isset($_REQUEST[‘email’]))<br>{<br>    // 如果接收到邮箱参数则发送邮件</p>
+<pre><code>// 判断邮箱是否合法
+$mailcheck = spamcheck($_REQUEST[&apos;email&apos;]);
+if ($mailcheck==FALSE)
+{
+    echo &quot;非法输入&quot;;
+}
+else
+{    
+    // 发送邮件
+    $email = $_REQUEST[&apos;email&apos;] ;
+    $subject = $_REQUEST[&apos;subject&apos;] ;
+    $message = $_REQUEST[&apos;message&apos;] ;
+    mail(&quot;someone@example.com&quot;, &quot;Subject: $subject&quot;,
+    $message, &quot;From: $email&quot; );
+    echo &quot;Thank you for using our mail form&quot;;
+}
+</code></pre><p>}<br>else<br>{<br>    // 如果没有邮箱参数则显示表单<br>    echo “<form method="post" action="mailform.php"><br>    Email: <input name="email" type="text"><br><br>    Subject: <input name="subject" type="text"><br><br>    Message:<br><br>    <textarea name="message" rows="15" cols="40"><br>    </textarea><br><br>    <input type="submit"><br>    </form>“;<br>}<br>?&gt;</p>
+<p><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FILTER_SANITIZE_EMAIL 过滤器从字符串中删除电子邮件的非法字符</span><br><span class="line">FILTER_VALIDATE_EMAIL 过滤器验证电子邮件地址的值</span><br><span class="line"></span><br><span class="line"># PHP 错误处理</span><br><span class="line">## die()函数</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$file=fopen(“welcome.txt”,”r”);<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>if(!file_exists(“welcome.txt”))<br>{<br>    die(“文件不存在”);<br>}<br>else<br>{<br>    $file=fopen(“welcome.txt”,”r”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 创建自定义错误处理器</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>// 错误处理函数<br>function customError($errno, $errstr)<br>{<br>    echo “<b>Error:</b> [$errno] $errstr”;<br>}</p>
+<p>// 设置错误处理函数<br>set_error_handler(“customError”);</p>
+<p>// 触发错误<br>echo($test);<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 触发错误</span><br><span class="line"> trigger_error() 函数</span><br></pre></td></tr></table></figure></p>
+<p> &lt;?php<br>$test=2;<br>if ($test&gt;1)<br>{<br>    trigger_error(“变量值必须小于等于 1”);<br>}<br>?&gt;<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 异常处理</span><br></pre></td></tr></table></figure></p>
+<p> &lt;?php<br>// 创建一个有异常处理的函数<br>function checkNum($number)<br>{<br>    if($number&gt;1)<br>    {<br>        throw new Exception(“变量值必须小于等于 1”);<br>    }<br>        return true;<br>}</p>
+<p>// 在 try 块 触发异常<br>try<br>{<br>    checkNum(2);<br>    // 如果抛出异常，以下文本不会输出<br>    echo ‘如果输出该内容，说明 $number 变量’;<br>}<br>// 捕获异常<br>catch(Exception $e)<br>{<br>    echo ‘Message: ‘ .$e-&gt;getMessage();<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># PHP 过滤器</span><br><span class="line">PHP 过滤器用于验证和过滤来自非安全来源的数据，比如用户的输入。</span><br><span class="line"></span><br><span class="line">应该始终对外部数据进行过滤！</span><br><span class="line">* 来自表单的输入数据</span><br><span class="line">* Cookies</span><br><span class="line">* Web services data</span><br><span class="line">* 服务器变量</span><br><span class="line">* 数据库查询结果</span><br><span class="line"></span><br><span class="line">## 过滤函数</span><br><span class="line">* filter_var() - 通过一个指定的过滤器来过滤单一的变量</span><br><span class="line">* filter_var_array() - 通过相同的或不同的过滤器来过滤多个变量</span><br><span class="line">* filter_input - 获取一个输入变量，并对它进行过滤</span><br><span class="line">* filter_input_array - 获取多个输入变量，并通过相同的或不同的过滤器对它们进行过滤</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$int = 123;</p>
+<p>if(!filter_var($int, FILTER_VALIDATE_INT))<br>{<br>    echo(“不是一个合法的整数”);<br>}<br>else<br>{<br>    echo(“是个合法的整数”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">上面的代码使用了 &quot;FILTER_VALIDATE_INT&quot; 过滤器来过滤变量。</span><br><span class="line"></span><br><span class="line">## Validating 过滤器：</span><br><span class="line"></span><br><span class="line">用于验证用户输入</span><br><span class="line">严格的格式规则（比如 URL 或 E-Mail 验证）</span><br><span class="line">如果成功则返回预期的类型，如果失败则返回 FALSE</span><br><span class="line">## Sanitizing 过滤器：</span><br><span class="line"></span><br><span class="line">用于允许或禁止字符串中指定的字符</span><br><span class="line">无数据格式规则</span><br><span class="line">始终返回字符串</span><br><span class="line">选项和标志</span><br><span class="line">选项和标志用于向指定的过滤器添加额外的过滤选项。</span><br><span class="line"></span><br><span class="line">不同的过滤器有不同的选项和标志。</span><br><span class="line"></span><br><span class="line">在下面的实例中，我们用 filter_var() 和 &quot;min_range&quot; 以及 &quot;max_range&quot; 选项验证了一个整数：</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$var=300;</p>
+<p>$int_options = array(<br>    “options”=&gt;array<br>    (<br>        “min_range”=&gt;0,<br>        “max_range”=&gt;256<br>    )<br>);</p>
+<p>if(!filter_var($var, FILTER_VALIDATE_INT, $int_options))<br>{<br>    echo(“不是一个合法的整数”);<br>}<br>else<br>{<br>    echo(“是个合法的整数”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 验证输入</span><br><span class="line">让我们试着验证来自表单的输入。</span><br><span class="line"></span><br><span class="line">我们需要做的第一件事情是确认是否存在我们正在查找的输入数据。</span><br><span class="line"></span><br><span class="line">然后我们用 filter_input() 函数过滤输入的数据。</span><br><span class="line"></span><br><span class="line">在下面的实例中，输入变量 &quot;email&quot; 被传到 PHP 页面：</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>if(!filter_has_var(INPUT_GET, “email”))<br>{<br>    echo(“没有 email 参数”);<br>}<br>else<br>{<br>    if (!filter_input(INPUT_GET, “email”, FILTER_VALIDATE_EMAIL))<br>    {<br>        echo “不是一个合法的 E-Mail”;<br>    }<br>    else<br>    {<br>        echo “是一个合法的 E-Mail”;<br>    }<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## URL验证</span><br><span class="line"></span><br><span class="line">首先，我们要确认是否存在我们正在查找的输入数据。</span><br><span class="line"></span><br><span class="line">然后，我们用 filter_input() 函数来净化输入数据。</span><br><span class="line"></span><br><span class="line">在下面的实例中，输入变量 &quot;url&quot; 被传到 PHP 页面：</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>if(!filter_has_var(INPUT_GET, “url”))<br>{<br>    echo(“没有 url 参数”);<br>}<br>else<br>{<br>    $url = filter_input(INPUT_GET,<br>    “url”, FILTER_SANITIZE_URL);<br>    echo $url;<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 过滤多个输入</span><br><span class="line">表单通常由多个输入字段组成。为了避免对 filter_var 或 filter_input 函数重复调用，我们可以使用 filter_var_array 或 the filter_input_array 函数。</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$filters = array<br>(<br>    “name” =&gt; array<br>    (<br>        “filter”=&gt;FILTER_SANITIZE_STRING<br>    ),<br>    “age” =&gt; array<br>    (<br>        “filter”=&gt;FILTER_VALIDATE_INT,<br>        “options”=&gt;array<br>        (<br>            “min_range”=&gt;1,<br>            “max_range”=&gt;120<br>        )<br>    ),<br>    “email”=&gt; FILTER_VALIDATE_EMAIL<br>);</p>
+<p>$result = filter_input_array(INPUT_GET, $filters);</p>
+<p>if (!$result[“age”])<br>{<br>    echo(“年龄必须在 1 到 120 之间。<br>“);<br>}<br>elseif(!$result[“email”])<br>{<br>    echo(“E-Mail 不合法<br>“);<br>}<br>else<br>{<br>    echo(“输入正确”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用了一个自定义的函数把所有 &quot;_&quot; 转换为 &quot;.&quot;：</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>function convertSpace($string)<br>{<br>    return str_replace(“_”, “.”, $string);<br>}</p>
+<p>$string = “www_runoob_com!”;</p>
+<p>echo filter_var($string, FILTER_CALLBACK,<br>array(“options”=&gt;”convertSpace”));<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 检测一个数字是否在一个范围内</span><br><span class="line">以下实例使用了 filter_var() 函数来检测一个 INT 型的变量是否在 1 到 200 内:</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$int = 122;<br>$min = 1;<br>$max = 200;</p>
+<p>if (filter_var($int, FILTER_VALIDATE_INT, array(“options” =&gt; array(“min_range”=&gt;$min, “max_range”=&gt;$max))) === false) {<br>    echo(“变量值不在合法范围内”);<br>} else {<br>    echo(“变量值在合法范围内”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 检测 IPv6 地址</span><br><span class="line">以下实例使用了 filter_var() 函数来检测一个 $ip 变量是否是 IPv6 地址:</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$ip = “2001:0db8:85a3:08d3:1319:8a2e:0370:7334”;</p>
+<p>if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {<br>    echo(“$ip 是一个 IPv6 地址”);<br>} else {<br>    echo(“$ip 不是一个 IPv6 地址”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 检测 URL - 必须包含QUERY_STRING（查询字符串）</span><br><span class="line">以下实例使用了 filter_var() 函数来检测 $url 是否包含查询字符串：</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$url = “<a href="http://www.runoob.com&quot;" target="_blank" rel="noopener">http://www.runoob.com&quot;</a>;</p>
+<p>if (!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_QUERY_REQUIRED) === false) {<br>    echo(“$url 是一个合法的 URL”);<br>} else {<br>    echo(“$url 不是一个合法的 URL”);<br>}<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 移除 ASCII 值大于 127 的字符</span><br><span class="line">以下实例使用了 filter_var() 函数来移除字符串中 ASCII 值大于 127 的字符，同样它也能移除 HTML 标签：</span><br><span class="line"></span><br><span class="line">实例</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>$str = “</p><h1>Hello WorldÆØÅ!</h1>“;<p></p>
+<p>$newstr = filter_var($str, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);<br>echo $newstr;<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># PHP JSON</span><br><span class="line">JSON 函数</span><br><span class="line"></span><br><span class="line">* json_encode	对变量进行 JSON 编码</span><br><span class="line">* json_decode	对 JSON 格式的字符串进行解码，转换为 PHP 变量</span><br><span class="line">* json_last_error	返回最后发生的错误</span><br><span class="line"></span><br><span class="line">## json_encode</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>   $arr = array(‘a’ =&gt; 1, ‘b’ =&gt; 2, ‘c’ =&gt; 3, ‘d’ =&gt; 4, ‘e’ =&gt; 5);<br>   echo json_encode($arr);<br>?&gt;</p>
+<p>&lt;?php<br>   class Emp {<br>       public $name = “”;<br>       public $hobbies  = “”;<br>       public $birthdate = “”;<br>   }<br>   $e = new Emp();<br>   $e-&gt;name = “sachin”;<br>   $e-&gt;hobbies  = “sports”;<br>   $e-&gt;birthdate = date(‘m/d/Y h:i:s a’, “8/5/1974 12:20:03 p”);<br>   $e-&gt;birthdate = date(‘m/d/Y h:i:s a’, strtotime(“8/5/1974 12:20:03”));</p>
+<p>   echo json_encode($e);<br>?&gt;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## json_decode</span><br></pre></td></tr></table></figure></p>
+<p>&lt;?php<br>   $json = ‘{“a”:1,”b”:2,”c”:3,”d”:4,”e”:5}’;</p>
+<p>   var_dump(json_decode($json));<br>   var_dump(json_decode($json, true));<br>?&gt;<br><code>`</code></p>
+</form></form></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发/" rel="tag">#开发</a>
+          
+            <a href="/tags/PHP/" rel="tag">#PHP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/30/web侠客行（十五）--PHP MYSQL开发教程/" rel="prev">web侠客行（十五）--PHP MYSQL开发教程</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/28/web侠客行（十三）--PHP开发基础教程/" rel="next">web侠客行（十三）--PHP开发基础教程</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PHP-表单和用户输入"><span class="nav-number">1.</span> <span class="nav-text">PHP 表单和用户输入</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">PHP 表单验证实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">您输入的内容是:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">欢迎来到我的主页!</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">Hello WorldÆØÅ!</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
