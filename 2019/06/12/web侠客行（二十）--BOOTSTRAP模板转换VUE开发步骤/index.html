@@ -1,0 +1,1015 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.8.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+  <meta name="google-site-verification" content="xxx">
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+    <meta name="description" content="剑神一笑天地变，不爱江山爱美人">
+
+
+
+  <meta name="keywords" content="开发,VUE,BOOTSTRAP,">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="剑神一笑的博客" type="application/atom+xml">
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/lele.ico?v=0.4.5.1">
+
+
+<meta name="description" content="开始src 备份 src.bak可以把项目备份，也可以当做工作空间。因为每次新建webpack都需要安装bootstrap、jquery。 找模板 twts_141_PurpleAdmin去bootstrap找模板 安装vue-meta模块npm安装1npm install vue-meta --save main.js 引入 vue-meta123456import VueMeta from &amp;">
+<meta name="keywords" content="开发,VUE,BOOTSTRAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web侠客行（二十）--BOOTSTRAP模板转换VUE开发步骤">
+<meta property="og:url" content="http://sylucky.github.io/2019/06/12/web侠客行（二十）--BOOTSTRAP模板转换VUE开发步骤/index.html">
+<meta property="og:site_name" content="剑神一笑的博客">
+<meta property="og:description" content="开始src 备份 src.bak可以把项目备份，也可以当做工作空间。因为每次新建webpack都需要安装bootstrap、jquery。 找模板 twts_141_PurpleAdmin去bootstrap找模板 安装vue-meta模块npm安装1npm install vue-meta --save main.js 引入 vue-meta123456import VueMeta from &amp;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-23T14:22:07.122Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="web侠客行（二十）--BOOTSTRAP模板转换VUE开发步骤">
+<meta name="twitter:description" content="开始src 备份 src.bak可以把项目备份，也可以当做工作空间。因为每次新建webpack都需要安装bootstrap、jquery。 找模板 twts_141_PurpleAdmin去bootstrap找模板 安装vue-meta模块npm安装1npm install vue-meta --save main.js 引入 vue-meta123456import VueMeta from &amp;">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> web侠客行（二十）--BOOTSTRAP模板转换VUE开发步骤 | 剑神一笑的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">剑神一笑</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'xxx','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+        <style type="text/css">
+
+    .circle {
+        width: 40px;
+        height: 40px;
+        background: #555 no-repeat;
+        cursor: move;
+    }
+
+    .assist-btn {
+        position: fixed;
+        top: 50％;
+        left: 10px;
+        -moz-border-radius: 50px;
+        -webkit-border-radius: 50px;
+        border-radius: 50px;
+        outline: none;
+        border: none;
+        color: #87daff;
+    }
+
+</style>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript">
+    // 浮动圆点展开与收缩
+    /*
+    $(function () {
+        var assist_box = $('.assist-box');
+        $('#assist_btn').hover(function () {
+            assist_box.stop().show(300);
+        }, function () {
+            assist_box.stop().hide(150);
+        })
+    });
+    */  
+    //浮动圆点拖动
+    $(function () {
+        var box = document.getElementById('assist_btn');
+        box.onmousedown = function (event) {
+            var e = event || window.event,
+                t = e.target || e.srcElement,
+                // 鼠标按下时的坐标x1,y1
+                x1 = e.clientX,
+                y1 = e.clientY,
+                //鼠标按下时的左右偏移量
+                dragLeft = this.offsetLeft,
+                dragTop = this.offsetTop;
+
+            document.onmousemove = function (event) {
+                var e = event || window.event,
+                    t = e.target || e.srcElement,
+                    // 鼠标移动时的动态坐标
+                    x2 = e.clientX,
+                    y2 = e.clientY,
+                    // 鼠标移动时的坐标的变化量
+                    x = x2 - x1,
+                    y = y2 - y1;
+                box.style.left = (dragLeft + x) + 'px';
+                box.style.top = (dragTop + y) + 'px';
+            }
+
+            document.onmouseup = function () {
+                this.onmousemove = null;
+            }
+        }
+    });
+
+/*
+    $whitesmoke   = #f5f5f5
+    $gainsboro    = #eee
+    $gray-lighter = #ddd
+    $grey-light   = #ccc
+    $grey         = #bbb
+    $grey-dark    = #999
+    $grey-dim     = #666
+    $black-light  = #555
+    $black-deep   = #222
+    $red          = #ff2a2a
+    $blue-bright  = #87daff
+    $blue         = #0684bd
+    $blue-deep    = #262a30
+*/
+    // white theme
+    var body = {color: "#555", background: "white"};
+    var a_tag = {color: "#222"};
+    var header = { background: "#f5f5f5"};
+    var logo_line_i = {background: "#222"};
+    // var post_code = {background: "#eee", color: "#222"};
+
+    function switch_theme() {
+        $("body").css(body);
+        $("a:not('.links-of-author-item a, .site-state-item a, .site-state-posts a, .feed-link a, .motion-element a, .post-tags a, .show-commit-cls a, #donate_board a')").css(a_tag);
+        $(".header, .footer").css(header);
+        $(".logo-line-before i, .logo-line-after i").css(logo_line_i);
+        //$(".post code").css(post_code);
+        $("#idhyt-surprise-ball #idhyt-surprise-ball-animation .drag").css(a_tag);
+        $(".post-title-link, .posts-expand .post-meta, .post-comments-count, .disqus-comment-count, .post-category a, .post-nav-next a, .post-nav-item a").css(a_tag);
+        
+        // $("code").css({color: '#c5c8c6', background: '#1d1f21'});
+        $("#assist_btn").hide(1500);
+    }
+
+    $(function () {
+        $("#assist_btn").dblclick(function() {
+            switch_theme();
+        });
+    });
+
+</script>
+
+<div>
+
+    <button class="assist-btn circle" id="assist_btn" title="双击切换">
+        亮
+    </button>
+
+</div>
+
+
+
+
+
+
+
+
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              web侠客行（二十）--BOOTSTRAP模板转换VUE开发步骤
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2019-06-12T19:02:12+08:00" content="2019-06-12">
+            2019-06-12
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; 分类于
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/" itemprop="url" rel="index">
+                  <span itemprop="name">教程</span>
+                </a>
+              </span>
+
+              
+              
+                ， 
+              
+
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/教程/web/" itemprop="url" rel="index">
+                  <span itemprop="name">web</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="src-备份-src-bak"><a href="#src-备份-src-bak" class="headerlink" title="src 备份 src.bak"></a>src 备份 src.bak</h2><p>可以把项目备份，也可以当做工作空间。因为每次新建webpack都需要安装bootstrap、jquery。</p>
+<h2 id="找模板-twts-141-PurpleAdmin"><a href="#找模板-twts-141-PurpleAdmin" class="headerlink" title="找模板 twts_141_PurpleAdmin"></a>找模板 twts_141_PurpleAdmin</h2><p>去bootstrap找模板</p>
+<h2 id="安装vue-meta模块"><a href="#安装vue-meta模块" class="headerlink" title="安装vue-meta模块"></a>安装vue-meta模块</h2><p>npm安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-meta --save</span><br></pre></td></tr></table></figure></p>
+<p>main.js 引入 vue-meta<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import VueMeta from &apos;vue-meta&apos;</span><br><span class="line"></span><br><span class="line">Vue.use(VueMeta, &#123;</span><br><span class="line">  // optional pluginOptions</span><br><span class="line">  refreshOnceOnNavigation: true</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>安装electron（非必要）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save electron</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装popper-js"><a href="#安装popper-js" class="headerlink" title="安装popper.js"></a>安装popper.js</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save popper.js</span><br></pre></td></tr></table></figure>
+<h1 id="根据index-html分模块"><a href="#根据index-html分模块" class="headerlink" title="根据index.html分模块"></a>根据index.html分模块</h1><p>拷贝所有项目到src/assets 目录下</p>
+<h2 id="navbar"><a href="#navbar" class="headerlink" title="navbar"></a>navbar</h2><p>新建componets NavBar.vue</p>
+<p>拷贝index.html的navbar 模块到 NavBar.vue 的template模块。</p>
+<p>修改链接：<br>   href=” 修改为 href=”../assets/<br>   src=” 修改为 src=”../assets/</p>
+<p>到这里就基本修改好了navbar。</p>
+<h2 id="解决整体样式缩小的问题"><a href="#解决整体样式缩小的问题" class="headerlink" title="解决整体样式缩小的问题"></a>解决整体样式缩小的问题</h2><p>去掉导入的其他css库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// import &apos;bootstrap/dist/css/bootstrap.min.css&apos;</span><br><span class="line">// import &apos;bootstrap/dist/js/bootstrap.min&apos;</span><br></pre></td></tr></table></figure></p>
+<p>引入js方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&apos;js1&apos;: &#123;</span><br><span class="line">    render(createElement) &#123;</span><br><span class="line">        return createElement(</span><br><span class="line">            &apos;script&apos;, &#123;</span><br><span class="line">                attrs: &#123;</span><br><span class="line">                    type: &apos;text/javascript&apos;,</span><br><span class="line">                    src: &apos;./assets/vendors/js/vendor.bundle.base.js&apos;,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        );</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line">&apos;js2&apos;: &#123;</span><br><span class="line">    render(createElement) &#123;</span><br><span class="line">        return createElement(</span><br><span class="line">            &apos;script&apos;, &#123;</span><br><span class="line">                attrs: &#123;</span><br><span class="line">                    type: &apos;text/javascript&apos;,</span><br><span class="line">                    src: &apos;./assets/vendor.bundle.addons.js&apos;,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        );</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line">&apos;js3&apos;: &#123;</span><br><span class="line">    render(createElement) &#123;</span><br><span class="line">        return createElement(</span><br><span class="line">            &apos;script&apos;, &#123;</span><br><span class="line">                attrs: &#123;</span><br><span class="line">                    type: &apos;text/javascript&apos;,</span><br><span class="line">                    src: &apos;./assets/js/off-canvas.js&apos;,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        );</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line">&apos;js4&apos;: &#123;</span><br><span class="line">    render(createElement) &#123;</span><br><span class="line">        return createElement(</span><br><span class="line">            &apos;script&apos;, &#123;</span><br><span class="line">                attrs: &#123;</span><br><span class="line">                    type: &apos;text/javascript&apos;,</span><br><span class="line">                    src: &apos;./assets/js/misc.js&apos;,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        );</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br><span class="line">&apos;js5&apos;: &#123;</span><br><span class="line">    render(createElement) &#123;</span><br><span class="line">        return createElement(</span><br><span class="line">            &apos;script&apos;, &#123;</span><br><span class="line">                attrs: &#123;</span><br><span class="line">                    type: &apos;text/javascript&apos;,</span><br><span class="line">                    src: &apos;./assets/js/dashboard.js&apos;,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        );</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h1 id="细节问题解决"><a href="#细节问题解决" class="headerlink" title="细节问题解决"></a>细节问题解决</h1><h2 id="去掉eslint检查"><a href="#去掉eslint检查" class="headerlink" title="去掉eslint检查"></a>去掉eslint检查</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.eslintignore内添加 /src/</span><br><span class="line"></span><br><span class="line"># 改 a href 为 router-link</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class=&quot;nav-link&quot; href=&quot;/pro&quot;&gt;</span><br><span class="line">改为</span><br><span class="line">&lt;router-link class=&quot;nav-link&quot; to=&quot;/pro&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="服务器停启"><a href="#服务器停启" class="headerlink" title="服务器停启"></a>服务器停启</h1><h2 id="nginx服务停启命令"><a href="#nginx服务停启命令" class="headerlink" title="nginx服务停启命令"></a>nginx服务停启命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
+<h2 id="apache服务停启命令"><a href="#apache服务停启命令" class="headerlink" title="apache服务停启命令"></a>apache服务停启命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">servic httpd start</span><br><span class="line">servic httpd stop</span><br></pre></td></tr></table></figure>
+<h3 id="改apache服务器端口"><a href="#改apache服务器端口" class="headerlink" title="改apache服务器端口"></a>改apache服务器端口</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/etc/httpd/conf/httpd.conf</span><br><span class="line"></span><br><span class="line">搜索</span><br><span class="line">/Listen</span><br><span class="line"></span><br><span class="line">改为：Listen 81</span><br></pre></td></tr></table></figure>
+<h3 id="改默认登录index-html-index-php"><a href="#改默认登录index-html-index-php" class="headerlink" title="改默认登录index.html, index.php"></a>改默认登录index.html, index.php</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/etc/httpd/conf/httpd.conf</span><br><span class="line"></span><br><span class="line">搜索</span><br><span class="line">/dir_module</span><br><span class="line"></span><br><span class="line">改为：</span><br><span class="line">&lt;IfModule dir_module&gt;</span><br><span class="line">    DirectoryIndex index.html index.php</span><br><span class="line">&lt;/IfModule&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="tomcat服务停启命令"><a href="#tomcat服务停启命令" class="headerlink" title="tomcat服务停启命令"></a>tomcat服务停启命令</h2><p>windows系统：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shutdown.bat</span><br><span class="line">startup.bat</span><br></pre></td></tr></table></figure></p>
+<p>Linux系统：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shutdown.sh</span><br><span class="line">startup.sh</span><br></pre></td></tr></table></figure></p>
+<h2 id="mysql服务停启命令"><a href="#mysql服务停启命令" class="headerlink" title="mysql服务停启命令"></a>mysql服务停启命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br><span class="line">service mysqld stop</span><br></pre></td></tr></table></figure>
+<h2 id="eclipse问题解决"><a href="#eclipse问题解决" class="headerlink" title="eclipse问题解决"></a>eclipse问题解决</h2><p>web项目打包</p>
+<p>建立java web项目，项目点击右键-&gt;export-&gt;Runable JAR File-&gt;选择主类与本机存储。</p>
+<h1 id="vue引入css文件"><a href="#vue引入css文件" class="headerlink" title="vue引入css文件"></a>vue引入css文件</h1><h2 id="在入口js文件main-js中引入，一些公共的样式文件，可以在这里引入。"><a href="#在入口js文件main-js中引入，一些公共的样式文件，可以在这里引入。" class="headerlink" title="在入口js文件main.js中引入，一些公共的样式文件，可以在这里引入。"></a>在入口js文件main.js中引入，一些公共的样式文件，可以在这里引入。</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import App from &apos;./App&apos; // 引入App这个组件</span><br><span class="line">import router from &apos;./router&apos; /* 引入路由配置 */</span><br><span class="line">import axios from &apos;axios&apos;</span><br><span class="line">import &apos;../static/css/global.css&apos; /*引入公共样式*/</span><br></pre></td></tr></table></figure>
+<h2 id="在index-html中引入"><a href="#在index-html中引入" class="headerlink" title="在index.html中引入"></a>在index.html中引入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;stop&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;./static/css/global.css&quot;&gt; /*引入公共样式*/</span><br><span class="line"></span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div id=&quot;app&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;!-- built files will be auto injected --&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="在vue文件中引入"><a href="#在vue文件中引入" class="headerlink" title="在vue文件中引入"></a>在vue文件中引入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;app&quot;&gt;</span><br><span class="line">    &lt;router-view/&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &apos;app&apos;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style&gt;</span><br><span class="line">  @import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="vue-scoped-引入"><a href="#vue-scoped-引入" class="headerlink" title="vue scoped 引入"></a>vue scoped 引入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;style scoped src=&quot;../../static/index.css&quot; /&gt;</span><br><span class="line">&lt;style scoped src=&quot;../../static/style.css&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="vue-集成-form-making"><a href="#vue-集成-form-making" class="headerlink" title="vue 集成 form-making"></a>vue 集成 form-making</h1><h2 id="安装-element-ui"><a href="#安装-element-ui" class="headerlink" title="安装 element-ui"></a>安装 element-ui</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i element-ui -S</span><br></pre></td></tr></table></figure>
+<h2 id="安装-form-making"><a href="#安装-form-making" class="headerlink" title="安装 form-making"></a>安装 form-making</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i form-making -S</span><br></pre></td></tr></table></figure>
+<h2 id="main-js-引入"><a href="#main-js-引入" class="headerlink" title="main.js 引入"></a>main.js 引入</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// import ElementUI</span><br><span class="line">import ElementUI from &apos;element-ui&apos;</span><br><span class="line">import &apos;element-ui/lib/theme-chalk/index.css&apos;</span><br><span class="line">Vue.use(ElementUI)</span><br><span class="line"></span><br><span class="line">// import form-making</span><br><span class="line">import FormMaking from &apos;form-making&apos;</span><br><span class="line">import &apos;form-making/dist/FormMaking.css&apos;</span><br><span class="line">Vue.use(FormMaking)</span><br></pre></td></tr></table></figure>
+<h2 id="vue-组件引入"><a href="#vue-组件引入" class="headerlink" title="vue 组件引入"></a>vue 组件引入</h2><p>引入以下即可使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://unpkg.com/element-ui/lib/index.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script src=&quot;https://unpkg.com/form-making/dist/FormMaking.umd.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>或者使用以下方式（推荐）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &apos;element-ui/lib/index.js&apos;</span><br><span class="line">import &apos;form-making/dist/FormMaking.umd.js&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="webpack-base-conf-js-环境配置"><a href="#webpack-base-conf-js-环境配置" class="headerlink" title="webpack.base.conf.js 环境配置"></a>webpack.base.conf.js 环境配置</h2><p>如果报错，则做此步骤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: /\.css$/,</span><br><span class="line">    include: [</span><br><span class="line">        /src/,//表示在src目录下的css需要编译</span><br><span class="line">        &apos;/node_modules/element-ui/lib/&apos;   //增加此项</span><br><span class="line">    ],</span><br><span class="line">    loader: &apos;style-loader!css-loader&apos;</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">    test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,</span><br><span class="line">    loader: &apos;url-loader&apos;,</span><br><span class="line">    options: &#123;</span><br><span class="line">        limit: 10000,</span><br><span class="line">        name: utils.assetsPath(&apos;fonts/[name].[hash:7].[ext]&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装-css-loader-等组件"><a href="#安装-css-loader-等组件" class="headerlink" title="安装 css-loader 等组件"></a>安装 css-loader 等组件</h2><p>用npm run dev 运行vue项目时，出现以下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ERROR  Failed to compile with 1 errors                                                                                                                                                                        11:17:27</span><br><span class="line">This dependency was not found:</span><br><span class="line"></span><br><span class="line">* !!vue-style-loader!css-loader?&#123;&quot;sourceMap&quot;:true&#125;!../../node_modules/vue-loader/lib/style-compiler/index?&#123;&quot;vue&quot;:true,&quot;id&quot;:&quot;data-v-331f341c&quot;,&quot;scoped&quot;:true,&quot;hasInlineConfig&quot;:false&#125;!less-loader?&#123;&quot;sourceMap&quot;:true&#125;!../../node_modules/vue-loader/lib/selector?type=styles&amp;index=0!./Index.vue in ./src/components/Index.vue</span><br><span class="line"></span><br><span class="line">To install it, you can run: npm install --save !!vue-style-loader!css-loader?&#123;&quot;sourceMap&quot;:true&#125;!../../node_modules/vue-loader/lib/style-compiler/index?&#123;&quot;vue&quot;:true,&quot;id&quot;:&quot;data-v-331f341c&quot;,&quot;scoped&quot;:true,&quot;hasInlineConfig&quot;:false&#125;!less-loader?&#123;&quot;sourceMap&quot;:true&#125;!../../node_modules/vue-loader/lib/selector?type=styles&amp;index=0!./Index.vue</span><br></pre></td></tr></table></figure></p>
+<p>解决方法，看错误中列出了哪几个模块，都给装上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install stylus-loader css-loader style-loader less-loader --save-dev</span><br></pre></td></tr></table></figure></p>
+<h1 id="form表单验证"><a href="#form表单验证" class="headerlink" title="form表单验证"></a>form表单验证</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// VeeValidate</span><br><span class="line">https://baianat.github.io/vee-validate/guide/getting-started.html#installation</span><br><span class="line"></span><br><span class="line">// Vuelidate</span><br><span class="line">https://vuelidate.netlify.com/#getting-started</span><br></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/开发/" rel="tag">#开发</a>
+          
+            <a href="/tags/VUE/" rel="tag">#VUE</a>
+          
+            <a href="/tags/BOOTSTRAP/" rel="tag">#BOOTSTRAP</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2999/04/13/资源宇宙--持续更新/" rel="prev">资源宇宙--持续更新</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/12/web侠客行（十九）--python开发高级教程/" rel="next">web侠客行（十九）--python开发高级教程</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://sylucky.club/alipay.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://sylucky.club/wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://sylucky.club/alipay.jpg" title="支付宝打赏" class="fancybox" rel="article0" style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://sylucky.club/alipay.jpg" title height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://sylucky.club/wechat.jpg" title="微信打赏" class="fancybox" rel="article0" style="margin-right:30%">
+                                <img src="http://sylucky.club/wechat.jpg" title height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>
+    window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+          <div class="comments" id="comments">
+            
+            -->
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="剑神一笑" itemprop="image">
+          <p class="site-author-name" itemprop="name">剑神一笑</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">剑神一笑天地变，不爱江山爱美人</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">32</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="menu-item-icon icon-next-feed"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sylucky" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://me.csdn.net/sylucky" target="_blank">CSDN</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/sylucky2004" target="_blank">Weibo</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/sylucky.zhihu.io" target="_blank">ZhiHu</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">Links</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://blog.idhyt.com/about/" target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+            </a>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#src-备份-src-bak"><span class="nav-number">1.1.</span> <span class="nav-text">src 备份 src.bak</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#找模板-twts-141-PurpleAdmin"><span class="nav-number">1.2.</span> <span class="nav-text">找模板 twts_141_PurpleAdmin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装vue-meta模块"><span class="nav-number">1.3.</span> <span class="nav-text">安装vue-meta模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装popper-js"><span class="nav-number">1.4.</span> <span class="nav-text">安装popper.js</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#根据index-html分模块"><span class="nav-number">2.</span> <span class="nav-text">根据index.html分模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#navbar"><span class="nav-number">2.1.</span> <span class="nav-text">navbar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决整体样式缩小的问题"><span class="nav-number">2.2.</span> <span class="nav-text">解决整体样式缩小的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#细节问题解决"><span class="nav-number">3.</span> <span class="nav-text">细节问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去掉eslint检查"><span class="nav-number">3.1.</span> <span class="nav-text">去掉eslint检查</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务器停启"><span class="nav-number">4.</span> <span class="nav-text">服务器停启</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx服务停启命令"><span class="nav-number">4.1.</span> <span class="nav-text">nginx服务停启命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#apache服务停启命令"><span class="nav-number">4.2.</span> <span class="nav-text">apache服务停启命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改apache服务器端口"><span class="nav-number">4.2.1.</span> <span class="nav-text">改apache服务器端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改默认登录index-html-index-php"><span class="nav-number">4.2.2.</span> <span class="nav-text">改默认登录index.html, index.php</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tomcat服务停启命令"><span class="nav-number">4.3.</span> <span class="nav-text">tomcat服务停启命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql服务停启命令"><span class="nav-number">4.4.</span> <span class="nav-text">mysql服务停启命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eclipse问题解决"><span class="nav-number">4.5.</span> <span class="nav-text">eclipse问题解决</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue引入css文件"><span class="nav-number">5.</span> <span class="nav-text">vue引入css文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在入口js文件main-js中引入，一些公共的样式文件，可以在这里引入。"><span class="nav-number">5.1.</span> <span class="nav-text">在入口js文件main.js中引入，一些公共的样式文件，可以在这里引入。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在index-html中引入"><span class="nav-number">5.2.</span> <span class="nav-text">在index.html中引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在vue文件中引入"><span class="nav-number">5.3.</span> <span class="nav-text">在vue文件中引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-scoped-引入"><span class="nav-number">5.4.</span> <span class="nav-text">vue scoped 引入</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vue-集成-form-making"><span class="nav-number">6.</span> <span class="nav-text">vue 集成 form-making</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-element-ui"><span class="nav-number">6.1.</span> <span class="nav-text">安装 element-ui</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-form-making"><span class="nav-number">6.2.</span> <span class="nav-text">安装 form-making</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main-js-引入"><span class="nav-number">6.3.</span> <span class="nav-text">main.js 引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue-组件引入"><span class="nav-number">6.4.</span> <span class="nav-text">vue 组件引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#webpack-base-conf-js-环境配置"><span class="nav-number">6.5.</span> <span class="nav-text">webpack.base.conf.js 环境配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-css-loader-等组件"><span class="nav-number">6.6.</span> <span class="nav-text">安装 css-loader 等组件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#form表单验证"><span class="nav-number">7.</span> <span class="nav-text">form表单验证</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </div></main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2019
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">剑神一笑
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
